@@ -113,13 +113,11 @@
       <h2>Comparison</h2>
       <p class="figure-cap">We report quantitative metrics and qualitative visual comparisons with recent baselines.</p>
 
-      <!-- Quantitative — NVS -->
+      <!-- Quantitative — 하나만 유지 (NVS) -->
       <div id="quantitative" class="subcard">
         <h3 style="margin:0 0 10px;font-size:18px;">Quantitative — NVS</h3>
         <div class="doc-embed">
-          <!-- PDF 먼저 시도 -->
           <object data="assets/quant-nvs.pdf" type="application/pdf">
-            <!-- PDF가 없거나 브라우저가 막으면 PNG로 폴백 -->
             <img src="assets/quant-nvs.png" alt="Quantitative table (NVS)" />
           </object>
         </div>
@@ -127,37 +125,7 @@
           <a href="assets/quant-nvs.pdf" download>Download PDF</a>
           <a href="assets/quant-nvs.png" download>Download PNG</a>
         </div>
-        <p class="figure-cap">Table 1: NVS benchmark. Replace file names above with your assets.</p>
-      </div>
-
-      <!-- Quantitative — PBR -->
-      <div class="subcard">
-        <h3 style="margin:0 0 10px;font-size:18px;">Quantitative — PBR</h3>
-        <div class="doc-embed">
-          <object data="assets/quant-pbr.pdf" type="application/pdf">
-            <img src="assets/quant-pbr.png" alt="Quantitative table (PBR)" />
-          </object>
-        </div>
-        <div class="embed-actions">
-          <a href="assets/quant-pbr.pdf" download>Download PDF</a>
-          <a href="assets/quant-pbr.png" download>Download PNG</a>
-        </div>
-        <p class="figure-cap">Table 2: PBR benchmark. Use BRDF/relighting metrics as needed.</p>
-      </div>
-
-      <!-- Quantitative — Mesh -->
-      <div class="subcard">
-        <h3 style="margin:0 0 10px;font-size:18px;">Quantitative — Mesh Reconstruction</h3>
-        <div class="doc-embed">
-          <object data="assets/quant-mesh.pdf" type="application/pdf">
-            <img src="assets/quant-mesh.png" alt="Quantitative table (Mesh Reconstruction)" />
-          </object>
-        </div>
-        <div class="embed-actions">
-          <a href="assets/quant-mesh.pdf" download>Download PDF</a>
-          <a href="assets/quant-mesh.png" download>Download PNG</a>
-        </div>
-        <p class="figure-cap">Table 3: Mesh metrics (DTU / Tanks&Temples 등).</p>
+        <p class="figure-cap">Table 1: NVS benchmark.</p>
       </div>
 
       <!-- Qualitative: 비디오 3개 세로 스택 -->
@@ -165,7 +133,6 @@
         <h3 style="margin:0 0 10px;font-size:18px;">Qualitative</h3>
 
         <div class="media-stack">
-          <!-- NVS -->
           <div class="media">
             <div class="thumb">
               <video controls loop muted playsinline poster="assets/nvs_poster.jpg">
@@ -175,7 +142,6 @@
             <p class="figure-cap">NVS (Novel View Synthesis)</p>
           </div>
 
-          <!-- PBR -->
           <div class="media">
             <div class="thumb">
               <video controls loop muted playsinline poster="assets/pbr_poster.jpg">
@@ -185,7 +151,6 @@
             <p class="figure-cap">PBR (Physically-Based Rendering)</p>
           </div>
 
-          <!-- Mesh reconstruction -->
           <div class="media">
             <div class="thumb">
               <video controls loop muted playsinline poster="assets/mesh_poster.jpg">
