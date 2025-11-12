@@ -53,10 +53,6 @@
     }
     .figure-cap{margin-top:8px;color:var(--muted);font-size:14px}
     .abstract-text{font-size:15.5px}
-    .figure-cap{margin-top:10px;color:var(--muted);font-size:14px}
-    @media (max-width:900px){
-      .abstract-grid{grid-template-columns:1fr}
-    }
   </style>
 </head>
 <body>
@@ -73,7 +69,7 @@
       <div class="affils"><span><sup>1</sup>ChungAng University</span> ·</div>
       <div class="badges">
         <a class="btn" href="#" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.4 2c-1.9 2.6-3.6 5.3-5.1 8.2 1.3 2.7 3 5.2 5.1 7.5 2.1-2.3 3.8-4.8 5.1-7.5C15.2 7.3 13.5 4.6 11.4 2zM6.1 12C4.2 8.6 2.8 6.6 1 4.3c1.3-.3 2.5-.4 3.8-.2 1.7 2 3.2 4.2 4.6 6.6-1.2 2.1-2.6 4.1-4.3 5.9-.9-.9-1.8-2.3-3-4.6 1 .4 2 .6 3 .6zM22.9 4.3c-1.9 2.3-3.3 4.3-5.2 7.7 1.7 3.5 3.3 5.8 5.2 7.7-1.5.2-3 .1-4.3-.4-1.7-2-3.1-4.1-4.3-6.4 1.3-2.4 2.7-4.6 4.4-6.6 1.5-.2 3 0 4.2 .4z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.4 2c-1.9 2.6-3.6 5.3-5.1 8.2 1.3 2.7 3 5.2 5.1 7.5 2.1-2.3 3.8-4.8 5.1-7.5C15.2 7.3 13.5 4.6 11.4 2zM6.1 12C4.2 8.6 2.8 6.6 1 4.3c1.3-.3 2.5-.4 3.8-.2 1.7 2 3.2 4.2 4.6 6.6-1.2 2.1-2.6 4.1-4.3 5.9-.9-.9-1.8-2.3-3-4.6 1 .4 2 .6 3 .6zM22.9 4.3c-1.9 2.3-3.3 4.3-5.2 7.7 1.7 3.5 3.3 5.8 5.2 7.7-1.5 .2-3 .1-4.3-.4-1.7-2-3.1-4.1-4.3-6.4 1.3-2.4 2.7-4.6 4.4-6.6 1.5-.2 3 0 4.2 .4z"/></svg>
           arXiv
         </a>
         <a class="btn" href="#" target="_blank" rel="noopener">
@@ -85,33 +81,21 @@
       </div>
     </header>
 
-      <section class="section card abstract-card" id="abstract">
-        <h2>Abstract</h2>
-      
-        <!-- 상단: Abstract 이미지 -->
-        <figure class="abstract-figure">
-          <img src="assets/abstract.png" alt="Abstract figure (framework overview or teaser collage)" />
-          <figcaption class="figure-cap">Figure A: Abstract figure. Replace with your overview/teaser image.</figcaption>
-        </figure>
-      
-        <!-- 하단: Abstract 텍스트 -->
-        <div class="abstract-text">
-          <p>We present the first unified framework that jointly learns relightable 3D Gaussians and a neural Signed Distance Field (SDF) through coarse-to-fine bidirectional 3D-to-3D supervision, enabling accurate geometry reconstruction and physically-based rendering (PBR). While recent 3D Gaussian Splatting (3DGS) works extend beyond novel-view synthesis (NVS) to mesh reconstruction and PBR, existing methods infer 3D properties indirectly from rendered 2D images, yielding coarse meshes and unreliable BRDF and lighting decomposition.</p>
-          <p>To address these limitations, our approach jointly optimizes SDF and 3DGS directly in 3D space. Depth-guided SDF Alignment uses Gaussian depth maps to anchor SDF rays and refine SDF normals via pixel-wise depth gradients. Normal-guided Gaussian Alignment projects Gaussians onto the SDF surface, supervises Gaussian normals with SDF normals, and applies normal-aware densification to capture fine-scale geometry. To prevent excessive Gaussian splitting during normal-aware densification, we introduce Dual-Density Control using both image and geometry gradient cues, improving memory efficiency.</p>
-          <p>The precisely aligned geometry supplies accurate normals to support differentiable PBR, enabling faithful BRDF–lighting decomposition. Experiments on standard benchmarks demonstrate superior performance in NVS, mesh reconstruction, and PBR. The code and project page will be publicly released.</p>
-        </div>
-      </section>
-        <aside>
-          <div class="thumb">
-            <!-- 추후 실제 이미지로 교체 -->
-            <img src="assets/abstract.png" alt="Abstract figure (framework overview or teaser collage)" />
-          </div>
-          <p class="figure-cap">Figure A: Abstract figure. Replace with your overview/teaser image.</p>
-        </aside>
+    <!-- ABSTRACT: 이미지 위, 텍스트 아래 (한 박스) -->
+    <section class="section card abstract-card" id="abstract">
+      <h2>Abstract</h2>
+      <figure class="abstract-figure">
+        <img src="assets/abstract.png" alt="Abstract figure (framework overview or teaser collage)" />
+        <figcaption class="figure-cap">Figure A: Abstract figure. Replace with your overview/teaser image.</figcaption>
+      </figure>
+      <div class="abstract-text">
+        <p>We present the first unified framework that jointly learns relightable 3D Gaussians and a neural Signed Distance Field (SDF) through coarse-to-fine bidirectional 3D-to-3D supervision, enabling accurate geometry reconstruction and physically-based rendering (PBR). While recent 3D Gaussian Splatting (3DGS) works extend beyond novel-view synthesis (NVS) to mesh reconstruction and PBR, existing methods infer 3D properties indirectly from rendered 2D images, yielding coarse meshes and unreliable BRDF and lighting decomposition.</p>
+        <p>To address these limitations, our approach jointly optimizes SDF and 3DGS directly in 3D space. Depth-guided SDF Alignment uses Gaussian depth maps to anchor SDF rays and refine SDF normals via pixel-wise depth gradients. Normal-guided Gaussian Alignment projects Gaussians onto the SDF surface, supervises Gaussian normals with SDF normals, and applies normal-aware densification to capture fine-scale geometry. To prevent excessive Gaussian splitting during normal-aware densification, we introduce Dual-Density Control using both image and geometry gradient cues, improving memory efficiency.</p>
+        <p>The precisely aligned geometry supplies accurate normals to support differentiable PBR, enabling faithful BRDF–lighting decomposition. Experiments on standard benchmarks demonstrate superior performance in NVS, mesh reconstruction, and PBR. The code and project page will be publicly released.</p>
       </div>
     </section>
 
-    <!-- 비디오 -->
+    <!-- Video -->
     <section id="video" class="section card">
       <h2>Video</h2>
       <div class="thumb">
