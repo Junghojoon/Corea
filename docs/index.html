@@ -51,12 +51,16 @@
     /* PDF/PNG 임베드 공통 컨테이너 */
     .doc-embed{position:relative;border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;background:#fff}
     .doc-embed object{width:100%;height:520px;border:0;display:block}
+    .doc-embed iframe{width:100%;height:520px;border:0;display:block}  /* iframe 폴백 높이 */
     .doc-embed img{width:100%;height:auto;display:block}
-    /* Abstract같이 세로가 더 필요한 경우 높이 확장용(원하면 제거/값 조정) */
+    /* Abstract같이 세로가 더 필요한 경우 높이 확장용 */
     .doc-embed--tall object{height:65vh}
+    .doc-embed--tall iframe{height:65vh}
     @media (max-width:900px){
       .doc-embed object{height:380px}
+      .doc-embed iframe{height:380px}
       .doc-embed--tall object{height:50vh}
+      .doc-embed--tall iframe{height:50vh}
     }
 
     .embed-actions{display:flex;gap:12px;align-items:center;margin-top:8px}
@@ -106,17 +110,21 @@
     <section class="section card abstract-card" id="abstract">
       <h2>Abstract</h2>
 
-      <!-- (수정) Abstract figure: PDF 우선 + PNG 폴백 -->
+      <!-- Abstract figure: PDF 우선 + IFRAME 폴백 + PNG 폴백 -->
       <figure class="abstract-figure">
         <div class="doc-embed doc-embed--tall">
-          <!-- abstract.pdf가 있으면 표시, 없거나 차단되면 abstract.png로 폴백 -->
           <object data="assets/abstract.pdf" type="application/pdf">
+            <iframe
+              src="assets/abstract.pdf#view=FitH&toolbar=0"
+              title="Abstract PDF"
+              loading="lazy"
+            ></iframe>
             <img src="assets/abstract.png" alt="Abstract figure (framework overview or teaser collage)" />
           </object>
         </div>
         <figcaption class="figure-cap">Figure A: Abstract figure. Replace with your overview/teaser image/PDF.</figcaption>
 
-        <!-- (선택) 다운로드 링크가 필요하면 아래 주석 해제
+        <!-- 필요 시 다운로드 버튼 노출
         <div class="embed-actions">
           <a href="assets/abstract.pdf" download>Download PDF</a>
           <a href="assets/abstract.png" download>Download PNG</a>
@@ -136,11 +144,16 @@
       <h2>Comparison</h2>
       <p class="figure-cap">We report quantitative metrics and qualitative visual comparisons with recent baselines.</p>
 
-      <!-- Quantitative — 하나만 유지 (PDF 우선 + PNG 폴백 이미 구현됨) -->
+      <!-- Quantitative — PDF 우선 + IFRAME 폴백 + PNG 폴백 -->
       <div id="quantitative" class="subcard">
         <h3 style="margin:0 0 10px;font-size:18px;">Quantitative</h3>
         <div class="doc-embed">
           <object data="assets/quant-nvs.pdf" type="application/pdf">
+            <iframe
+              src="assets/quant-nvs.pdf#view=FitH&toolbar=0"
+              title="Quantitative Table PDF"
+              loading="lazy"
+            ></iframe>
             <img src="assets/quant-nvs.png" alt="Quantitative table (NVS)" />
           </object>
         </div>
@@ -151,7 +164,7 @@
         <p class="figure-cap">Table 1: NVS benchmark.</p>
       </div>
 
-      <!-- Qualitative: 비디오 3개 세로 스택 (video poster는 이미지 전용이라 PDF 불가) -->
+      <!-- Qualitative: 비디오 3개 세로 스택 -->
       <div id="qualitative" class="subcard">
         <h3 style="margin:0 0 10px;font-size:18px;">Qualitative</h3>
 
