@@ -39,7 +39,6 @@
     code{font-family:"Roboto Mono",ui-monospace,Menlo,Consolas,monospace}
     .footer{margin-top:36px;color:var(--muted);font-size:14px;text-align:center}
 
-    /* ABSTRACT 큰 박스 (이미지 위, 글 아래) */
     .abstract-card{padding:26px}
     .abstract-figure{margin:0 0 14px}
     .abstract-figure img{
@@ -53,7 +52,6 @@
     .figure-cap{margin-top:8px;color:var(--muted);font-size:14px}
     .abstract-text{font-size:15.5px}
 
-    /* 표 스타일(정량 결과) */
     .table-wrap{overflow:auto;border:1px solid #e5e7eb;border-radius:14px;background:#fff}
     table{width:100%;border-collapse:collapse;font-size:14px}
     thead th{position:sticky;top:0;background:#f3f5fa}
@@ -113,7 +111,13 @@
       </div>
     </section>
 
-    <!-- Comparison (각각 한 박스씩) -->
+    <!-- Comparison 제목 박스 -->
+    <section id="comparison" class="section card">
+      <h2>Comparison</h2>
+      <p class="figure-cap">We report quantitative metrics and qualitative visual comparisons with recent baselines.</p>
+    </section>
+
+    <!-- Quantitative -->
     <section id="quantitative" class="section card">
       <h2>Quantitative (PSNR / SSIM / LPIPS)</h2>
       <div class="table-wrap">
@@ -136,10 +140,10 @@
       <p class="figure-cap">Table 1: Placeholder numbers. Replace with your benchmark results or an image (`assets/comp-quant.png`).</p>
     </section>
 
+    <!-- Qualitative -->
     <section id="qualitative" class="section card">
       <h2>Qualitative</h2>
       <div class="thumb">
-        <!-- 이미지 또는 영상 중 하나 사용 -->
         <!-- <video autoplay loop muted playsinline><source src="assets/comp-qual.mp4" type="video/mp4"/></video> -->
         <img src="assets/comp-qual.png" alt="Qualitative comparison (placeholder)" />
       </div>
