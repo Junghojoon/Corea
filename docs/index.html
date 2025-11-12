@@ -40,11 +40,18 @@
     code{font-family:"Roboto Mono",ui-monospace,Menlo,Consolas,monospace}
     .footer{margin-top:36px;color:var(--muted);font-size:14px;text-align:center}
 
-    /* ABSTRACT 큰 박스 + 내부 그리드 */
+    /* ABSTRACT 큰 박스 (이미지 위, 글 아래) */
     .abstract-card{padding:26px}
-    .abstract-grid{
-      display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:start
+    .abstract-figure{margin:0 0 14px}
+    .abstract-figure img{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:14px;
+      border:1px solid #e5e7eb;
+      background:#ffffff;
     }
+    .figure-cap{margin-top:8px;color:var(--muted);font-size:14px}
     .abstract-text{font-size:15.5px}
     .figure-cap{margin-top:10px;color:var(--muted);font-size:14px}
     @media (max-width:900px){
@@ -78,15 +85,22 @@
       </div>
     </header>
 
-    <!-- 상단: 큰 Abstract 박스 (텍스트 + 오른쪽 Abstract 이미지) -->
-    <section class="section card abstract-card" id="abstract">
-      <h2>Abstract</h2>
-      <div class="abstract-grid">
+      <section class="section card abstract-card" id="abstract">
+        <h2>Abstract</h2>
+      
+        <!-- 상단: Abstract 이미지 -->
+        <figure class="abstract-figure">
+          <img src="assets/abstract.png" alt="Abstract figure (framework overview or teaser collage)" />
+          <figcaption class="figure-cap">Figure A: Abstract figure. Replace with your overview/teaser image.</figcaption>
+        </figure>
+      
+        <!-- 하단: Abstract 텍스트 -->
         <div class="abstract-text">
           <p>We present the first unified framework that jointly learns relightable 3D Gaussians and a neural Signed Distance Field (SDF) through coarse-to-fine bidirectional 3D-to-3D supervision, enabling accurate geometry reconstruction and physically-based rendering (PBR). While recent 3D Gaussian Splatting (3DGS) works extend beyond novel-view synthesis (NVS) to mesh reconstruction and PBR, existing methods infer 3D properties indirectly from rendered 2D images, yielding coarse meshes and unreliable BRDF and lighting decomposition.</p>
           <p>To address these limitations, our approach jointly optimizes SDF and 3DGS directly in 3D space. Depth-guided SDF Alignment uses Gaussian depth maps to anchor SDF rays and refine SDF normals via pixel-wise depth gradients. Normal-guided Gaussian Alignment projects Gaussians onto the SDF surface, supervises Gaussian normals with SDF normals, and applies normal-aware densification to capture fine-scale geometry. To prevent excessive Gaussian splitting during normal-aware densification, we introduce Dual-Density Control using both image and geometry gradient cues, improving memory efficiency.</p>
           <p>The precisely aligned geometry supplies accurate normals to support differentiable PBR, enabling faithful BRDF–lighting decomposition. Experiments on standard benchmarks demonstrate superior performance in NVS, mesh reconstruction, and PBR. The code and project page will be publicly released.</p>
         </div>
+      </section>
         <aside>
           <div class="thumb">
             <!-- 추후 실제 이미지로 교체 -->
