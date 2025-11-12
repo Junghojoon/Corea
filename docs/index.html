@@ -61,12 +61,9 @@
     /* 비교 섹션 내부 소박스 */
     .subcard{background:#ffffff;border:1px solid #e5e7eb;border-radius:14px;padding:18px;margin-top:16px}
 
-    /* Qualitative 3-그리드 */
-    .media-grid{display:grid;grid-template-columns:1fr;gap:16px}
+    /* Qualitative 비디오: 항상 세로 1열 */
+    .media-stack{display:flex;flex-direction:column;gap:16px}
     .media{display:flex;flex-direction:column;gap:8px}
-    @media (min-width:900px){
-      .media-grid{grid-template-columns:1fr 1fr 1fr}
-    }
   </style>
 </head>
 <body>
@@ -124,9 +121,9 @@
       <h2>Comparison</h2>
       <p class="figure-cap">We report quantitative metrics and qualitative visual comparisons with recent baselines.</p>
 
-      <!-- Quantitative (서브 카드) -->
+      <!-- Quantitative: 서브카드 3개(세로로 쌓기) -->
       <div id="quantitative" class="subcard">
-        <h3 style="margin:0 0 10px;font-size:18px;">Quantitative (PSNR / SSIM / LPIPS)</h3>
+        <h3 style="margin:0 0 10px;font-size:18px;">Quantitative — NVS</h3>
         <div class="table-wrap">
           <table>
             <thead>
@@ -144,15 +141,58 @@
             </tbody>
           </table>
         </div>
-        <p class="figure-cap">Table 1: Placeholder numbers. Replace with your benchmark results or an image (`assets/comp-quant.png`).</p>
+        <p class="figure-cap">Table 1: NVS benchmark (placeholder). Replace with actual results.</p>
       </div>
 
-      <!-- Qualitative (서브 카드) -->
+      <div class="subcard">
+        <h3 style="margin:0 0 10px;font-size:18px;">Quantitative — PBR</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th class="metric">PSNR↑</th>
+                <th class="metric">SSIM↑</th>
+                <th class="metric">LPIPS↓</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>R3DG</td><td>25.10</td><td>0.902</td><td>0.180</td></tr>
+              <tr><td>GS-IR</td><td>25.76</td><td>0.910</td><td>0.171</td></tr>
+              <tr class="best"><td><strong>COREA (Ours)</strong></td><td><strong>26.55</strong></td><td><strong>0.919</strong></td><td><strong>0.158</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="figure-cap">Table 2: PBR benchmark (placeholder). Replace with actual results or BRDF/relighting metrics if 필요.</p>
+      </div>
+
+      <div class="subcard">
+        <h3 style="margin:0 0 10px;font-size:18px;">Quantitative — Mesh Reconstruction</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th class="metric">Chamfer↓</th>
+                <th class="metric">F-Score↑</th>
+                <th class="metric">Normal Consistency↑</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>R3DG</td><td>0.78</td><td>73.1</td><td>0.842</td></tr>
+              <tr><td>GS-IR</td><td>0.74</td><td>74.6</td><td>0.851</td></tr>
+              <tr class="best"><td><strong>COREA (Ours)</strong></td><td><strong>0.68</strong></td><td><strong>77.5</strong></td><td><strong>0.869</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="figure-cap">Table 3: Mesh metrics (placeholder). Replace with DTU / T&T 등 실제 수치.</p>
+      </div>
+
+      <!-- Qualitative: 비디오 3개 세로 스택 -->
       <div id="qualitative" class="subcard">
         <h3 style="margin:0 0 10px;font-size:18px;">Qualitative</h3>
 
-        <!-- 3-그리드: NVS / PBR / Mesh reconstruction -->
-        <div class="media-grid">
+        <div class="media-stack">
           <!-- NVS -->
           <div class="media">
             <div class="thumb">
@@ -184,7 +224,7 @@
           </div>
         </div>
 
-        <p class="figure-cap">Figure B: Qualitative results across tasks. Replace with your actual videos (`assets/nvs.mp4`, `assets/pbr.mp4`, `assets/mesh.mp4`).</p>
+        <p class="figure-cap">Figure B: Qualitative results across tasks. Replace with your actual videos.</p>
       </div>
     </section>
 
