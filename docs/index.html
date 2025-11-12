@@ -53,10 +53,6 @@
     .figure-cap{margin-top:8px;color:var(--muted);font-size:14px}
     .abstract-text{font-size:15.5px}
 
-    /* 비교 섹션 그리드 */
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-    @media (max-width:900px){.grid-2{grid-template-columns:1fr}}
-
     /* 표 스타일(정량 결과) */
     .table-wrap{overflow:auto;border:1px solid #e5e7eb;border-radius:14px;background:#fff}
     table{width:100%;border-collapse:collapse;font-size:14px}
@@ -117,45 +113,37 @@
       </div>
     </section>
 
-    <!-- Comparison: Quantitative & Qualitative -->
-    <section id="comparison" class="section">
-      <h2 style="margin-bottom:14px;">Comparison</h2>
-      <div class="grid-2">
-        <!-- Quantitative -->
-        <section class="card">
-          <h3 style="margin:0 0 10px;font-size:18px;">Quantitative (PSNR / SSIM / LPIPS)</h3>
-          <!-- 필요 시 comp-quant.png를 썸네일로 넣을 수도 있음 -->
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Method</th>
-                  <th class="metric">PSNR↑</th>
-                  <th class="metric">SSIM↑</th>
-                  <th class="metric">LPIPS↓</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>R3DG</td><td>27.81</td><td>0.928</td><td>0.142</td></tr>
-                <tr><td>GS-IR</td><td>28.04</td><td>0.934</td><td>0.131</td></tr>
-                <tr class="best"><td><strong>COREA (Ours)</strong></td><td><strong>28.92</strong></td><td><strong>0.944</strong></td><td><strong>0.118</strong></td></tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="figure-cap">Table 1: Placeholder numbers. Replace with your benchmark results or an image (`assets/comp-quant.png`).</p>
-        </section>
-
-        <!-- Qualitative -->
-        <section class="card">
-          <h3 style="margin:0 0 10px;font-size:18px;">Qualitative</h3>
-          <div class="thumb">
-            <!-- 이미지 또는 영상 중 하나 사용 -->
-            <!-- <video autoplay loop muted playsinline><source src="assets/comp-qual.mp4" type="video/mp4"/></video> -->
-            <img src="assets/comp-qual.png" alt="Qualitative comparison (placeholder)" />
-          </div>
-          <p class="figure-cap">Figure B: Qualitative comparison. Replace with your grid or video (`assets/comp-qual.png` or `.mp4`).</p>
-        </section>
+    <!-- Comparison (각각 한 박스씩) -->
+    <section id="quantitative" class="section card">
+      <h2>Quantitative (PSNR / SSIM / LPIPS)</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th class="metric">PSNR↑</th>
+              <th class="metric">SSIM↑</th>
+              <th class="metric">LPIPS↓</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>R3DG</td><td>27.81</td><td>0.928</td><td>0.142</td></tr>
+            <tr><td>GS-IR</td><td>28.04</td><td>0.934</td><td>0.131</td></tr>
+            <tr class="best"><td><strong>COREA (Ours)</strong></td><td><strong>28.92</strong></td><td><strong>0.944</strong></td><td><strong>0.118</strong></td></tr>
+          </tbody>
+        </table>
       </div>
+      <p class="figure-cap">Table 1: Placeholder numbers. Replace with your benchmark results or an image (`assets/comp-quant.png`).</p>
+    </section>
+
+    <section id="qualitative" class="section card">
+      <h2>Qualitative</h2>
+      <div class="thumb">
+        <!-- 이미지 또는 영상 중 하나 사용 -->
+        <!-- <video autoplay loop muted playsinline><source src="assets/comp-qual.mp4" type="video/mp4"/></video> -->
+        <img src="assets/comp-qual.png" alt="Qualitative comparison (placeholder)" />
+      </div>
+      <p class="figure-cap">Figure B: Qualitative comparison. Replace with your grid or video (`assets/comp-qual.png` or `.mp4`).</p>
     </section>
 
     <!-- Method -->
