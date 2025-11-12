@@ -9,14 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#ffffff; --card:#f8f9fb; --muted:#556070; --text:#111213; --accent:#0b66ff; --brand:#ff9900;
-    }
+    :root{ --bg:#ffffff; --card:#f8f9fb; --muted:#556070; --text:#111213; --accent:#0b66ff; --brand:#ff9900; }
     *{box-sizing:border-box}
-    body{
-      margin:0;background:#ffffff;color:var(--text);
-      font:16px/1.6 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial
-    }
+    body{ margin:0;background:#ffffff;color:var(--text); font:16px/1.6 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial }
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
     .wrap{max-width:1100px;margin:0 auto;padding:28px 22px}
@@ -39,31 +34,28 @@
     code{font-family:"Roboto Mono",ui-monospace,Menlo,Consolas,monospace}
     .footer{margin-top:36px;color:var(--muted);font-size:14px;text-align:center}
 
-    /* Abstract 큰 박스 (이미지 위, 글 아래) */
+    /* Abstract */
     .abstract-card{padding:26px}
     .abstract-figure{margin:0 0 14px}
-    .abstract-figure img{
-      width:100%; height:auto; display:block;
-      border-radius:14px; border:1px solid #e5e7eb; background:#ffffff;
-    }
+    .abstract-figure img{ width:100%; height:auto; display:block; border-radius:14px; border:1px solid #e5e7eb; background:#ffffff; }
     .figure-cap{margin-top:8px;color:var(--muted);font-size:14px}
     .abstract-text{font-size:15.5px}
 
-    /* 표 스타일(정량 결과) */
-    .table-wrap{overflow:auto;border:1px solid #e5e7eb;border-radius:14px;background:#fff}
-    table{width:100%;border-collapse:collapse;font-size:14px}
-    thead th{position:sticky;top:0;background:#f3f5fa}
-    th,td{padding:10px 12px;border-bottom:1px solid #eef0f4;text-align:center;white-space:nowrap}
-    tr:last-child td{border-bottom:none}
-    .metric{font-weight:700}
-    .best{background:#eaf3ff}
-
-    /* 비교 섹션 내부 소박스 */
+    /* Comparison 내부 소박스 */
     .subcard{background:#ffffff;border:1px solid #e5e7eb;border-radius:14px;padding:18px;margin-top:16px}
 
-    /* Qualitative 비디오: 항상 세로 1열 */
+    /* Qualitative: 세로 스택 */
     .media-stack{display:flex;flex-direction:column;gap:16px}
     .media{display:flex;flex-direction:column;gap:8px}
+
+    /* Quantitative: PDF/PNG 임베드 컨테이너 */
+    .doc-embed{position:relative;border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;background:#fff}
+    .doc-embed object{width:100%;height:520px;border:0;display:block}
+    .doc-embed img{width:100%;height:auto;display:block}
+    @media (max-width:900px){ .doc-embed object{height:380px} }
+
+    .embed-actions{display:flex;gap:12px;align-items:center;margin-top:8px}
+    .embed-actions a{font-size:14px}
   </style>
 </head>
 <body>
@@ -116,76 +108,56 @@
       </div>
     </section>
 
-    <!-- Comparison: 큰 박스 하나에 Quant/Qual 묶기 -->
+    <!-- Comparison: Quantitative + Qualitative -->
     <section id="comparison" class="section card">
       <h2>Comparison</h2>
       <p class="figure-cap">We report quantitative metrics and qualitative visual comparisons with recent baselines.</p>
 
-      <!-- Quantitative: 서브카드 3개(세로로 쌓기) -->
+      <!-- Quantitative — NVS -->
       <div id="quantitative" class="subcard">
         <h3 style="margin:0 0 10px;font-size:18px;">Quantitative — NVS</h3>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Method</th>
-                <th class="metric">PSNR↑</th>
-                <th class="metric">SSIM↑</th>
-                <th class="metric">LPIPS↓</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>R3DG</td><td>27.81</td><td>0.928</td><td>0.142</td></tr>
-              <tr><td>GS-IR</td><td>28.04</td><td>0.934</td><td>0.131</td></tr>
-              <tr class="best"><td><strong>COREA (Ours)</strong></td><td><strong>28.92</strong></td><td><strong>0.944</strong></td><td><strong>0.118</strong></td></tr>
-            </tbody>
-          </table>
+        <div class="doc-embed">
+          <!-- PDF 먼저 시도 -->
+          <object data="assets/quant-nvs.pdf" type="application/pdf">
+            <!-- PDF가 없거나 브라우저가 막으면 PNG로 폴백 -->
+            <img src="assets/quant-nvs.png" alt="Quantitative table (NVS)" />
+          </object>
         </div>
-        <p class="figure-cap">Table 1: NVS benchmark (placeholder). Replace with actual results.</p>
+        <div class="embed-actions">
+          <a href="assets/quant-nvs.pdf" download>Download PDF</a>
+          <a href="assets/quant-nvs.png" download>Download PNG</a>
+        </div>
+        <p class="figure-cap">Table 1: NVS benchmark. Replace file names above with your assets.</p>
       </div>
 
+      <!-- Quantitative — PBR -->
       <div class="subcard">
         <h3 style="margin:0 0 10px;font-size:18px;">Quantitative — PBR</h3>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Method</th>
-                <th class="metric">PSNR↑</th>
-                <th class="metric">SSIM↑</th>
-                <th class="metric">LPIPS↓</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>R3DG</td><td>25.10</td><td>0.902</td><td>0.180</td></tr>
-              <tr><td>GS-IR</td><td>25.76</td><td>0.910</td><td>0.171</td></tr>
-              <tr class="best"><td><strong>COREA (Ours)</strong></td><td><strong>26.55</strong></td><td><strong>0.919</strong></td><td><strong>0.158</strong></td></tr>
-            </tbody>
-          </table>
+        <div class="doc-embed">
+          <object data="assets/quant-pbr.pdf" type="application/pdf">
+            <img src="assets/quant-pbr.png" alt="Quantitative table (PBR)" />
+          </object>
         </div>
-        <p class="figure-cap">Table 2: PBR benchmark (placeholder). Replace with actual results or BRDF/relighting metrics if 필요.</p>
+        <div class="embed-actions">
+          <a href="assets/quant-pbr.pdf" download>Download PDF</a>
+          <a href="assets/quant-pbr.png" download>Download PNG</a>
+        </div>
+        <p class="figure-cap">Table 2: PBR benchmark. Use BRDF/relighting metrics as needed.</p>
       </div>
 
+      <!-- Quantitative — Mesh -->
       <div class="subcard">
         <h3 style="margin:0 0 10px;font-size:18px;">Quantitative — Mesh Reconstruction</h3>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Method</th>
-                <th class="metric">Chamfer↓</th>
-                <th class="metric">F-Score↑</th>
-                <th class="metric">Normal Consistency↑</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>R3DG</td><td>0.78</td><td>73.1</td><td>0.842</td></tr>
-              <tr><td>GS-IR</td><td>0.74</td><td>74.6</td><td>0.851</td></tr>
-              <tr class="best"><td><strong>COREA (Ours)</strong></td><td><strong>0.68</strong></td><td><strong>77.5</strong></td><td><strong>0.869</strong></td></tr>
-            </tbody>
-          </table>
+        <div class="doc-embed">
+          <object data="assets/quant-mesh.pdf" type="application/pdf">
+            <img src="assets/quant-mesh.png" alt="Quantitative table (Mesh Reconstruction)" />
+          </object>
         </div>
-        <p class="figure-cap">Table 3: Mesh metrics (placeholder). Replace with DTU / T&T 등 실제 수치.</p>
+        <div class="embed-actions">
+          <a href="assets/quant-mesh.pdf" download>Download PDF</a>
+          <a href="assets/quant-mesh.png" download>Download PNG</a>
+        </div>
+        <p class="figure-cap">Table 3: Mesh metrics (DTU / Tanks&Temples 등).</p>
       </div>
 
       <!-- Qualitative: 비디오 3개 세로 스택 -->
@@ -224,7 +196,7 @@
           </div>
         </div>
 
-        <p class="figure-cap">Figure B: Qualitative results across tasks. Replace with your actual videos.</p>
+        <p class="figure-cap">Figure B: Qualitative results across tasks.</p>
       </div>
     </section>
 
