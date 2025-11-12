@@ -49,8 +49,8 @@
       <h1 class="title">COREA: Coarse-to-Fine 3D Representation Alignment Between Relightable 3D Gaussians and SDF via Bidirectional 3D-to-3D Supervision</h1>
       <div class="authors">
         <span>Lee Jaeyoon<sup>1</sup></span>
-        <span>Jung Hojoon<sup>2</sup></span>
-        <span>Hwang Sungtae<sup>3</sup></span>
+        <span>Jung Hojoon<sup>1</sup></span>
+        <span>Hwang Sungtae<sup>1</sup></span>
         <span>Choi Jongwon<sup>1</sup></span>
         <span>Oh Jiyoung<sup>1</sup></span>
       </div>
@@ -77,7 +77,7 @@
       <section class="card">
         <h2>Abstract</h2>
         <p>
-          This is a short abstract placeholder. Summarize your method, key results, and the main claim in 3–5 sentences. Keep it clean and accessible. Replace this text with your paper's abstract.
+          We present the first unified framework that jointly learns relightable 3D Gaussians and a neural Signed Distance Field (SDF) through coarse-to-fine bidirectional 3D-to-3D supervision, enabling accurate geometry reconstruction and physically-based rendering (PBR). While recent 3D Gaussian Splatting (3DGS) works extend beyond novel-view synthesis (NVS) to mesh reconstruction and PBR, existing methods infer 3D properties indirectly from rendered 2D images, yielding coarse meshes and unreliable BRDF and lighting decomposition. To address these limitations, our approach jointly optimizes SDF and 3DGS directly in 3D space. Depth‑guided SDF Alignment uses Gaussian depth maps to anchor SDF rays and refine SDF normals via pixel‑wise depth gradients. Normal-guided Gaussian Alignment projects Gaussians onto the SDF surface, supervises Gaussian normals with SDF normals, and applies normal‑aware densification to capture fine‑scale geometry. To prevent excessive Gaussian splitting during normal-aware densification, we introduce Dual-Density Control, which regulates densification using both image and geometry gradient cues, effectively improving memory efficiency. The precisely aligned geometry supplies accurate normals to support differentiable PBR, enabling faithful BRDF-lighting decomposition. Experiments on standard benchmarks demonstrate superior performance in NVS, mesh reconstruction, and PBR. The code and project page will be publicly released.
         </p>
       </section>
       <aside class="card">
