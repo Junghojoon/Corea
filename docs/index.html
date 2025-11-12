@@ -3,30 +3,36 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PROJECT: A Large View Synthesis Model with Minimal 3D Inductive Bias</title>
+  <title>COREA: Coarse-to-Fine 3D Representation Alignment Between Relightable 3D Gaussians and SDF via Bidirectional 3D-to-3D Supervision</title>
   <meta name="description" content="Project page template for a computer vision paper." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#ffffff;--card:#f7f7fb;--muted:#555b66;--text:#111213;--accent:#0b66ff;--brand:#ff9900;
+      /* 라이트 테마 팔레트 */
+      --bg:#ffffff; --card:#f8f9fb; --muted:#556070; --text:#111213; --accent:#0b66ff; --brand:#ff9900;
     }
     *{box-sizing:border-box}
-    body{margin:0;background:#ffffff;color:var(--text);font:16px/1.6 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    body{
+      margin:0;
+      background:#ffffff;           /* 흰 배경 */
+      color:var(--text);            /* 본문 검은색 */
+      font:16px/1.6 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial
+    }
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
     .wrap{max-width:1100px;margin:0 auto;padding:28px 22px}
     header.hero{padding:64px 0 24px;border-bottom:1px solid #e5e7eb}
     .title{font-weight:900;letter-spacing:-0.02em;font-size:clamp(28px,5vw,54px);margin:0 0 8px}
-    .subtitle{font-weight:800;color:#c8d1e6;font-size:clamp(22px,3.6vw,36px);margin:0 0 18px}
+    .subtitle{font-weight:800;color:#2a2f3a;font-size:clamp(22px,3.6vw,36px);margin:0 0 18px}
     .authors{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:18px}
     .authors sup{font-size:12px;color:var(--muted)}
     .affils{margin-top:8px;color:var(--muted)}
     .badges{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid #2a3140;border-radius:999px;background:#141824;color:var(--text);font-weight:600}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid #d7dbe3;border-radius:999px;background:#ffffff;color:var(--text);font-weight:600}
     .btn svg{width:18px;height:18px}
-    .btn:hover{border-color:#3b4457;transform:translateY(-1px)}
+    .btn:hover{border-color:#bfc6d4;transform:translateY(-1px)}
 
     .grid{display:grid;grid-template-columns:1.25fr 1fr;gap:24px;margin-top:28px}
     @media (max-width:900px){.grid{grid-template-columns:1fr}}
@@ -37,27 +43,25 @@
     .thumb img, .thumb video{width:100%;height:100%;object-fit:cover;display:block}
 
     .section{margin-top:28px}
-    pre{background:#0c0f16;border:1px solid #1b2130;padding:14px;border-radius:12px;overflow:auto;color:#dfe6f7}
+    pre{background:#f4f6fb;border:1px solid #e5e7eb;padding:14px;border-radius:12px;overflow:auto;color:#1a1f29}
     code{font-family:"Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}
     .footer{margin-top:36px;color:var(--muted);font-size:14px;text-align:center}
-    .pill{display:inline-block;padding:.2rem .6rem;border:1px solid #273044;border-radius:999px;background:#121725;margin-left:.3rem;color:#bcc6dc;font-size:13px}
+    .pill{display:inline-block;padding:.2rem .6rem;border:1px solid #d7dbe3;border-radius:999px;background:#ffffff;margin-left:.3rem;color:#556070;font-size:13px}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header class="hero">
-      <h1 class="title">PROJECT: A Large View Synthesis Model with Minimal 3D Inductive Bias</h1>
-      <p class="subtitle">ICLR 2025 <span class="pill">Oral</span></p>
+      <h1 class="title">COREA: Coarse-to-Fine 3D Representation Alignment Between Relightable 3D Gaussians and SDF via Bidirectional 3D-to-3D Supervision</h1>
       <div class="authors">
-        <span>First Author<sup>1</sup></span>
-        <span>Second Author<sup>2</sup></span>
-        <span>Third Author<sup>3</sup></span>
-        <span>Fourth Author<sup>1</sup></span>
+        <span>Lee Jaeyoon<sup>1</sup></span>
+        <span>Jung Hojoon<sup>1</sup></span>
+        <span>Hwang Sungtae<sup>1</sup></span>
+        <span>Choi Jongwon<sup>1</sup></span>
+        <span>Oh Jiyoung<sup>1</sup></span>
       </div>
       <div class="affils"> 
-        <span><sup>1</sup>Cornell University</span> ·
-        <span><sup>2</sup>The University of Texas at Austin</span> ·
-        <span><sup>3</sup>Adobe Research</span>
+        <span><sup>1</sup>ChungAng University</span> ·
       </div>
       <div class="badges">
         <a class="btn" href="#" target="_blank" rel="noopener">
@@ -75,6 +79,7 @@
       </div>
     </header>
 
+    <!-- Video를 Abstract 위로 이동 -->
     <section id="video" class="section card">
       <h2>Video</h2>
       <div class="thumb">
@@ -88,12 +93,11 @@
       <section class="card">
         <h2>Abstract</h2>
         <p>
-          We present the first unified framework that jointly learns relightable 3D Gaussians and a neural Signed Distance Field (SDF) through coarse-to-fine bidirectional 3D-to-3D supervision, enabling accurate geometry reconstruction and physically-based rendering (PBR). While recent 3D Gaussian Splatting (3DGS) works extend beyond novel-view synthesis (NVS) to mesh reconstruction and PBR, existing methods infer 3D properties indirectly from rendered 2D images, yielding coarse meshes and unreliable BRDF and lighting decomposition. To address these limitations, our approach jointly optimizes SDF and 3DGS directly in 3D space. Depth‑guided SDF Alignment uses Gaussian depth maps to anchor SDF rays and refine SDF normals via pixel‑wise depth gradients. Normal-guided Gaussian Alignment projects Gaussians onto the SDF surface, supervises Gaussian normals with SDF normals, and applies normal‑aware densification to capture fine‑scale geometry. To prevent excessive Gaussian splitting during normal-aware densification, we introduce Dual-Density Control, which regulates densification using both image and geometry gradient cues, effectively improving memory efficiency. The precisely aligned geometry supplies accurate normals to support differentiable PBR, enabling faithful BRDF-lighting decomposition. Experiments on standard benchmarks demonstrate superior performance in NVS, mesh reconstruction, and PBR. The code and project page will be publicly released.
+          We present the first unified framework that jointly learns relightable 3D Gaussians and a neural Signed Distance Field (SDF) through coarse-to-fine bidirectional 3D-to-3D supervision, enabling accurate geometry reconstruction and physically-based rendering (PBR). While recent 3D Gaussian Splatting (3DGS) works extend beyond novel-view synthesis (NVS) to mesh reconstruction and PBR, existing methods infer 3D properties indirectly from rendered 2D images, yielding coarse meshes and unreliable BRDF and lighting decomposition. To address these limitations, our approach jointly optimizes SDF and 3DGS directly in 3D space. Depth-guided SDF Alignment uses Gaussian depth maps to anchor SDF rays and refine SDF normals via pixel-wise depth gradients. Normal-guided Gaussian Alignment projects Gaussians onto the SDF surface, supervises Gaussian normals with SDF normals, and applies normal-aware densification to capture fine-scale geometry. To prevent excessive Gaussian splitting during normal-aware densification, we introduce Dual-Density Control, which regulates densification using both image and geometry gradient cues, effectively improving memory efficiency. The precisely aligned geometry supplies accurate normals to support differentiable PBR, enabling faithful BRDF-lighting decomposition. Experiments on standard benchmarks demonstrate superior performance in NVS, mesh reconstruction, and PBR. The code and project page will be publicly released.
         </p>
       </section>
       <aside class="card">
         <div class="thumb">
-          <!-- Use an image or a looping teaser video -->
           <img src="assets/teaser.jpg" alt="Teaser image placeholder" />
         </div>
         <p style="margin-top:10px;color:var(--muted);font-size:14px">Figure 1: Teaser of results. Replace with your image or video.</p>
