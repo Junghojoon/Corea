@@ -29,6 +29,7 @@
     h2{margin:0 0 14px;font-size:22px}
     .thumb{aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:1px solid #e5e7eb;background:#ffffff}
     .thumb img,.thumb video{width:100%;height:100%;object-fit:cover;display:block}
+    .thumb iframe{width:100%;height:100%;border:0;display:block}
     .section{margin-top:28px}
     pre{background:#f4f6fb;border:1px solid #e5e7eb;padding:14px;border-radius:12px;overflow:auto;color:#1a1f29}
     code{font-family:"Roboto Mono",ui-monospace,Menlo,Consolas,monospace}
@@ -84,13 +85,17 @@
       </div>
     </header>
 
-    <!-- Video (Abstract 위) -->
+    <!-- Video (YouTube 임베드) -->
     <section id="video" class="section card">
       <h2>Video</h2>
       <div class="thumb">
-        <video controls playsinline poster="assets/teaser.jpg">
-          <source src="assets/demo.mp4" type="video/mp4" />
-        </video>
+        <!-- VIDEO_ID를 실제 유튜브 ID로 교체하세요 -->
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/VIDEO_ID?rel=0&modestbranding=1&playsinline=1"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
       </div>
     </section>
 
@@ -113,7 +118,7 @@
       <h2>Comparison</h2>
       <p class="figure-cap">We report quantitative metrics and qualitative visual comparisons with recent baselines.</p>
 
-      <!-- Quantitative — 하나만 유지 (NVS) -->
+      <!-- Quantitative — 하나만 유지 -->
       <div id="quantitative" class="subcard">
         <h3 style="margin:0 0 10px;font-size:18px;">Quantitative</h3>
         <div class="doc-embed">
