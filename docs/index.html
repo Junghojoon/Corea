@@ -38,7 +38,6 @@
     /* Abstract */
     .abstract-card{padding:26px}
     .abstract-figure{margin:0 0 14px}
-    .abstract-figure img{ width:100%; height:auto; display:block; border-radius:14px; border:1px solid #e5e7eb; background:#ffffff; }
     .figure-cap{margin-top:8px;color:var(--muted);font-size:14px}
     .abstract-text{font-size:15.5px}
 
@@ -49,11 +48,16 @@
     .media-stack{display:flex;flex-direction:column;gap:16px}
     .media{display:flex;flex-direction:column;gap:8px}
 
-    /* Quantitative: PDF/PNG 임베드 컨테이너 */
+    /* PDF/PNG 임베드 공통 컨테이너 */
     .doc-embed{position:relative;border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;background:#fff}
     .doc-embed object{width:100%;height:520px;border:0;display:block}
     .doc-embed img{width:100%;height:auto;display:block}
-    @media (max-width:900px){ .doc-embed object{height:380px} }
+    /* Abstract같이 세로가 더 필요한 경우 높이 확장용(원하면 제거/값 조정) */
+    .doc-embed--tall object{height:65vh}
+    @media (max-width:900px){
+      .doc-embed object{height:380px}
+      .doc-embed--tall object{height:50vh}
+    }
 
     .embed-actions{display:flex;gap:12px;align-items:center;margin-top:8px}
     .embed-actions a{font-size:14px}
@@ -89,7 +93,6 @@
     <section id="video" class="section card">
       <h2>Video</h2>
       <div class="thumb">
-        <!-- VIDEO_ID를 실제 유튜브 ID로 교체하세요 -->
         <iframe
           src="https://www.youtube-nocookie.com/embed/iRI6pMoaEzM?rel=0&modestbranding=1&playsinline=1"
           title="YouTube video player"
@@ -102,10 +105,25 @@
     <!-- Abstract -->
     <section class="section card abstract-card" id="abstract">
       <h2>Abstract</h2>
+
+      <!-- (수정) Abstract figure: PDF 우선 + PNG 폴백 -->
       <figure class="abstract-figure">
-        <img src="assets/abstract.png" alt="Abstract figure (framework overview or teaser collage)" />
-        <figcaption class="figure-cap">Figure A: Abstract figure. Replace with your overview/teaser image.</figcaption>
+        <div class="doc-embed doc-embed--tall">
+          <!-- abstract.pdf가 있으면 표시, 없거나 차단되면 abstract.png로 폴백 -->
+          <object data="assets/abstract.pdf" type="application/pdf">
+            <img src="assets/abstract.png" alt="Abstract figure (framework overview or teaser collage)" />
+          </object>
+        </div>
+        <figcaption class="figure-cap">Figure A: Abstract figure. Replace with your overview/teaser image/PDF.</figcaption>
+
+        <!-- (선택) 다운로드 링크가 필요하면 아래 주석 해제
+        <div class="embed-actions">
+          <a href="assets/abstract.pdf" download>Download PDF</a>
+          <a href="assets/abstract.png" download>Download PNG</a>
+        </div>
+        -->
       </figure>
+
       <div class="abstract-text">
         <p>We present the first unified framework that jointly learns relightable 3D Gaussians and a neural Signed Distance Field (SDF) through coarse-to-fine bidirectional 3D-to-3D supervision, enabling accurate geometry reconstruction and physically-based rendering (PBR). While recent 3D Gaussian Splatting (3DGS) works extend beyond novel-view synthesis (NVS) to mesh reconstruction and PBR, existing methods infer 3D properties indirectly from rendered 2D images, yielding coarse meshes and unreliable BRDF and lighting decomposition.</p>
         <p>To address these limitations, our approach jointly optimizes SDF and 3DGS directly in 3D space. Depth-guided SDF Alignment uses Gaussian depth maps to anchor SDF rays and refine SDF normals via pixel-wise depth gradients. Normal-guided Gaussian Alignment projects Gaussians onto the SDF surface, supervises Gaussian normals with SDF normals, and applies normal-aware densification to capture fine-scale geometry. To prevent excessive Gaussian splitting during normal-aware densification, we introduce Dual-Density Control using both image and geometry gradient cues, improving memory efficiency.</p>
@@ -118,7 +136,7 @@
       <h2>Comparison</h2>
       <p class="figure-cap">We report quantitative metrics and qualitative visual comparisons with recent baselines.</p>
 
-      <!-- Quantitative — 하나만 유지 -->
+      <!-- Quantitative — 하나만 유지 (PDF 우선 + PNG 폴백 이미 구현됨) -->
       <div id="quantitative" class="subcard">
         <h3 style="margin:0 0 10px;font-size:18px;">Quantitative</h3>
         <div class="doc-embed">
@@ -133,7 +151,7 @@
         <p class="figure-cap">Table 1: NVS benchmark.</p>
       </div>
 
-      <!-- Qualitative: 비디오 3개 세로 스택 -->
+      <!-- Qualitative: 비디오 3개 세로 스택 (video poster는 이미지 전용이라 PDF 불가) -->
       <div id="qualitative" class="subcard">
         <h3 style="margin:0 0 10px;font-size:18px;">Qualitative</h3>
 
