@@ -30,7 +30,6 @@
     .btn svg{width:18px;height:18px}
     .btn:hover{border-color:#bfc6d4;transform:translateY(-1px)}
 
-    /* 공통 카드/썸네일 */
     .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;padding:22px}
     h2{margin:0 0 14px;font-size:22px}
     .thumb{aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:1px solid #e5e7eb;background:#ffffff}
@@ -81,7 +80,17 @@
       </div>
     </header>
 
-    <!-- ABSTRACT: 이미지 위, 텍스트 아래 (한 박스) -->
+    <!-- Video (Abstract 위로 이동) -->
+    <section id="video" class="section card">
+      <h2>Video</h2>
+      <div class="thumb">
+        <video controls playsinline poster="assets/teaser.jpg">
+          <source src="assets/demo.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <!-- Abstract: 이미지 위, 텍스트 아래 -->
     <section class="section card abstract-card" id="abstract">
       <h2>Abstract</h2>
       <figure class="abstract-figure">
@@ -92,16 +101,6 @@
         <p>We present the first unified framework that jointly learns relightable 3D Gaussians and a neural Signed Distance Field (SDF) through coarse-to-fine bidirectional 3D-to-3D supervision, enabling accurate geometry reconstruction and physically-based rendering (PBR). While recent 3D Gaussian Splatting (3DGS) works extend beyond novel-view synthesis (NVS) to mesh reconstruction and PBR, existing methods infer 3D properties indirectly from rendered 2D images, yielding coarse meshes and unreliable BRDF and lighting decomposition.</p>
         <p>To address these limitations, our approach jointly optimizes SDF and 3DGS directly in 3D space. Depth-guided SDF Alignment uses Gaussian depth maps to anchor SDF rays and refine SDF normals via pixel-wise depth gradients. Normal-guided Gaussian Alignment projects Gaussians onto the SDF surface, supervises Gaussian normals with SDF normals, and applies normal-aware densification to capture fine-scale geometry. To prevent excessive Gaussian splitting during normal-aware densification, we introduce Dual-Density Control using both image and geometry gradient cues, improving memory efficiency.</p>
         <p>The precisely aligned geometry supplies accurate normals to support differentiable PBR, enabling faithful BRDF–lighting decomposition. Experiments on standard benchmarks demonstrate superior performance in NVS, mesh reconstruction, and PBR. The code and project page will be publicly released.</p>
-      </div>
-    </section>
-
-    <!-- Video -->
-    <section id="video" class="section card">
-      <h2>Video</h2>
-      <div class="thumb">
-        <video controls playsinline poster="assets/teaser.jpg">
-          <source src="assets/demo.mp4" type="video/mp4" />
-        </video>
       </div>
     </section>
 
