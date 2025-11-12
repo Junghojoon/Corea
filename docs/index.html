@@ -60,6 +60,13 @@
 
     /* 비교 섹션 내부 소박스 */
     .subcard{background:#ffffff;border:1px solid #e5e7eb;border-radius:14px;padding:18px;margin-top:16px}
+
+    /* Qualitative 3-그리드 */
+    .media-grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .media{display:flex;flex-direction:column;gap:8px}
+    @media (min-width:900px){
+      .media-grid{grid-template-columns:1fr 1fr 1fr}
+    }
   </style>
 </head>
 <body>
@@ -143,29 +150,41 @@
       <!-- Qualitative (서브 카드) -->
       <div id="qualitative" class="subcard">
         <h3 style="margin:0 0 10px;font-size:18px;">Qualitative</h3>
-        <div class="thumb">
-          <!-- <video autoplay loop muted playsinline><source src="assets/comp-qual.mp4" type="video/mp4"/></video> -->
-          <img src="assets/comp-qual.png" alt="Qualitative comparison (placeholder)" />
+
+        <!-- 3-그리드: NVS / PBR / Mesh reconstruction -->
+        <div class="media-grid">
+          <!-- NVS -->
+          <div class="media">
+            <div class="thumb">
+              <video controls loop muted playsinline poster="assets/nvs_poster.jpg">
+                <source src="assets/nvs.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <p class="figure-cap">NVS (Novel View Synthesis)</p>
+          </div>
+
+          <!-- PBR -->
+          <div class="media">
+            <div class="thumb">
+              <video controls loop muted playsinline poster="assets/pbr_poster.jpg">
+                <source src="assets/pbr.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <p class="figure-cap">PBR (Physically-Based Rendering)</p>
+          </div>
+
+          <!-- Mesh reconstruction -->
+          <div class="media">
+            <div class="thumb">
+              <video controls loop muted playsinline poster="assets/mesh_poster.jpg">
+                <source src="assets/mesh.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <p class="figure-cap">Mesh Reconstruction</p>
+          </div>
         </div>
-        <p class="figure-cap">Figure B: Qualitative comparison. Replace with your grid or video (`assets/comp-qual.png` or `.mp4`).</p>
-      </div>
-    </section>
 
-    <!-- Method -->
-    <section class="section card">
-      <h2>Method (Brief)</h2>
-      <p>Give a concise description of your approach with one diagram. Link to the paper for full details.</p>
-      <div class="thumb">
-        <img src="assets/framework.png" alt="Framework diagram placeholder" />
-      </div>
-    </section>
-
-    <!-- Results (기타 추가 결과용) -->
-    <section class="section card">
-      <h2>Results</h2>
-      <p>Show a few qualitative/quantitative figures or GIFs here.</p>
-      <div class="thumb">
-        <img src="assets/results.png" alt="Results placeholder" />
+        <p class="figure-cap">Figure B: Qualitative results across tasks. Replace with your actual videos (`assets/nvs.mp4`, `assets/pbr.mp4`, `assets/mesh.mp4`).</p>
       </div>
     </section>
 
