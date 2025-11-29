@@ -143,6 +143,12 @@
     .abstract-card{padding:26px}
     .abstract-figure{margin:0 0 14px}
     .figure-cap{margin-top:8px;color:var(--muted);font-size:14px}
+    .blurb{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.55;
+    }
     .abstract-text{font-size:15.5px}
 
     /* Subcards */
@@ -288,6 +294,11 @@
         <img src="./assets/Quantitative_comparison.png" alt="Quantitative table" />
       </div>
       <div class="embed-actions">
+        <p class="blurb">
+          We evaluate novel-view synthesis (NVS), mesh reconstruction, and physically-based rendering (PBR) using the DTU and Tanks&Temples datasets.
+          N/S denotes methods that do not support the corresponding task, and OOM indicates evaluation failures caused by memory limitations.
+          The best, second-best, and third-best results are highlighted in red, yellow, and purple, respectively.
+        </p>
         <a href="./assets/Quantitative_comparison.png" download>Download PNG</a>
       </div>
     </div>
@@ -302,6 +313,12 @@
             <img src="./assets/Qualitative_NVS.png" alt="Qualitative results (NVS)" />
           </div>
           <p class="figure-cap">NVS (Novel View Synthesis)</p>
+          <p class="blurb">
+            We compare COREA with recent Gaussian-based methods on three tasks: NVS, PBR, and Mesh Reconstruction. All results are rendered on a white background for consistent visual comparison. 
+            Artifacts such as black background patches or dark speckles observed in some baselines stem from excessive Gaussian opacity; by contrast, COREA produces clean, artifact-free renderings on white backgrounds. 
+            Our method also provides results for all three tasks, whereas others show N/S (Not Supported) or OOM (Out of Memory) in several cases. 
+            Overall, COREA yields sharper novel views, more faithful BRDF and lighting decomposition, and finer geometric details through coarse-to-fine bidirectional 3D-to-3D supervision.
+          </p>
         </div>
 
         <div class="media">
@@ -309,6 +326,12 @@
             <img src="./assets/Qualitative_PBR.png" alt="Qualitative results (PBR)" />
           </div>
           <p class="figure-cap">PBR (Physically-Based Rendering)</p>
+          <p class="blurb">
+            We compare COREA with recent relightable Gaussian-based methods under varying illumination conditions. 
+            The first row shows PBR renderings under the original lighting setup, while the remaining rows illustrate relighting results under directional lights and various HDR environment maps. 
+            Compared to previous methods that exhibit black background artifacts or unstable reflectance under varying illumination, 
+            COREA maintains consistent shading, clean appearance, and accurate reflectance reconstruction across all lighting conditions, demonstrating robust BRDF and geometry alignment.
+          </p>
         </div>
       </div>
 
