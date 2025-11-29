@@ -16,12 +16,20 @@
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
     .wrap{max-width:1100px;margin:0 auto;padding:28px 22px}
+
     header.hero{padding:64px 0 24px;border-bottom:1px solid #e5e7eb}
 
-    /* Title (split into 2 lines) */
+    /* Center align only until the video section */
+    .prevideo{ text-align:center; }
+    .prevideo .authors,
+    .prevideo .logo-row,
+    .prevideo .link-row{ justify-content:center; }
+    .prevideo .affils{ justify-content:center; }
+
+    /* Title (split into 2 lines) — reduce ~5pt */
     .title{ margin:0 0 10px; line-height:1.12; letter-spacing:-0.02em; }
-    .title-main{display:block; font-size:clamp(30px,5vw,56px); font-weight:900;}
-    .title-sub{display:block; margin-top:6px; font-size:clamp(20px,3.2vw,34px); font-weight:800; letter-spacing:-0.015em;}
+    .title-main{display:block; font-size:clamp(26px,4.6vw,51px); font-weight:900;} /* was ~56 max */
+    .title-sub{display:block; margin-top:6px; font-size:clamp(18px,2.9vw,29px); font-weight:800; letter-spacing:-0.015em;} /* was ~34 max */
 
     /* Authors as links */
     .authors{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:18px}
@@ -35,7 +43,7 @@
 
     .affils{margin-top:8px;color:var(--muted)}
 
-    /* (선택) 소속/랩 로고 PNG + 링크 */
+    /* Logos */
     .logo-row{
       display:flex;
       flex-wrap:wrap;
@@ -57,7 +65,7 @@
       display:block;
     }
 
-    /* Project links row: text-only (author처럼) */
+    /* Project links row (text-only) */
     .link-row{
       display:flex;
       flex-wrap:wrap;
@@ -166,55 +174,54 @@
 
 <body>
   <div class="wrap">
-    <header class="hero">
-      <h1 class="title">
-        <span class="title-main">COREA:</span>
-        <span class="title-sub">Coarse-to-Fine 3D Representation Alignment Between Relightable 3D Gaussians and SDF via Bidirectional 3D-to-3D Supervision</span>
-      </h1>
+    <!-- PRE-VIDEO BLOCK (center aligned) -->
+    <div class="prevideo">
+      <header class="hero">
+        <h1 class="title">
+          <span class="title-main">COREA:</span>
+          <span class="title-sub">Coarse-to-Fine 3D Representation Alignment Between Relightable 3D Gaussians and SDF via Bidirectional 3D-to-3D Supervision</span>
+        </h1>
 
-      <!-- Authors (names are clickable) -->
-      <div class="authors">
-        <a class="author" href="https://sites.google.com/vilab.cau.ac.kr/jaeyoonlee" target="_blank" rel="noopener">Jaeyoon Lee<sup>1</sup></a>
-        <a class="author" href="https://sites.google.com/view/hjjung-homepage/홈" target="_blank" rel="noopener">Hojoon Jung<sup>1</sup></a>
-        <a class="author" href="https://sites.google.com/vilab.cau.ac.kr/hst/" target="_blank" rel="noopener">Sungtae Hwang<sup>1</sup></a>
-        <a class="author" href="https://sites.google.com/site/jwchoivision/home" target="_blank" rel="noopener">Jongwon Choi<sup>1</sup></a>
-        <a class="author" href="https://sites.google.com/view/ozbro/" target="_blank" rel="noopener">Jihyong Oh<sup>1</sup></a>
-      </div>
+        <div class="authors">
+          <a class="author" href="https://sites.google.com/vilab.cau.ac.kr/jaeyoonlee" target="_blank" rel="noopener">Jaeyoon Lee<sup>1</sup></a>
+          <a class="author" href="https://sites.google.com/view/hjjung-homepage/홈" target="_blank" rel="noopener">Hojoon Jung<sup>1</sup></a>
+          <a class="author" href="https://sites.google.com/vilab.cau.ac.kr/hst/" target="_blank" rel="noopener">Sungtae Hwang<sup>1</sup></a>
+          <a class="author" href="https://sites.google.com/site/jwchoivision/home" target="_blank" rel="noopener">Jongwon Choi<sup>1</sup></a>
+          <a class="author" href="https://sites.google.com/view/ozbro/" target="_blank" rel="noopener">Jihyong Oh<sup>1</sup></a>
+        </div>
 
-      <div class="affils"><span><sup>1</sup>ChungAng University</span></div>
+        <div class="affils"><span><sup>1</sup>ChungAng University</span></div>
 
-      <!-- (선택) 소속/랩 로고 -->
-      <div class="logo-row" aria-label="Affiliation logos">
-        <a class="logo-link" href="https://www.cau.ac.kr/index.do" target="_blank" rel="noopener">
-          <img src="./assets/logo/chung_ang_univ.png" alt="ChungAng University logo" />
-        </a>
-        <a class="logo-link" href="https://www.vilab.cau.ac.kr/home" target="_blank" rel="noopener">
-          <img src="./assets/logo/VIlab.png" alt="VIlab logo" />
-        </a>
-        <a class="logo-link" href="https://cmlab.cau.ac.kr" target="_blank" rel="noopener">
-          <img src="./assets/logo/CMlab.png" alt="CMlab logo" />
-        </a>
-      </div>
+        <div class="logo-row" aria-label="Affiliation logos">
+          <a class="logo-link" href="https://www.cau.ac.kr/index.do" target="_blank" rel="noopener">
+            <img src="./assets/logo/chung_ang_univ.png" alt="ChungAng University logo" />
+          </a>
+          <a class="logo-link" href="https://www.vilab.cau.ac.kr/home" target="_blank" rel="noopener">
+            <img src="./assets/logo/VIlab.png" alt="VIlab logo" />
+          </a>
+          <a class="logo-link" href="https://cmlab.cau.ac.kr" target="_blank" rel="noopener">
+            <img src="./assets/logo/CMlab.png" alt="CMlab logo" />
+          </a>
+        </div>
 
-      <!-- Project links: Paper / arXiv / Code only (text-only) -->
-      <div class="link-row" aria-label="Project links">
-        <a class="projlink" href="./assets/paper.pdf" target="_blank" rel="noopener">Paper</a>
-        <span class="sep">•</span>
-        <a class="projlink" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" rel="noopener">arXiv</a>
-        <span class="sep">•</span>
-        <a class="projlink" href="https://github.com/YOUR/REPO" target="_blank" rel="noopener">Code</a>
-      </div>
-    </header>
+        <div class="link-row" aria-label="Project links">
+          <a class="projlink" href="./assets/paper.pdf" target="_blank" rel="noopener">Paper</a>
+          <span class="sep">•</span>
+          <a class="projlink" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" rel="noopener">arXiv</a>
+          <span class="sep">•</span>
+          <a class="projlink" href="https://github.com/YOUR/REPO" target="_blank" rel="noopener">Code</a>
+        </div>
+      </header>
 
-    <!-- TL;DR -->
-    <section class="section card tldr-card" id="tldr">
-      <p class="tldr-label">TL;DR</p>
-      <p class="tldr-text">
-        COREA jointly aligns relightable 3D Gaussians and an SDF via coarse-to-fine 3D-to-3D supervision to improve geometry reconstruction and physically-based relighting.
-      </p>
-    </section>
+      <section class="section card tldr-card" id="tldr">
+        <p class="tldr-label">TL;DR</p>
+        <p class="tldr-text">
+          COREA jointly aligns relightable 3D Gaussians and an SDF via coarse-to-fine 3D-to-3D supervision to improve geometry reconstruction and physically-based relighting.
+        </p>
+      </section>
+    </div>
 
-    <!-- Video -->
+    <!-- Video (from here: original alignment) -->
     <section id="video" class="section card">
       <h2>Video</h2>
       <div class="thumb">
