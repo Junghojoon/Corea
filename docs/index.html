@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
     :root{ --bg:#ffffff; --card:#f8f9fb; --muted:#556070; --text:#111213; --accent:#0b66ff; --brand:#ff9900; }
     *{box-sizing:border-box}
@@ -16,7 +17,12 @@
     a:hover{text-decoration:underline}
     .wrap{max-width:1100px;margin:0 auto;padding:28px 22px}
     header.hero{padding:64px 0 24px;border-bottom:1px solid #e5e7eb}
-    .title{font-weight:900;letter-spacing:-0.02em;font-size:clamp(28px,5vw,54px);margin:0 0 8px}
+
+    /* Title (split into 2 lines) */
+    .title{ margin:0 0 10px; line-height:1.12; letter-spacing:-0.02em; }
+    .title-main{display:block; font-size:clamp(30px,5vw,56px); font-weight:900;}
+    .title-sub{display:block; margin-top:6px; font-size:clamp(20px,3.2vw,34px); font-weight:800; letter-spacing:-0.015em;}
+
     .authors{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:18px}
     .authors sup{font-size:12px;color:var(--muted)}
     .affils{margin-top:8px;color:var(--muted)}
@@ -65,10 +71,15 @@
     .embed-actions a{font-size:14px}
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <header class="hero">
-      <h1 class="title">COREA: Coarse-to-Fine 3D Representation Alignment Between Relightable 3D Gaussians and SDF via Bidirectional 3D-to-3D Supervision</h1>
+      <h1 class="title">
+        <span class="title-main">COREA:</span>
+        <span class="title-sub">Coarse-to-Fine 3D Representation Alignment Between Relightable 3D Gaussians and SDF via Bidirectional 3D-to-3D Supervision</span>
+      </h1>
+
       <div class="authors">
         <span>Jaeyoon Lee<sup>1</sup></span>
         <span>Hojoon Jung<sup>1</sup></span>
@@ -76,7 +87,9 @@
         <span>Jongwon Choi<sup>1</sup></span>
         <span>Jihyong Oh<sup>1</sup></span>
       </div>
+
       <div class="affils"><span><sup>1</sup>ChungAng University</span> ·</div>
+
       <div class="badges">
         <a class="btn" href="#" target="_blank" rel="noopener">arXiv</a>
         <a class="btn" href="#" target="_blank" rel="noopener">Code</a>
