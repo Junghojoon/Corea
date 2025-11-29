@@ -144,64 +144,46 @@
       </div>
     </section>
 
-    <!-- Comparison: Quantitative + Qualitative -->
-    <section id="comparison" class="section card">
-      <h2>Comparison</h2>
-      <p class="figure-cap">We report quantitative metrics and qualitative visual comparisons with recent baselines.</p>
-
-      <!-- Quantitative — PDF 우선 + IFRAME 폴백 + PNG 폴백 -->
-      <div id="quantitative" class="subcard">
-        <h3 style="margin:0 0 10px;font-size:18px;">Quantitative</h3>
-        <div class="doc-embed">
-          <object data="assets/quant-nvs.pdf" type="application/pdf">
-            <iframe
-              src="assets/quant-nvs.pdf#view=FitH&toolbar=0"
-              title="Quantitative Table PDF"
-              loading="lazy"
-            ></iframe>
-            <img src="assets/quant-nvs.png" alt="Quantitative table (NVS)" />
-          </object>
-        </div>
-        <div class="embed-actions">
-          <a href="assets/quant-nvs.pdf" download>Download PDF</a>
-          <a href="assets/quant-nvs.png" download>Download PNG</a>
-        </div>
-        <p class="figure-cap">Table 1: NVS benchmark.</p>
+    <!-- Quantitative — PNG only -->
+    <div id="quantitative" class="subcard">
+      <h3 style="margin:0 0 10px;font-size:18px;">Quantitative</h3>
+    
+      <div class="thumb" style="aspect-ratio:auto;">
+        <img src="./assets/Quantitative_comparison.png" alt="Quantitative table" />
       </div>
+    
+      <div class="embed-actions">
+        <a href="./assets/Quantitative_comparison.png" download>Download PNG</a>
+      </div>
+    
+      <p class="figure-cap">Table 1: NVS benchmark.</p>
+    </div>
 
-      <!-- Qualitative: 비디오 3개 세로 스택 -->
+      <!-- Qualitative: PNG 2장 세로 스택 (NVS, PBR) -->
       <div id="qualitative" class="subcard">
         <h3 style="margin:0 0 10px;font-size:18px;">Qualitative</h3>
-
+      
         <div class="media-stack">
           <div class="media">
             <div class="thumb">
-              <video controls loop muted playsinline poster="assets/nvs_poster.jpg">
-                <source src="assets/nvs.mp4" type="video/mp4" />
-              </video>
+              <img src="./assets/Qualitative_NVS.png" alt="Qualitative results (NVS)" />
             </div>
             <p class="figure-cap">NVS (Novel View Synthesis)</p>
           </div>
-
+      
           <div class="media">
             <div class="thumb">
-              <video controls loop muted playsinline poster="assets/pbr_poster.jpg">
-                <source src="assets/pbr.mp4" type="video/mp4" />
-              </video>
+              <img src="assets/Qualitative_PBR.png" alt="Qualitative results (PBR)" />
             </div>
             <p class="figure-cap">PBR (Physically-Based Rendering)</p>
           </div>
-
-          <div class="media">
-            <div class="thumb">
-              <video controls loop muted playsinline poster="assets/mesh_poster.jpg">
-                <source src="assets/mesh.mp4" type="video/mp4" />
-              </video>
-            </div>
-            <p class="figure-cap">Mesh Reconstruction</p>
-          </div>
         </div>
-
+      
+        <div class="embed-actions">
+          <a href="./assets/Qualitative_NVS.png" download>Download NVS PNG</a>
+          <a href="./assets/Qualitative_PBR.png" download>Download PBR PNG</a>
+        </div>
+      
         <p class="figure-cap">Figure B: Qualitative results across tasks.</p>
       </div>
     </section>
