@@ -227,7 +227,7 @@
 
       <section class="section card tldr-card" id="tldr">
         <p class="tldr-text">
-          <span class="tldr-label">TL;DR :</span> COREA jointly aligns relightable 3D Gaussians and an SDF via coarse-to-fine 3D-to-3D supervision to improve geometry reconstruction and physically-based relighting.
+          <span class="tldr-label">TL;DR :</span> COREA is the first unified framework that jointly learns relightable 3D Gaussians and an SDF via coarse-to-fine 3D-to-3D supervision to improve geometry reconstruction and physically-based relighting.
         </p>
       </section>
     </div>
@@ -251,7 +251,6 @@
         <div class="thumb thumb--fit">
           <img src="./assets/Teaser.png" alt="Abstract figure" />
         </div>
-        <figcaption class="figure-cap">Figure A: Abstract figure.</figcaption>
       </figure>
 
       <div class="abstract-text">
@@ -269,11 +268,16 @@
         <div class="thumb thumb--fit">
           <img src="./assets/framework.png" alt="Overview of the COREA framework" />
         </div>
-        <figcaption class="figure-cap">Figure B: Overview of the COREA framework.</figcaption>
       </figure>
 
       <div class="abstract-text">
-        <p>COREA jointly trains relightable 3D Gaussians and a Signed Distance Field (SDF) using coarse-to-fine bidirectional 3D-to-3D supervision. Depth-guided alignment establishes coarse geometric consistency, and normal-guided alignment refines fine-scale structure with normal-aware densification. Dual-density control stabilizes Gaussian growth to balance geometry fidelity and memory efficiency.</p>
+        <p>Our method jointly trains relightable 3D Gaussians and a SDF via coarse-to-fine bidirectional 3D-to-3D supervision.
+        The first stage, Bidirectional 3D-to-3D Supervision, consists of two complementary steps: 
+        (i) DSA aligns the SDF to the 3DGS by leveraging depth rendered from Gaussians and matching SDF normals to pixel-wise depth gradients of 3DGS;    
+        (ii) NGA aligns 3DGS to the SDF by matching Gaussian depth to the SDF depth and supervising Gaussian normals with SDF normals. 
+        To prevent excessive Gaussian splitting during NGA, the DDC module suppresses unnecessary densification for efficient geometry refinement.
+        In the second stage, Inverse PBR is performed using the refined geometry to decompose BRDF and lighting and enable relighting under novel illumination conditions.
+        </p>
       </div>
     </section>
 
@@ -286,7 +290,6 @@
       <div class="embed-actions">
         <a href="./assets/Quantitative_comparison.png" download>Download PNG</a>
       </div>
-      <p class="figure-cap">Table 1: NVS benchmark.</p>
     </div>
 
     <!-- Qualitative -->
@@ -313,8 +316,6 @@
         <a href="./assets/Qualitative_NVS.png" download>Download NVS PNG</a>
         <a href="./assets/Qualitative_PBR.png" download>Download PBR PNG</a>
       </div>
-
-      <p class="figure-cap">Figure C: Qualitative results across tasks.</p>
     </div>
 
     <!-- Additional results -->
