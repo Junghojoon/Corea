@@ -16,20 +16,72 @@
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
     .wrap{max-width:1100px;margin:0 auto;padding:28px 22px}
+
     header.hero{padding:64px 0 24px;border-bottom:1px solid #e5e7eb}
 
-    /* Title (split into 2 lines) */
-    .title{ margin:0 0 10px; line-height:1.12; letter-spacing:-0.02em; }
-    .title-main{display:block; font-size:clamp(30px,5vw,56px); font-weight:900;}
-    .title-sub{display:block; margin-top:6px; font-size:clamp(20px,3.2vw,34px); font-weight:800; letter-spacing:-0.015em;}
+    /* Center align only the HERO (stop from TL;DR) */
+    header.hero{ text-align:center; }
+    header.hero .authors,
+    header.hero .logo-row,
+    header.hero .link-row{
+      justify-content:center;
+    }
 
+    /* Title (split into 2 lines) — reduce ~5pt */
+    .title{ margin:0 0 10px; line-height:1.12; letter-spacing:-0.02em; }
+    .title-main{display:block; font-size:clamp(26px,4.6vw,51px); font-weight:900;} /* was ~56 max */
+    .title-sub{display:block; margin-top:6px; font-size:clamp(18px,2.9vw,29px); font-weight:800; letter-spacing:-0.015em;} /* was ~34 max */
+
+    /* Authors as links */
     .authors{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:18px}
     .authors sup{font-size:12px;color:var(--muted)}
+    .author{
+      color:var(--accent);
+      font-weight:600;
+      text-decoration:none;
+    }
+    .author:hover{ text-decoration:underline; }
+
     .affils{margin-top:8px;color:var(--muted)}
-    .badges{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid #d7dbe3;border-radius:999px;background:#ffffff;color:var(--text);font-weight:600}
-    .btn svg{width:18px;height:18px}
-    .btn:hover{border-color:#bfc6d4;transform:translateY(-1px)}
+
+    /* Logos */
+    .logo-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      align-items:center;
+      margin-top:14px;
+    }
+    .logo-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:6px 10px;
+      border-radius:12px;
+    }
+    .logo-link:hover{ background:#f4f6fb; text-decoration:none; }
+    .logo-link img{
+      height:40px;
+      width:auto;
+      display:block;
+    }
+
+    /* Project links row (text-only) */
+    .link-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      align-items:center;
+      margin-top:14px;
+      font-size:18px;
+    }
+    .projlink{
+      color:var(--accent);
+      font-weight:600;
+      text-decoration:none;
+    }
+    .projlink:hover{ text-decoration:underline; }
+    .sep{ color:#c1c7d4; user-select:none; }
 
     .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;padding:22px}
     h2{margin:0 0 14px;font-size:22px}
@@ -38,26 +90,65 @@
     pre{background:#f4f6fb;border:1px solid #e5e7eb;padding:14px;border-radius:12px;overflow:auto;color:#1a1f29}
     code{font-family:"Roboto Mono",ui-monospace,Menlo,Consolas,monospace}
 
-    /* Media container */
-    .thumb{aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:1px solid #e5e7eb;background:#ffffff}
-    .thumb video{width:100%;height:100%;object-fit:cover;display:block}
+    /* TL;DR */
+    .tldr-card{ padding:18px 22px; }
+    .tldr-label{
+      font-weight:900;
+      letter-spacing:-0.01em;
+      margin:0 0 6px;
+      font-size:14px;
+      color:#1a1f29;
+    }
+    .tldr-text{
+      margin:0;
+      font-size:15.5px;
+      color:#1a1f29;
+    }
+    
+    /* Media container (hairline seam fix) */
+    .thumb{
+      aspect-ratio:16/9;
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid #e5e7eb;
+      background:#ffffff;
 
-    /* Images: show full image (no crop) */
-    .thumb--fit { aspect-ratio: auto; overflow: visible; }
-    .thumb--fit img{
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+    }
+    .thumb video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+    }
+
+    /* Fit mode (images) */
+    .thumb--fit{ aspect-ratio:auto; overflow:hidden; }
+    .thumb img{
       width:100%;
       height:auto;
-      object-fit:contain;
-      background:#ffffff;
       display:block;
-      border-radius:14px;
-      border:1px solid #e5e7eb;
+      background:#fff;
+      border:0;
+      border-radius:0;
+      transform: translateZ(0);
+      backface-visibility: hidden;
     }
 
     /* Abstract-like blocks */
     .abstract-card{padding:26px}
     .abstract-figure{margin:0 0 14px}
     .figure-cap{margin-top:8px;color:var(--muted);font-size:14px}
+    .blurb{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.55;
+    }
     .abstract-text{font-size:15.5px}
 
     /* Subcards */
@@ -70,64 +161,89 @@
     .embed-actions{display:flex;gap:12px;align-items:center;margin-top:8px;flex-wrap:wrap}
     .embed-actions a{font-size:14px}
 
-    /* Additional results: 3 columns on desktop, 1 column on mobile */
-    .grid-3{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap:16px;
-      margin-top:10px;
-    }
-    @media (max-width: 900px){
-      .grid-3{ grid-template-columns: 1fr; }
-    }
+    /* Additional results */
+    .demo-stack{display:flex;flex-direction:column;gap:18px;margin-top:12px;}
     .demo-card{
       background:#ffffff;
       border:1px solid #e5e7eb;
       border-radius:14px;
-      padding:14px;
+      padding:18px;
     }
     .demo-title{
-      margin:0 0 8px;
-      font-size:15px;
-      font-weight:800;
+      margin:0 0 10px;
+      font-size:18px;
+      font-weight:900;
       color:#1a1f29;
     }
-    .demo-card .thumb{ border-radius:12px; }
+    .demo-card .thumb{aspect-ratio:16/9;}
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <header class="hero">
-      <h1 class="title">
-        <span class="title-main">COREA:</span>
-        <span class="title-sub">Coarse-to-Fine 3D Representation Alignment Between Relightable 3D Gaussians and SDF via Bidirectional 3D-to-3D Supervision</span>
-      </h1>
+    <!-- PRE-VIDEO BLOCK (center aligned) -->
+    <div class="prevideo">
+      <header class="hero">
+        <h1 class="title">
+          <span class="title-main">COREA:</span>
+          <span class="title-sub">Coarse-to-Fine 3D Representation Alignment Between Relightable 3D Gaussians and SDF via Bidirectional 3D-to-3D Supervision</span>
+        </h1>
 
-      <div class="authors">
-        <span>Jaeyoon Lee<sup>1</sup></span>
-        <span>Hojoon Jung<sup>1</sup></span>
-        <span>Sungtae Hwang<sup>1</sup></span>
-        <span>Jongwon Choi<sup>1</sup></span>
-        <span>Jihyong Oh<sup>1</sup></span>
-      </div>
+        <div class="authors">
+          <a class="author" href="https://sites.google.com/vilab.cau.ac.kr/jaeyoonlee" target="_blank" rel="noopener">
+            Jaeyoon Lee<sup>*,1</sup>
+          </a>
+          <a class="author" href="https://sites.google.com/view/hjjung-homepage/홈" target="_blank" rel="noopener">
+            Hojoon Jung<sup>*,1</sup>
+          </a>
+          <a class="author" href="https://sites.google.com/vilab.cau.ac.kr/hst/" target="_blank" rel="noopener">
+            Sungtae Hwang<sup>1</sup>
+          </a>
+          <a class="author" href="https://sites.google.com/site/jwchoivision/home" target="_blank" rel="noopener">
+            Jongwon Choi<sup>†,1</sup>
+          </a>
+          <a class="author" href="https://sites.google.com/view/ozbro/" target="_blank" rel="noopener">
+            Jihyong Oh<sup>†,1</sup>
+          </a>
+        </div>
 
-      <div class="affils"><span><sup>1</sup>ChungAng University</span> ·</div>
+        <div class="affils"><span><sup>1</sup>Chung-Ang University</span></div>
+        <div class="affils"><span><sup>*</sup>Equal Contribution, <sup>†</sup>Co-Corresponding Authors</span></div>
 
-      <div class="badges">
-        <a class="btn" href="#" target="_blank" rel="noopener">arXiv</a>
-        <a class="btn" href="#" target="_blank" rel="noopener">Code</a>
-        <a class="btn" href="#video">Video</a>
-        <a class="btn" href="#bibtex">BibTeX</a>
-      </div>
-    </header>
+        <div class="logo-row" aria-label="Affiliation logos">
+          <a class="logo-link" href="https://www.cau.ac.kr/index.do" target="_blank" rel="noopener">
+            <img src="./assets/logo/chung_ang_univ.png" alt="ChungAng University logo" />
+          </a>
+          <a class="logo-link" href="https://www.vilab.cau.ac.kr/home" target="_blank" rel="noopener">
+            <img src="./assets/logo/VIlab.png" alt="VIlab logo" />
+          </a>
+          <a class="logo-link" href="https://cmlab.cau.ac.kr" target="_blank" rel="noopener">
+            <img src="./assets/logo/CMlab.png" alt="CMlab logo" />
+          </a>
+        </div>
 
-    <!-- Video (Local MP4) -->
+        <div class="link-row" aria-label="Project links">
+          <a class="projlink" href="./assets/paper.pdf" target="_blank" rel="noopener">Paper</a>
+          <span class="sep">•</span>
+          <a class="projlink" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" rel="noopener">arXiv</a>
+          <span class="sep">•</span>
+          <a class="projlink" href="https://github.com/YOUR/REPO" target="_blank" rel="noopener">Code</a>
+        </div>
+      </header>
+
+      <section class="section card tldr-card" id="tldr">
+        <p class="tldr-text">
+          <span class="tldr-label">TL;DR :</span> COREA is the first unified framework that jointly learns relightable 3D Gaussians and an SDF via coarse-to-fine 3D-to-3D supervision to improve geometry reconstruction and physically-based relighting.
+        </p>
+      </section>
+    </div>
+
+    <!-- Video (from here: original alignment) -->
     <section id="video" class="section card">
       <h2>Video</h2>
       <div class="thumb">
         <video autoplay muted loop playsinline controls preload="metadata">
-          <source src="./assets/videos/Teaser.mp4" type="video/mp4" />
+          <source src="./assets/videos/Teaser.mp4#t=1" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -141,7 +257,6 @@
         <div class="thumb thumb--fit">
           <img src="./assets/Teaser.png" alt="Abstract figure" />
         </div>
-        <figcaption class="figure-cap">Figure A: Abstract figure.</figcaption>
       </figure>
 
       <div class="abstract-text">
@@ -151,56 +266,70 @@
       </div>
     </section>
 
-    <!-- Overview of the COREA framework (new) -->
+    <!-- Overview -->
     <section class="section card abstract-card" id="overview">
       <h2>Overview of the COREA framework.</h2>
 
       <figure class="abstract-figure">
         <div class="thumb thumb--fit">
-          <!-- TODO: change file name as you want -->
           <img src="./assets/framework.png" alt="Overview of the COREA framework" />
         </div>
-        <figcaption class="figure-cap">Figure B: Overview of the COREA framework.</figcaption>
       </figure>
 
       <div class="abstract-text">
-        <!-- TODO: replace with your overview text -->
-        <p>COREA jointly trains relightable 3D Gaussians and a Signed Distance Field (SDF) using coarse-to-fine bidirectional 3D-to-3D supervision. Depth-guided alignment establishes coarse geometric consistency, and normal-guided alignment refines fine-scale structure with normal-aware densification. Dual-density control stabilizes Gaussian growth to balance geometry fidelity and memory efficiency.</p>
+        <p>Our method jointly trains relightable 3D Gaussians and a SDF via coarse-to-fine bidirectional 3D-to-3D supervision.
+        The first stage, Bidirectional 3D-to-3D Supervision, consists of two complementary steps: 
+        (i) DSA aligns the SDF to the 3DGS by leveraging depth rendered from Gaussians and matching SDF normals to pixel-wise depth gradients of 3DGS;    
+        (ii) NGA aligns 3DGS to the SDF by matching Gaussian depth to the SDF depth and supervising Gaussian normals with SDF normals. 
+        To prevent excessive Gaussian splitting during NGA, the DDC module suppresses unnecessary densification for efficient geometry refinement.
+        In the second stage, Inverse PBR is performed using the refined geometry to decompose BRDF and lighting and enable relighting under novel illumination conditions.
+        </p>
       </div>
     </section>
 
-    <!-- Quantitative — PNG only -->
+    <!-- Quantitative -->
     <div id="quantitative" class="subcard">
-      <h3 style="margin:0 0 10px;font-size:18px;">Quantitative</h3>
-
+      <h3 style="margin:0 0 10px;font-size:18px;">Quantitative comparison</h3>
       <div class="thumb thumb--fit">
         <img src="./assets/Quantitative_comparison.png" alt="Quantitative table" />
       </div>
-
       <div class="embed-actions">
+        <p class="blurb">
+          We evaluate novel-view synthesis (NVS), mesh reconstruction, and physically-based rendering (PBR) using the DTU and Tanks&Temples datasets.
+          N/S denotes methods that do not support the corresponding task, and OOM indicates evaluation failures caused by memory limitations.
+          The best, second-best, and third-best results are highlighted in red, yellow, and purple, respectively.
+        </p>
         <a href="./assets/Quantitative_comparison.png" download>Download PNG</a>
       </div>
-
-      <p class="figure-cap">Table 1: NVS benchmark.</p>
     </div>
 
-    <!-- Qualitative — PNG 2장 세로 스택 -->
+    <!-- Qualitative -->
     <div id="qualitative" class="subcard">
-      <h3 style="margin:0 0 10px;font-size:18px;">Qualitative</h3>
+      <h3 style="margin:0 0 10px;font-size:18px;">Qualitative comparison</h3>
 
       <div class="media-stack">
         <div class="media">
           <div class="thumb thumb--fit">
             <img src="./assets/Qualitative_NVS.png" alt="Qualitative results (NVS)" />
           </div>
-          <p class="figure-cap">NVS (Novel View Synthesis)</p>
+          <p class="blurb">
+            We compare COREA with recent Gaussian-based methods on three tasks: NVS, PBR, and Mesh Reconstruction. All results are rendered on a white background for consistent visual comparison. 
+            Artifacts such as black background patches or dark speckles observed in some baselines stem from excessive Gaussian opacity; by contrast, COREA produces clean, artifact-free renderings on white backgrounds. 
+            Our method also provides results for all three tasks, whereas others show N/S (Not Supported) or OOM (Out of Memory) in several cases. 
+            Overall, COREA yields sharper novel views, more faithful BRDF and lighting decomposition, and finer geometric details through coarse-to-fine bidirectional 3D-to-3D supervision.
+          </p>
         </div>
 
         <div class="media">
           <div class="thumb thumb--fit">
             <img src="./assets/Qualitative_PBR.png" alt="Qualitative results (PBR)" />
           </div>
-          <p class="figure-cap">PBR (Physically-Based Rendering)</p>
+          <p class="blurb">
+            We compare COREA with recent relightable Gaussian-based methods under varying illumination conditions. 
+            The first row shows PBR renderings under the original lighting setup, while the remaining rows illustrate relighting results under directional lights and various HDR environment maps. 
+            Compared to previous methods that exhibit black background artifacts or unstable reflectance under varying illumination, 
+            COREA maintains consistent shading, clean appearance, and accurate reflectance reconstruction across all lighting conditions, demonstrating robust BRDF and geometry alignment.
+          </p>
         </div>
       </div>
 
@@ -208,47 +337,39 @@
         <a href="./assets/Qualitative_NVS.png" download>Download NVS PNG</a>
         <a href="./assets/Qualitative_PBR.png" download>Download PBR PNG</a>
       </div>
-
-      <p class="figure-cap">Figure C: Qualitative results across tasks.</p>
     </div>
 
-    <!-- Additional results (new, large) -->
+    <!-- Additional results -->
     <section class="section card" id="additional">
       <h2>Additional Results</h2>
-      <p class="figure-cap">Demos for NVS, mesh reconstruction, and PBR.</p>
+      <p class="figure-cap">Demos for NVS, Mesh Reconstruction, and PBR. (Click to play)</p>
 
-      <div class="grid-3">
-        <!-- NVS demo -->
+      <div class="demo-stack">
         <div class="demo-card">
           <p class="demo-title">NVS Demo</p>
           <div class="thumb">
-            <video autoplay muted loop playsinline controls preload="metadata">
-              <!-- TODO: change file names -->
-              <source src="./assets/videos/NVS.mp4" type="video/mp4" />
+            <video controls playsinline preload="metadata">
+              <source src="./assets/videos/NVS.mp4#t=1" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
         </div>
 
-        <!-- Mesh demo -->
         <div class="demo-card">
           <p class="demo-title">Mesh Reconstruction Demo</p>
           <div class="thumb">
-            <video autoplay muted loop playsinline controls preload="metadata">
-              <!-- TODO: change file names -->
-              <source src="./assets/videos/Mesh.mp4" type="video/mp4" />
+            <video controls playsinline preload="metadata">
+              <source src="./assets/videos/Mesh.mp4#t=1" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
         </div>
 
-        <!-- PBR demo -->
         <div class="demo-card">
           <p class="demo-title">PBR Demo</p>
           <div class="thumb">
-            <video autoplay muted loop playsinline controls preload="metadata">
-              <!-- TODO: change file names -->
-              <source src="./assets/videos/PBR.mp4" type="video/mp4" />
+            <video controls playsinline preload="metadata">
+              <source src="./assets/videos/PBR.mp4#t=1" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
