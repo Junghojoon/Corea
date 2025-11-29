@@ -28,7 +28,16 @@
     .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;padding:22px}
     h2{margin:0 0 14px;font-size:22px}
     .thumb{aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:1px solid #e5e7eb;background:#ffffff}
-    .thumb img,.thumb video{width:100%;height:100%;object-fit:cover;display:block}
+    .thumb video{width:100%;height:100%;object-fit:cover;display:block}
+    /* 이미지 안 잘리게(전체가 보이도록) */
+    .thumb--fit { aspect-ratio: auto; }
+    .thumb--fit img{
+      width:100%;
+      height:auto;
+      object-fit: contain;   /* 핵심 */
+      background:#ffffff;
+      display:block;
+    }
     .thumb iframe{width:100%;height:100%;border:0;display:block}
     .section{margin-top:28px}
     pre{background:#f4f6fb;border:1px solid #e5e7eb;padding:14px;border-radius:12px;overflow:auto;color:#1a1f29}
@@ -105,7 +114,7 @@
           controls
           preload="metadata"
         >
-          <source src="assets/videos/Teaser.mp4" type="video/mp4" />
+          <source src="./assets/videos/Teaser.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -115,26 +124,11 @@
     <section class="section card abstract-card" id="abstract">
       <h2>Abstract</h2>
 
-      <!-- Abstract figure: PDF 우선 + IFRAME 폴백 + PNG 폴백 -->
       <figure class="abstract-figure">
-        <div class="doc-embed doc-embed--tall">
-          <object data="assets/abstract.pdf" type="application/pdf">
-            <iframe
-              src="assets/abstract.pdf#view=FitH&toolbar=0"
-              title="Abstract PDF"
-              loading="lazy"
-            ></iframe>
-            <img src="assets/abstract.png" alt="Abstract figure (framework overview or teaser collage)" />
-          </object>
+        <div class="thumb thumb--fit">
+          <img src="assets/abstract.png" alt="Abstract figure (framework overview or teaser collage)" />
         </div>
-        <figcaption class="figure-cap">Figure A: Abstract figure. Replace with your overview/teaser image/PDF.</figcaption>
-
-        <!-- 필요 시 다운로드 버튼 노출
-        <div class="embed-actions">
-          <a href="assets/abstract.pdf" download>Download PDF</a>
-          <a href="assets/abstract.png" download>Download PNG</a>
-        </div>
-        -->
+        <figcaption class="figure-cap">Figure A: Abstract figure.</figcaption>
       </figure>
 
       <div class="abstract-text">
@@ -147,8 +141,8 @@
     <!-- Quantitative — PNG only -->
     <div id="quantitative" class="subcard">
       <h3 style="margin:0 0 10px;font-size:18px;">Quantitative</h3>
-    
-      <div class="thumb" style="aspect-ratio:auto;">
+
+      <div class="thumb thumb--fit">
         <img src="./assets/Quantitative_comparison.png" alt="Quantitative table" />
       </div>
     
@@ -165,14 +159,14 @@
       
         <div class="media-stack">
           <div class="media">
-            <div class="thumb">
+            <div class="thumb thumb--fit">
               <img src="./assets/Qualitative_NVS.png" alt="Qualitative results (NVS)" />
             </div>
             <p class="figure-cap">NVS (Novel View Synthesis)</p>
           </div>
       
           <div class="media">
-            <div class="thumb">
+            <div class="thumb thumb--fit">
               <img src="assets/Qualitative_PBR.png" alt="Qualitative results (PBR)" />
             </div>
             <p class="figure-cap">PBR (Physically-Based Rendering)</p>
