@@ -27,22 +27,26 @@
 
     .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;padding:22px}
     h2{margin:0 0 14px;font-size:22px}
+    .section{margin-top:28px}
+    .footer{margin-top:36px;color:var(--muted);font-size:14px;text-align:center}
+    pre{background:#f4f6fb;border:1px solid #e5e7eb;padding:14px;border-radius:12px;overflow:auto;color:#1a1f29}
+    code{font-family:"Roboto Mono",ui-monospace,Menlo,Consolas,monospace}
+
+    /* Media container */
     .thumb{aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:1px solid #e5e7eb;background:#ffffff}
     .thumb video{width:100%;height:100%;object-fit:cover;display:block}
-    /* 이미지 안 잘리게(전체가 보이도록) */
-    .thumb--fit { aspect-ratio: auto; }
+
+    /* Images: show full image (no crop) */
+    .thumb--fit { aspect-ratio: auto; overflow: visible; }
     .thumb--fit img{
       width:100%;
       height:auto;
-      object-fit: contain;   /* 핵심 */
+      object-fit:contain;
       background:#ffffff;
       display:block;
+      border-radius:14px;
+      border:1px solid #e5e7eb;
     }
-    .thumb iframe{width:100%;height:100%;border:0;display:block}
-    .section{margin-top:28px}
-    pre{background:#f4f6fb;border:1px solid #e5e7eb;padding:14px;border-radius:12px;overflow:auto;color:#1a1f29}
-    code{font-family:"Roboto Mono",ui-monospace,Menlo,Consolas,monospace}
-    .footer{margin-top:36px;color:var(--muted);font-size:14px;text-align:center}
 
     /* Abstract */
     .abstract-card{padding:26px}
@@ -50,29 +54,14 @@
     .figure-cap{margin-top:8px;color:var(--muted);font-size:14px}
     .abstract-text{font-size:15.5px}
 
-    /* Comparison 내부 소박스 */
+    /* Subcards */
     .subcard{background:#ffffff;border:1px solid #e5e7eb;border-radius:14px;padding:18px;margin-top:16px}
 
-    /* Qualitative: 세로 스택 */
+    /* Qualitative stack */
     .media-stack{display:flex;flex-direction:column;gap:16px}
     .media{display:flex;flex-direction:column;gap:8px}
 
-    /* PDF/PNG 임베드 공통 컨테이너 */
-    .doc-embed{position:relative;border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;background:#fff}
-    .doc-embed object{width:100%;height:520px;border:0;display:block}
-    .doc-embed iframe{width:100%;height:520px;border:0;display:block}  /* iframe 폴백 높이 */
-    .doc-embed img{width:100%;height:auto;display:block}
-    /* Abstract같이 세로가 더 필요한 경우 높이 확장용 */
-    .doc-embed--tall object{height:65vh}
-    .doc-embed--tall iframe{height:65vh}
-    @media (max-width:900px){
-      .doc-embed object{height:380px}
-      .doc-embed iframe{height:380px}
-      .doc-embed--tall object{height:50vh}
-      .doc-embed--tall iframe{height:50vh}
-    }
-
-    .embed-actions{display:flex;gap:12px;align-items:center;margin-top:8px}
+    .embed-actions{display:flex;gap:12px;align-items:center;margin-top:8px;flex-wrap:wrap}
     .embed-actions a{font-size:14px}
   </style>
 </head>
@@ -89,14 +78,8 @@
       </div>
       <div class="affils"><span><sup>1</sup>ChungAng University</span> ·</div>
       <div class="badges">
-        <a class="btn" href="#" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.4 2c-1.9 2.6-3.6 5.3-5.1 8.2 1.3 2.7 3 5.2 5.1 7.5 2.1-2.3 3.8-4.8 5.1-7.5C15.2 7.3 13.5 4.6 11.4 2zM6.1 12C4.2 8.6 2.8 6.6 1 4.3c1.3-.3 2.5-.4 3.8-.2 1.7 2 3.2 4.2 4.6 6.6-1.2 2.1-2.6 4.1-4.3 5.9-.9-.9-1.8-2.3-3-4.6 1 .4 2 .6 3 .6zM22.9 4.3c-1.9 2.3-3.3 4.3-5.2 7.7 1.7 3.5 3.3 5.8 5.2 7.7-1.5 .2-3 .1-4.3-.4-1.7-2-3.1-4.1-4.3-6.4 1.3-2.4 2.7-4.6 4.4-6.6 1.5-.2 3 0 4.2 .4z"/></svg>
-          arXiv
-        </a>
-        <a class="btn" href="#" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.4 16.6 5.8 13l3.6-3.6L8 8l-5 5 5 5 1.4-1.4zm5.2 0 3.6-3.6-3.6-3.6L16 8l5 5-5 5-1.4-1.4zM14.3 4 9.7 20h1.9L16.2 4h-1.9z"/></svg>
-          Code
-        </a>
+        <a class="btn" href="#" target="_blank" rel="noopener">arXiv</a>
+        <a class="btn" href="#" target="_blank" rel="noopener">Code</a>
         <a class="btn" href="#video">Video</a>
         <a class="btn" href="#bibtex">BibTeX</a>
       </div>
@@ -106,14 +89,7 @@
     <section id="video" class="section card">
       <h2>Video</h2>
       <div class="thumb">
-        <video
-          autoplay
-          muted
-          loop
-          playsinline
-          controls
-          preload="metadata"
-        >
+        <video autoplay muted loop playsinline controls preload="metadata">
           <source src="./assets/videos/Teaser.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -126,7 +102,7 @@
 
       <figure class="abstract-figure">
         <div class="thumb thumb--fit">
-          <img src="./assets/teaser.png" alt="Abstract figure (framework overview or teaser collage)" />
+          <img src="./assets/teaser.png" alt="Abstract figure" />
         </div>
         <figcaption class="figure-cap">Figure A: Abstract figure.</figcaption>
       </figure>
@@ -145,47 +121,46 @@
       <div class="thumb thumb--fit">
         <img src="./assets/Quantitative_comparison.png" alt="Quantitative table" />
       </div>
-    
+
       <div class="embed-actions">
         <a href="./assets/Quantitative_comparison.png" download>Download PNG</a>
       </div>
-    
+
       <p class="figure-cap">Table 1: NVS benchmark.</p>
     </div>
 
-      <!-- Qualitative: PNG 2장 세로 스택 (NVS, PBR) -->
-      <div id="qualitative" class="subcard">
-        <h3 style="margin:0 0 10px;font-size:18px;">Qualitative</h3>
-      
-        <div class="media-stack">
-          <div class="media">
-            <div class="thumb thumb--fit">
-              <img src="./assets/Qualitative_NVS.png" alt="Qualitative results (NVS)" />
-            </div>
-            <p class="figure-cap">NVS (Novel View Synthesis)</p>
+    <!-- Qualitative — PNG 2장 세로 스택 -->
+    <div id="qualitative" class="subcard">
+      <h3 style="margin:0 0 10px;font-size:18px;">Qualitative</h3>
+
+      <div class="media-stack">
+        <div class="media">
+          <div class="thumb thumb--fit">
+            <img src="./assets/Qualitative_NVS.png" alt="Qualitative results (NVS)" />
           </div>
-      
-          <div class="media">
-            <div class="thumb thumb--fit">
-              <img src="assets/Qualitative_PBR.png" alt="Qualitative results (PBR)" />
-            </div>
-            <p class="figure-cap">PBR (Physically-Based Rendering)</p>
+          <p class="figure-cap">NVS (Novel View Synthesis)</p>
+        </div>
+
+        <div class="media">
+          <div class="thumb thumb--fit">
+            <img src="./assets/Qualitative_PBR.png" alt="Qualitative results (PBR)" />
           </div>
+          <p class="figure-cap">PBR (Physically-Based Rendering)</p>
         </div>
-      
-        <div class="embed-actions">
-          <a href="./assets/Qualitative_NVS.png" download>Download NVS PNG</a>
-          <a href="./assets/Qualitative_PBR.png" download>Download PBR PNG</a>
-        </div>
-      
-        <p class="figure-cap">Figure B: Qualitative results across tasks.</p>
       </div>
-    </section>
+
+      <div class="embed-actions">
+        <a href="./assets/Qualitative_NVS.png" download>Download NVS PNG</a>
+        <a href="./assets/Qualitative_PBR.png" download>Download PBR PNG</a>
+      </div>
+
+      <p class="figure-cap">Figure B: Qualitative results across tasks.</p>
+    </div>
 
     <!-- BibTeX -->
     <section id="bibtex" class="section card">
       <h2>BibTeX</h2>
-      <pre><code>@inproceedings{yourkey2025project,
+      <pre><code>@inproceedings{corea2025arXiv,
   title     = {COREA: Coarse-to-Fine 3D Representation Alignment Between Relightable 3D Gaussians and SDF via Bidirectional 3D-to-3D Supervision},
   author    = {Jaeyoon Lee and Hojoon Jung and Sungtae Hwang and Jongwon Choi and Jihyong Oh},
   booktitle = {arXiv},
@@ -193,7 +168,7 @@
 }</code></pre>
     </section>
 
-    <p class="footer">© 2025 Your Name(s). Website template by you. Hosted on GitHub Pages.</p>
+    <p class="footer">© 2025 Your Name(s). Hosted on GitHub Pages.</p>
   </div>
 </body>
 </html>
