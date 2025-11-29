@@ -23,12 +23,67 @@
     .title-main{display:block; font-size:clamp(30px,5vw,56px); font-weight:900;}
     .title-sub{display:block; margin-top:6px; font-size:clamp(20px,3.2vw,34px); font-weight:800; letter-spacing:-0.015em;}
 
+    /* Authors as links */
     .authors{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:18px}
     .authors sup{font-size:12px;color:var(--muted)}
+    .author{
+      color:var(--accent);
+      font-weight:600;
+      text-decoration:none;
+    }
+    .author:hover{ text-decoration:underline; }
+
     .affils{margin-top:8px;color:var(--muted)}
-    .badges{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid #d7dbe3;border-radius:999px;background:#ffffff;color:var(--text);font-weight:600}
-    .btn:hover{border-color:#bfc6d4;transform:translateY(-1px)}
+
+    /* Header icon rows (PNG icons + links) */
+    .icon-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      margin-top:14px;
+    }
+    .icon-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      height:44px;
+      padding:8px 12px;
+      border:1px solid #d7dbe3;
+      border-radius:999px;
+      background:#fff;
+      color:var(--text);
+      font-weight:700;
+      gap:10px;
+    }
+    .icon-link:hover{ border-color:#bfc6d4; transform:translateY(-1px); text-decoration:none; }
+    .icon-link img{
+      height:22px;
+      width:auto;
+      display:block;
+    }
+
+    /* optional: affiliation logos row (bigger logos) */
+    .logo-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      align-items:center;
+      margin-top:14px;
+    }
+    .logo-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:6px 10px;
+      border-radius:12px;
+    }
+    .logo-link:hover{ background:#f4f6fb; text-decoration:none; }
+    .logo-link img{
+      height:40px; /* 큰 로고 느낌 */
+      width:auto;
+      display:block;
+    }
 
     .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;padding:22px}
     h2{margin:0 0 14px;font-size:22px}
@@ -36,6 +91,21 @@
     .footer{margin-top:36px;color:var(--muted);font-size:14px;text-align:center}
     pre{background:#f4f6fb;border:1px solid #e5e7eb;padding:14px;border-radius:12px;overflow:auto;color:#1a1f29}
     code{font-family:"Roboto Mono",ui-monospace,Menlo,Consolas,monospace}
+
+    /* TL;DR */
+    .tldr-card{ padding:18px 22px; }
+    .tldr-label{
+      font-weight:900;
+      letter-spacing:-0.01em;
+      margin:0 0 6px;
+      font-size:14px;
+      color:#1a1f29;
+    }
+    .tldr-text{
+      margin:0;
+      font-size:15.5px;
+      color:#1a1f29;
+    }
 
     /* Media container */
     .thumb{
@@ -45,12 +115,10 @@
       border:1px solid #e5e7eb;
       background:#ffffff;
 
-      /* ---- hairline/black seam fix (Chrome/Safari rounding + scaling artifact) ---- */
       transform: translateZ(0);
       backface-visibility: hidden;
       -webkit-mask-image: -webkit-radial-gradient(white, black);
     }
-
     .thumb video{
       width:100%;
       height:100%;
@@ -60,11 +128,8 @@
       backface-visibility: hidden;
     }
 
-    /* Fit mode: keep wrapper clipping; avoid double borders/radius on img */
-    .thumb--fit{
-      aspect-ratio:auto;
-      overflow:hidden; /* 중요: visible X */
-    }
+    /* Fit mode (images) */
+    .thumb--fit{ aspect-ratio:auto; overflow:hidden; }
     .thumb img{
       width:100%;
       height:auto;
@@ -72,8 +137,6 @@
       background:#fff;
       border:0;
       border-radius:0;
-
-      /* ---- hairline/black seam fix ---- */
       transform: translateZ(0);
       backface-visibility: hidden;
     }
@@ -94,7 +157,7 @@
     .embed-actions{display:flex;gap:12px;align-items:center;margin-top:8px;flex-wrap:wrap}
     .embed-actions a{font-size:14px}
 
-    /* Additional results: stacked big (not grid) */
+    /* Additional results */
     .demo-stack{display:flex;flex-direction:column;gap:18px;margin-top:12px;}
     .demo-card{
       background:#ffffff;
@@ -120,29 +183,69 @@
         <span class="title-sub">Coarse-to-Fine 3D Representation Alignment Between Relightable 3D Gaussians and SDF via Bidirectional 3D-to-3D Supervision</span>
       </h1>
 
+      <!-- Authors (names are clickable) -->
       <div class="authors">
-        <span>Jaeyoon Lee<sup>1</sup></span>
-        <span>Hojoon Jung<sup>1</sup></span>
-        <span>Sungtae Hwang<sup>1</sup></span>
-        <span>Jongwon Choi<sup>1</sup></span>
-        <span>Jihyong Oh<sup>1</sup></span>
+        <!-- TODO: 각자 홈페이지 링크로 교체 -->
+        <a class="author" href="https://example.com/jaeyoon" target="_blank" rel="noopener">Jaeyoon Lee<sup>1</sup></a>
+        <a class="author" href="https://example.com/hojoon" target="_blank" rel="noopener">Hojoon Jung<sup>1</sup></a>
+        <a class="author" href="https://example.com/sungtae" target="_blank" rel="noopener">Sungtae Hwang<sup>1</sup></a>
+        <a class="author" href="https://example.com/jongwon" target="_blank" rel="noopener">Jongwon Choi<sup>1</sup></a>
+        <a class="author" href="https://example.com/jihyong" target="_blank" rel="noopener">Jihyong Oh<sup>1</sup></a>
       </div>
 
-      <div class="affils"><span><sup>1</sup>ChungAng University</span> ·</div>
+      <div class="affils"><span><sup>1</sup>ChungAng University</span></div>
 
-      <div class="badges">
-        <a class="btn" href="#" target="_blank" rel="noopener">arXiv</a>
-        <a class="btn" href="#" target="_blank" rel="noopener">Code</a>
-        <a class="btn" href="#video">Video</a>
-        <a class="btn" href="#bibtex">BibTeX</a>
+      <!-- (선택) 소속/랩 로고 PNG + 링크 (그림처럼) -->
+      <div class="logo-row" aria-label="Affiliation logos">
+        <!-- TODO: 로고 파일/링크 교체 -->
+        <a class="logo-link" href="https://www.cau.ac.kr" target="_blank" rel="noopener">
+          <img src="./assets/logos/cau.png" alt="ChungAng University logo" />
+        </a>
+        <a class="logo-link" href="https://example.com/lab" target="_blank" rel="noopener">
+          <img src="./assets/logos/lab.png" alt="Lab logo" />
+        </a>
+        <!-- 필요하면 더 추가 -->
+      </div>
+
+      <!-- 리소스 아이콘 PNG + 링크 (Paper/Code/arXiv/Video 등) -->
+      <div class="icon-row" aria-label="Project links">
+        <!-- TODO: 링크/아이콘 경로 교체 -->
+        <a class="icon-link" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" rel="noopener">
+          <img src="./assets/icons/arxiv.png" alt="arXiv icon" />
+          <span>arXiv</span>
+        </a>
+        <a class="icon-link" href="https://github.com/YOUR/REPO" target="_blank" rel="noopener">
+          <img src="./assets/icons/github.png" alt="GitHub icon" />
+          <span>Code</span>
+        </a>
+        <a class="icon-link" href="./assets/paper.pdf" target="_blank" rel="noopener">
+          <img src="./assets/icons/paper.png" alt="Paper icon" />
+          <span>Paper</span>
+        </a>
+        <a class="icon-link" href="#video">
+          <img src="./assets/icons/video.png" alt="Video icon" />
+          <span>Video</span>
+        </a>
+        <a class="icon-link" href="#bibtex">
+          <img src="./assets/icons/bib.png" alt="BibTeX icon" />
+          <span>BibTeX</span>
+        </a>
       </div>
     </header>
+
+    <!-- TL;DR (Video 전에 한 줄 요약) -->
+    <section class="section card tldr-card" id="tldr">
+      <p class="tldr-label">TL;DR</p>
+      <!-- TODO: 한 줄 요약으로 교체 -->
+      <p class="tldr-text">
+        COREA jointly aligns relightable 3D Gaussians and an SDF via coarse-to-fine 3D-to-3D supervision to improve geometry reconstruction and physically-based relighting.
+      </p>
+    </section>
 
     <!-- Video (Local MP4) -->
     <section id="video" class="section card">
       <h2>Video</h2>
       <div class="thumb">
-        <!-- autoplay 원하면 muted 필수(브라우저 정책) -->
         <video autoplay muted loop playsinline controls preload="metadata">
           <source src="./assets/videos/Teaser.mp4#t=1" type="video/mp4" />
           Your browser does not support the video tag.
@@ -227,7 +330,7 @@
       <p class="figure-cap">Figure C: Qualitative results across tasks.</p>
     </div>
 
-    <!-- Additional results: stacked big, click-to-play, start at 1s -->
+    <!-- Additional results -->
     <section class="section card" id="additional">
       <h2>Additional Results</h2>
       <p class="figure-cap">Demos for NVS, mesh reconstruction, and PBR. (Click to play)</p>
