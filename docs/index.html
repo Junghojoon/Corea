@@ -105,6 +105,14 @@
       color:#1a1f29;
     }
 
+    .tldr-line{
+      margin:0;
+      display:flex;
+      gap:8px;
+      align-items:baseline;
+      flex-wrap:wrap;
+    }
+    
     /* Media container (hairline seam fix) */
     .thumb{
       aspect-ratio:16/9;
@@ -226,9 +234,11 @@
       </header>
 
       <section class="section card tldr-card" id="tldr">
-        <p class="tldr-label">TL;DR</p>
-        <p class="tldr-text">
-          COREA jointly aligns relightable 3D Gaussians and an SDF via coarse-to-fine 3D-to-3D supervision to improve geometry reconstruction and physically-based relighting.
+        <p class="tldr-line">
+          <span class="tldr-label">TL;DR :</span>
+          <span class="tldr-text">
+            COREA jointly aligns relightable 3D Gaussians and an SDF via coarse-to-fine 3D-to-3D supervision to improve geometry reconstruction and physically-based relighting.
+          </span>
         </p>
       </section>
     </div>
