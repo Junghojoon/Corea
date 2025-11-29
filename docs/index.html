@@ -28,7 +28,6 @@
     .affils{margin-top:8px;color:var(--muted)}
     .badges{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
     .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid #d7dbe3;border-radius:999px;background:#ffffff;color:var(--text);font-weight:600}
-    .btn svg{width:18px;height:18px}
     .btn:hover{border-color:#bfc6d4;transform:translateY(-1px)}
 
     .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;padding:22px}
@@ -70,29 +69,21 @@
     .embed-actions{display:flex;gap:12px;align-items:center;margin-top:8px;flex-wrap:wrap}
     .embed-actions a{font-size:14px}
 
-    /* Additional results: 3 columns on desktop, 1 column on mobile */
-    .grid-3{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap:16px;
-      margin-top:10px;
-    }
-    @media (max-width: 900px){
-      .grid-3{ grid-template-columns: 1fr; }
-    }
+    /* Additional results: stacked big (not grid) */
+    .demo-stack{display:flex;flex-direction:column;gap:18px;margin-top:12px;}
     .demo-card{
       background:#ffffff;
       border:1px solid #e5e7eb;
       border-radius:14px;
-      padding:14px;
+      padding:18px;
     }
     .demo-title{
-      margin:0 0 8px;
-      font-size:15px;
-      font-weight:800;
+      margin:0 0 10px;
+      font-size:18px;
+      font-weight:900;
       color:#1a1f29;
     }
-    .demo-card .thumb{ border-radius:12px; }
+    .demo-card .thumb{aspect-ratio:16/9;}
   </style>
 </head>
 
@@ -126,8 +117,9 @@
     <section id="video" class="section card">
       <h2>Video</h2>
       <div class="thumb">
-        <video autoplay muted loop playsinline controls preload="metadata">
-          <source src="./assets/videos/Teaser.mp4" type="video/mp4" />
+        <!-- NOTE: autoplay 제거(누르면 재생), 시작을 1초로 -->
+        <video controls playsinline preload="metadata">
+          <source src="./assets/videos/Teaser.mp4#t=1" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -151,20 +143,18 @@
       </div>
     </section>
 
-    <!-- Overview of the COREA framework (new) -->
+    <!-- Overview of the COREA framework -->
     <section class="section card abstract-card" id="overview">
       <h2>Overview of the COREA framework.</h2>
 
       <figure class="abstract-figure">
         <div class="thumb thumb--fit">
-          <!-- TODO: change file name as you want -->
           <img src="./assets/framework.png" alt="Overview of the COREA framework" />
         </div>
         <figcaption class="figure-cap">Figure B: Overview of the COREA framework.</figcaption>
       </figure>
 
       <div class="abstract-text">
-        <!-- TODO: replace with your overview text -->
         <p>COREA jointly trains relightable 3D Gaussians and a Signed Distance Field (SDF) using coarse-to-fine bidirectional 3D-to-3D supervision. Depth-guided alignment establishes coarse geometric consistency, and normal-guided alignment refines fine-scale structure with normal-aware densification. Dual-density control stabilizes Gaussian growth to balance geometry fidelity and memory efficiency.</p>
       </div>
     </section>
@@ -212,19 +202,18 @@
       <p class="figure-cap">Figure C: Qualitative results across tasks.</p>
     </div>
 
-    <!-- Additional results (new, large) -->
+    <!-- Additional results: stacked big, click-to-play, start at 1s -->
     <section class="section card" id="additional">
       <h2>Additional Results</h2>
-      <p class="figure-cap">Demos for NVS, mesh reconstruction, and PBR.</p>
+      <p class="figure-cap">Demos for NVS, mesh reconstruction, and PBR. (Click to play)</p>
 
-      <div class="grid-3">
+      <div class="demo-stack">
         <!-- NVS demo -->
         <div class="demo-card">
           <p class="demo-title">NVS Demo</p>
           <div class="thumb">
-            <video autoplay muted loop playsinline controls preload="metadata">
-              <!-- TODO: change file names -->
-              <source src="./assets/videos/NVS.mp4" type="video/mp4" />
+            <video controls playsinline preload="metadata">
+              <source src="./assets/videos/NVS.mp4#t=1" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -234,9 +223,8 @@
         <div class="demo-card">
           <p class="demo-title">Mesh Reconstruction Demo</p>
           <div class="thumb">
-            <video autoplay muted loop playsinline controls preload="metadata">
-              <!-- TODO: change file names -->
-              <source src="./assets/videos/Mesh.mp4" type="video/mp4" />
+            <video controls playsinline preload="metadata">
+              <source src="./assets/videos/Mesh.mp4#t=1" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -246,14 +234,17 @@
         <div class="demo-card">
           <p class="demo-title">PBR Demo</p>
           <div class="thumb">
-            <video autoplay muted loop playsinline controls preload="metadata">
-              <!-- TODO: change file names -->
-              <source src="./assets/videos/PBR.mp4" type="video/mp4" />
+            <video controls playsinline preload="metadata">
+              <source src="./assets/videos/PBR.mp4#t=1" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
         </div>
       </div>
+
+      <p class="figure-cap" style="margin-top:10px;">
+        Note: Some browsers may ignore <code>#t=1</code> for the preview frame. If you need an exact “1-second thumbnail”, use <code>poster="..."</code>.
+      </p>
     </section>
 
     <!-- BibTeX -->
