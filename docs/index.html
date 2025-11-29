@@ -19,12 +19,13 @@
 
     header.hero{padding:64px 0 24px;border-bottom:1px solid #e5e7eb}
 
-    /* Center align only until the video section */
-    .prevideo{ text-align:center; }
-    .prevideo .authors,
-    .prevideo .logo-row,
-    .prevideo .link-row{ justify-content:center; }
-    .prevideo .affils{ justify-content:center; }
+    /* Center align only the HERO (stop from TL;DR) */
+    header.hero{ text-align:center; }
+    header.hero .authors,
+    header.hero .logo-row,
+    header.hero .link-row{
+      justify-content:center;
+    }
 
     /* Title (split into 2 lines) — reduce ~5pt */
     .title{ margin:0 0 10px; line-height:1.12; letter-spacing:-0.02em; }
