@@ -35,35 +35,7 @@
 
     .affils{margin-top:8px;color:var(--muted)}
 
-    /* Header icon rows (PNG icons + links) */
-    .icon-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      align-items:center;
-      margin-top:14px;
-    }
-    .icon-link{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      height:44px;
-      padding:8px 12px;
-      border:1px solid #d7dbe3;
-      border-radius:999px;
-      background:#fff;
-      color:var(--text);
-      font-weight:700;
-      gap:10px;
-    }
-    .icon-link:hover{ border-color:#bfc6d4; transform:translateY(-1px); text-decoration:none; }
-    .icon-link img{
-      height:22px;
-      width:auto;
-      display:block;
-    }
-
-    /* optional: affiliation logos row (bigger logos) */
+    /* (선택) 소속/랩 로고 PNG + 링크 */
     .logo-row{
       display:flex;
       flex-wrap:wrap;
@@ -80,10 +52,27 @@
     }
     .logo-link:hover{ background:#f4f6fb; text-decoration:none; }
     .logo-link img{
-      height:40px; /* 큰 로고 느낌 */
+      height:40px;
       width:auto;
       display:block;
     }
+
+    /* Project links row: text-only (author처럼) */
+    .link-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      align-items:center;
+      margin-top:14px;
+      font-size:18px;
+    }
+    .projlink{
+      color:var(--accent);
+      font-weight:600;
+      text-decoration:none;
+    }
+    .projlink:hover{ text-decoration:underline; }
+    .sep{ color:#c1c7d4; user-select:none; }
 
     .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;padding:22px}
     h2{margin:0 0 14px;font-size:22px}
@@ -107,7 +96,7 @@
       color:#1a1f29;
     }
 
-    /* Media container */
+    /* Media container (hairline seam fix) */
     .thumb{
       aspect-ratio:16/9;
       border-radius:14px;
@@ -185,7 +174,6 @@
 
       <!-- Authors (names are clickable) -->
       <div class="authors">
-        <!-- TODO: 각자 홈페이지 링크로 교체 -->
         <a class="author" href="https://sites.google.com/vilab.cau.ac.kr/jaeyoonlee" target="_blank" rel="noopener">Jaeyoon Lee<sup>1</sup></a>
         <a class="author" href="https://sites.google.com/view/hjjung-homepage/홈" target="_blank" rel="noopener">Hojoon Jung<sup>1</sup></a>
         <a class="author" href="https://sites.google.com/vilab.cau.ac.kr/hst/" target="_blank" rel="noopener">Sungtae Hwang<sup>1</sup></a>
@@ -195,9 +183,8 @@
 
       <div class="affils"><span><sup>1</sup>ChungAng University</span></div>
 
-      <!-- (선택) 소속/랩 로고 PNG + 링크 (그림처럼) -->
+      <!-- (선택) 소속/랩 로고 -->
       <div class="logo-row" aria-label="Affiliation logos">
-        <!-- TODO: 로고 파일/링크 교체 -->
         <a class="logo-link" href="https://www.cau.ac.kr/index.do" target="_blank" rel="noopener">
           <img src="./assets/logo/chung_ang_univ.png" alt="ChungAng University logo" />
         </a>
@@ -206,45 +193,28 @@
         </a>
         <a class="logo-link" href="https://cmlab.cau.ac.kr" target="_blank" rel="noopener">
           <img src="./assets/logo/CMlab.png" alt="CMlab logo" />
-        <!-- 필요하면 더 추가 -->
+        </a>
       </div>
 
-      <!-- 리소스 아이콘 PNG + 링크 (Paper/Code/arXiv/Video 등) -->
-      <div class="icon-row" aria-label="Project links">
-        <!-- TODO: 링크/아이콘 경로 교체 -->
-        <a class="icon-link" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" rel="noopener">
-          <img src="./assets/icons/arxiv.png" alt="arXiv icon" />
-          <span>arXiv</span>
-        </a>
-        <a class="icon-link" href="https://github.com/YOUR/REPO" target="_blank" rel="noopener">
-          <img src="./assets/icons/github.png" alt="GitHub icon" />
-          <span>Code</span>
-        </a>
-        <a class="icon-link" href="./assets/paper.pdf" target="_blank" rel="noopener">
-          <img src="./assets/icons/paper.png" alt="Paper icon" />
-          <span>Paper</span>
-        </a>
-        <a class="icon-link" href="#video">
-          <img src="./assets/icons/video.png" alt="Video icon" />
-          <span>Video</span>
-        </a>
-        <a class="icon-link" href="#bibtex">
-          <img src="./assets/icons/bib.png" alt="BibTeX icon" />
-          <span>BibTeX</span>
-        </a>
+      <!-- Project links: Paper / arXiv / Code only (text-only) -->
+      <div class="link-row" aria-label="Project links">
+        <a class="projlink" href="./assets/paper.pdf" target="_blank" rel="noopener">Paper</a>
+        <span class="sep">•</span>
+        <a class="projlink" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" rel="noopener">arXiv</a>
+        <span class="sep">•</span>
+        <a class="projlink" href="https://github.com/YOUR/REPO" target="_blank" rel="noopener">Code</a>
       </div>
     </header>
 
-    <!-- TL;DR (Video 전에 한 줄 요약) -->
+    <!-- TL;DR -->
     <section class="section card tldr-card" id="tldr">
       <p class="tldr-label">TL;DR</p>
-      <!-- TODO: 한 줄 요약으로 교체 -->
       <p class="tldr-text">
         COREA jointly aligns relightable 3D Gaussians and an SDF via coarse-to-fine 3D-to-3D supervision to improve geometry reconstruction and physically-based relighting.
       </p>
     </section>
 
-    <!-- Video (Local MP4) -->
+    <!-- Video -->
     <section id="video" class="section card">
       <h2>Video</h2>
       <div class="thumb">
@@ -273,7 +243,7 @@
       </div>
     </section>
 
-    <!-- Overview of the COREA framework -->
+    <!-- Overview -->
     <section class="section card abstract-card" id="overview">
       <h2>Overview of the COREA framework.</h2>
 
@@ -289,22 +259,19 @@
       </div>
     </section>
 
-    <!-- Quantitative — PNG only -->
+    <!-- Quantitative -->
     <div id="quantitative" class="subcard">
       <h3 style="margin:0 0 10px;font-size:18px;">Quantitative</h3>
-
       <div class="thumb thumb--fit">
         <img src="./assets/Quantitative_comparison.png" alt="Quantitative table" />
       </div>
-
       <div class="embed-actions">
         <a href="./assets/Quantitative_comparison.png" download>Download PNG</a>
       </div>
-
       <p class="figure-cap">Table 1: NVS benchmark.</p>
     </div>
 
-    <!-- Qualitative — PNG 2장 세로 스택 -->
+    <!-- Qualitative -->
     <div id="qualitative" class="subcard">
       <h3 style="margin:0 0 10px;font-size:18px;">Qualitative</h3>
 
