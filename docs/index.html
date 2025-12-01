@@ -30,26 +30,21 @@
 
     *{box-sizing:border-box}
 
+    /* ✅ PRE-TLDR: remove neon aura on page background */
     body{
       margin:0;
       color:var(--text);
       font:16px/1.6 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial;
-
-      /* keep white background but add subtle neon aura */
-      background:
-        radial-gradient(900px 520px at 18% -10%, rgba(0,212,255,.10), rgba(255,255,255,0) 62%),
-        radial-gradient(900px 520px at 88% 0%, rgba(43,116,255,.10), rgba(255,255,255,0) 60%),
-        #ffffff;
+      background: #ffffff;
     }
 
-    a{color:var(--accent);text-decoration:none}
-    a:hover{
-      text-decoration:none;
-      filter: drop-shadow(0 0 10px rgba(0,212,255,.28));
-    }
+    /* ✅ PRE-TLDR: neutral links (no glow) */
+    a{color:var(--brandBlue);text-decoration:none}
+    a:hover{ text-decoration:none; filter:none; }
 
+    /* ✅ PRE-TLDR: neutral focus (no neon glow) */
     :focus-visible{
-      outline:3px solid rgba(0,212,255,.35);
+      outline:3px solid rgba(0,86,162,.25);
       outline-offset:3px;
       border-radius:12px;
     }
@@ -61,14 +56,14 @@
     header.hero .authors,
     header.hero .link-row{ justify-content:center; }
 
-    /* Top bar (Pantone 2945C) */
+    /* Top bar (Pantone 2945C) — ✅ PRE-TLDR: no neon shadow */
     .topbar{
       position: sticky;
       top: 0;
       z-index: 100;
       background: var(--brandBlue);
       border-bottom: 1px solid rgba(255,255,255,0.22);
-      box-shadow: 0 10px 26px rgba(0,86,162,.22), var(--glow-sm);
+      box-shadow: none;
     }
     .topbar-inner{
       max-width:980px;
@@ -86,6 +81,7 @@
       gap: 14px;
     }
 
+    /* ✅ PRE-TLDR: remove neon glow on logo pills */
     .topbar-logos a{
       width: 128px;
       height: 44px;
@@ -96,7 +92,7 @@
       border-radius: 14px;
       background: rgba(255,255,255,0.98);
       border: 1px solid rgba(0,86,162,.16);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.10), var(--glow-sm);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.10);
       transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease, border-color 140ms ease;
     }
 
@@ -104,8 +100,8 @@
       background:#ffffff;
       text-decoration:none;
       transform: translateY(-1px);
-      border-color: rgba(0,212,255,.38);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.14), var(--glow-md);
+      border-color: rgba(0,86,162,.22);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.14);
     }
 
     .topbar-logos img{
@@ -136,20 +132,21 @@
       gap:12px;
     }
 
+    /* ✅ PRE-TLDR: remove neon glow on icon */
     .title-icon{
       width:44px;
       height:44px;
       object-fit:contain;
       display:block;
       transform: translateY(2px);
-      filter: drop-shadow(0 0 14px rgba(0,212,255,.18));
+      filter: none;
     }
 
     @media (max-width:560px){
       .title-icon{ width:36px; height:36px; }
     }
 
-    /* ✅ COREA only: red → blue gradient + neon glow */
+    /* ✅ COREA only: red → blue gradient (keep) + ✅ PRE-TLDR: remove glow */
     .title-main{
       display:block;
       font-size:clamp(26px,4.6vw,51px);
@@ -161,16 +158,14 @@
       background-clip:text;
       color: transparent;
 
-      text-shadow:
-        0 0 10px rgba(0,212,255,.35),
-        0 0 26px rgba(0,86,162,.24);
+      text-shadow: none;
     }
 
     @supports not (-webkit-background-clip:text){
       .title-main{
         color: var(--brandBlue);
         background:none;
-        text-shadow: var(--glow-md);
+        text-shadow: none;
       }
     }
 
@@ -182,20 +177,18 @@
       letter-spacing:-0.015em;
     }
 
-    /* ✅ Subtitle: only Co / Re / A in blue */
+    /* ✅ PRE-TLDR: remove neon-ish shadow, keep blue emphasis */
     .sub-accent{
       color: var(--brandBlue);
       font-weight: 900;
-      text-shadow:
-        0 0 10px rgba(0,86,162,.22),
-        0 0 16px rgba(0,212,255,.14);
+      text-shadow: none;
     }
 
-    /* Authors */
+    /* Authors — ✅ PRE-TLDR: no neon color/glow */
     .authors{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:18px}
     .authors sup{font-size:12px;color:var(--muted)}
-    .author{ color: var(--accent); font-weight:700; text-decoration:none; }
-    .author:hover{ text-decoration:none; filter: drop-shadow(0 0 10px rgba(0,212,255,.22)); }
+    .author{ color: var(--brandBlue); font-weight:700; text-decoration:none; }
+    .author:hover{ text-decoration:none; filter:none; }
     .affils{margin-top:8px;color:var(--muted)}
 
     .aff-icon{
@@ -212,12 +205,12 @@
       height:100%;
       display:block;
       object-fit:contain;
-      filter: drop-shadow(0 0 10px rgba(0,212,255,.14));
+      filter: none;
     }
 
     .sup-sep{ margin: 0 1px; }
 
-    /* ===== Project links (Paper/arXiv/Code) as neon blue pills ===== */
+    /* Project links — ✅ PRE-TLDR: solid buttons, no glow */
     .link-row{
       display:flex;
       flex-wrap:wrap;
@@ -234,29 +227,64 @@
       justify-content:center;
       padding:10px 16px;
       border-radius:999px;
-      background: linear-gradient(90deg, var(--brandBlue), var(--neonBlue2));
+      background: var(--brandBlue);
       color:#ffffff !important;
       font-weight:900;
       letter-spacing:-0.01em;
       text-decoration:none;
       border:1px solid rgba(0,0,0,0.06);
-      box-shadow: 0 12px 26px rgba(0,86,162,0.24), var(--glow-md);
-      text-shadow: 0 0 12px rgba(0,212,255,.22);
-      transition: transform 140ms ease, box-shadow 140ms ease, filter 140ms ease;
+      box-shadow: none;
+      text-shadow: none;
+      transition: transform 140ms ease, box-shadow 140ms ease, filter 140ms ease, background 140ms ease;
     }
     .projlink:hover{
       text-decoration:none;
       transform: translateY(-1px);
-      box-shadow: 0 16px 36px rgba(0,86,162,0.28), var(--glow-lg);
-      filter: brightness(1.05);
+      background: #004a8c;
+      box-shadow: none;
+      filter:none;
     }
     .projlink:active{ transform: translateY(0px) scale(0.99); }
     .projlink:focus-visible{
-      outline: 3px solid rgba(0,212,255,0.35);
+      outline: 3px solid rgba(255,255,255,0.38);
       outline-offset: 3px;
     }
 
-    /* Cards */
+    /* =========================
+       ✅ FROM TLDR AND BELOW: re-enable neon styling
+       ========================= */
+    .after-tldr{
+      position:relative;
+      z-index:0;
+    }
+    /* neon aura background only for TLDR+ */
+    .after-tldr::before{
+      content:"";
+      position:absolute;
+      left:-22px; right:-22px;
+      top:-26px; bottom:-40px;
+      background:
+        radial-gradient(900px 520px at 18% -10%, rgba(0,212,255,.10), rgba(255,255,255,0) 62%),
+        radial-gradient(900px 520px at 88% 0%, rgba(43,116,255,.10), rgba(255,255,255,0) 60%);
+      pointer-events:none;
+      z-index:0;
+    }
+    .after-tldr > *{ position:relative; z-index:1; }
+
+    /* neon links only after TLDR */
+    .after-tldr a{ color: var(--accent); }
+    .after-tldr a:hover{
+      text-decoration:none;
+      filter: drop-shadow(0 0 10px rgba(0,212,255,.28));
+    }
+
+    .after-tldr :focus-visible{
+      outline:3px solid rgba(0,212,255,.35);
+      outline-offset:3px;
+      border-radius:12px;
+    }
+
+    /* Cards (unchanged; these are used after TLDR) */
     .card{
       background:var(--card);
       border:1px solid rgba(0,86,162,.16);
@@ -570,175 +598,178 @@
           <a class="projlink" href="https://github.com/YOUR/REPO" target="_blank" rel="noopener">Code</a>
         </div>
       </header>
+    </div>
 
+    <!-- ✅ TLDR and below: neon comes back -->
+    <div class="after-tldr">
       <section class="section card tldr-card" id="tldr">
         <p class="tldr-text">
           <span class="tldr-label">TL;DR :</span>
           COREA is the first unified framework that jointly learns relightable 3D Gaussians and an SDF via coarse-to-fine 3D-to-3D supervision to improve geometry reconstruction and physically-based relighting.
         </p>
       </section>
-    </div>
 
-    <section id="video" class="section card">
-      <div class="thumb">
-        <video autoplay muted loop playsinline controls preload="metadata">
-          <source src="./assets/videos/Teaser.mp4#t=1" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </section>
-
-    <section class="section card abstract-card" id="abstract">
-      <h2>Abstract</h2>
-
-      <figure class="abstract-figure">
-        <div class="thumb thumb--fit">
-          <img src="./assets/Teaser.png" alt="Abstract figure" />
-        </div>
-      </figure>
-
-      <div class="abstract-text">
-        <p>We present the first unified framework that jointly learns relightable 3D Gaussians and a neural Signed Distance Field (SDF) through coarse-to-fine bidirectional 3D-to-3D supervision, enabling accurate geometry reconstruction and physically-based rendering (PBR). While recent 3D Gaussian Splatting (3DGS) works extend beyond novel-view synthesis (NVS) to mesh reconstruction and PBR, existing methods infer 3D properties indirectly from rendered 2D images, yielding coarse meshes and unreliable BRDF and lighting decomposition.</p>
-        <p>To address these limitations, our approach jointly optimizes SDF and 3DGS directly in 3D space. Depth-guided SDF Alignment uses Gaussian depth maps to anchor SDF rays and refine SDF normals via pixel-wise depth gradients. Normal-guided Gaussian Alignment projects Gaussians onto the SDF surface, supervises Gaussian normals with SDF normals, and applies normal-aware densification to capture fine-scale geometry. To prevent excessive Gaussian splitting during normal-aware densification, we introduce Dual-Density Control using both image and geometry gradient cues, improving memory.</p>
-        <p>The precisely aligned geometry supplies accurate normals to support differentiable PBR, enabling faithful BRDF–lighting decomposition. Experiments on standard benchmarks demonstrate superior performance in NVS, mesh reconstruction, and PBR. The code and project page will be publicly released.</p>
-      </div>
-    </section>
-
-    <section class="section card abstract-card" id="overview">
-      <h2>Overview of the COREA framework.</h2>
-
-      <figure class="abstract-figure">
-        <div class="thumb thumb--fit">
-          <img src="./assets/framework.png" alt="Overview of the COREA framework" />
-        </div>
-      </figure>
-
-      <div class="abstract-text">
-        <p>Our method jointly trains relightable 3D Gaussians and a SDF via coarse-to-fine bidirectional 3D-to-3D supervision.
-        The first stage, Bidirectional 3D-to-3D Supervision, consists of two complementary steps:
-        (i) DSA aligns the SDF to the 3DGS by leveraging depth rendered from Gaussians and matching SDF normals to pixel-wise depth gradients of 3DGS;
-        (ii) NGA aligns 3DGS to the SDF by matching Gaussian depth to the SDF depth and supervising Gaussian normals with SDF normals.
-        To prevent excessive Gaussian splitting during NGA, the DDC module suppresses unnecessary densification for efficient geometry refinement.
-        In the second stage, Inverse PBR is performed using the refined geometry to decompose BRDF and lighting and enable relighting under novel illumination conditions.</p>
-      </div>
-    </section>
-
-    <div id="quantitative" class="subcard">
-      <h3 style="margin:0 0 10px;font-size:18px;">Quantitative comparison</h3>
-      <div class="thumb thumb--fit no-zoom">
-        <img src="./assets/Quantitative_comparison.png" alt="Quantitative table" />
-      </div>
-      <div class="embed-actions">
-        <p class="blurb">
-          We evaluate novel-view synthesis (NVS), mesh reconstruction, and physically-based rendering (PBR) using the DTU and Tanks&Temples datasets.
-          N/S denotes methods that do not support the corresponding task, and OOM indicates evaluation failures caused by memory limitations.
-          The best, second-best, and third-best results are highlighted in red, yellow, and purple, respectively.
-        </p>
-      </div>
-    </div>
-
-    <div id="qualitative" class="subcard">
-      <h3 style="margin:0 0 10px;font-size:18px;">Qualitative comparison</h3>
-
-      <div class="media-stack">
-        <div class="media">
-          <div class="thumb thumb--fit">
-            <img src="./assets/Qualitative_NVS.png" alt="Qualitative results (NVS)" />
-          </div>
-          <p class="blurb">
-            We compare COREA with recent Gaussian-based methods on three tasks: NVS, PBR, and Mesh Reconstruction. All results are rendered on a white background for consistent visual comparison.
-            Artifacts such as black background patches or dark speckles observed in some baselines stem from excessive Gaussian opacity; by contrast, COREA produces clean, artifact-free renderings on white backgrounds.
-            Our method also provides results for all three tasks, whereas others show N/S (Not Supported) or OOM (Out of Memory) in several cases.
-            Overall, COREA yields sharper novel views, more faithful BRDF and lighting decomposition, and finer geometric details through coarse-to-fine bidirectional 3D-to-3D supervision.
-          </p>
-        </div>
-
-        <div class="media">
-          <div class="thumb thumb--fit">
-            <img src="./assets/Qualitative_PBR.png" alt="Qualitative results (PBR)" />
-          </div>
-          <p class="blurb">
-            We compare COREA with recent relightable Gaussian-based methods under varying illumination conditions.
-            The first row shows PBR renderings under the original lighting setup, while the remaining rows illustrate relighting results under directional lights and various HDR environment maps.
-            Compared to previous methods that exhibit black background artifacts or unstable reflectance under varying illumination,
-            COREA maintains consistent shading, clean appearance, and accurate reflectance reconstruction across all lighting conditions, demonstrating robust BRDF and geometry alignment.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <section class="section card" id="additional">
-      <h2>Additional Results</h2>
-      <p class="figure-cap">
-        Demos for Novel-view Synthesis, Mesh Reconstruction, and Physically-based Rendering.
-        (Click a thumbnail to switch)
-      </p>
-
-      <div class="video-switcher" data-video-switcher>
-        <div class="video-switcher-head">
-          <div class="current-pill" aria-live="polite">
-            <span data-current-label>Novel-view Synthesis Comparison</span>
-          </div>
-        </div>
-
-        <div class="thumb" style="aspect-ratio:16/9;">
-          <video id="additionalPlayer" autoplay muted loop playsinline controls preload="metadata">
-            <source id="additionalSource" src="./assets/videos/NVS.mp4#t=1" type="video/mp4" />
+      <section id="video" class="section card">
+        <div class="thumb">
+          <video autoplay muted loop playsinline controls preload="metadata">
+            <source src="./assets/videos/Teaser.mp4#t=1" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
+      </section>
 
-        <div class="video-thumbs" aria-label="Additional results selector">
-          <button class="video-thumb is-active" type="button"
-                  aria-label="Play Novel-view Synthesis Comparison"
-                  data-video-src="./assets/videos/NVS.mp4#t=1"
-                  data-video-label="Novel-view Synthesis Comparison">
-            <div class="video-thumb-media" aria-hidden="true">
-              <video class="video-thumb-preview" muted playsinline preload="auto">
-                <source src="./assets/videos/NVS.mp4" type="video/mp4" />
-              </video>
-            </div>
-            <div class="video-thumb-badge">NVS</div>
-          </button>
+      <section class="section card abstract-card" id="abstract">
+        <h2>Abstract</h2>
 
-          <button class="video-thumb" type="button"
-                  aria-label="Play Mesh Reconstruction Comparison"
-                  data-video-src="./assets/videos/Mesh.mp4#t=1"
-                  data-video-label="Mesh Reconstruction Comparison">
-            <div class="video-thumb-media" aria-hidden="true">
-              <video class="video-thumb-preview" muted playsinline preload="auto">
-                <source src="./assets/videos/Mesh.mp4" type="video/mp4" />
-              </video>
-            </div>
-            <div class="video-thumb-badge">Mesh</div>
-          </button>
+        <figure class="abstract-figure">
+          <div class="thumb thumb--fit">
+            <img src="./assets/Teaser.png" alt="Abstract figure" />
+          </div>
+        </figure>
 
-          <button class="video-thumb" type="button"
-                  aria-label="Play Physically-based Rendering Comparison"
-                  data-video-src="./assets/videos/PBR.mp4#t=1"
-                  data-video-label="Physically-based Rendering Comparison">
-            <div class="video-thumb-media" aria-hidden="true">
-              <video class="video-thumb-preview" muted playsinline preload="auto">
-                <source src="./assets/videos/PBR.mp4" type="video/mp4" />
-              </video>
-            </div>
-            <div class="video-thumb-badge">PBR</div>
-          </button>
+        <div class="abstract-text">
+          <p>We present the first unified framework that jointly learns relightable 3D Gaussians and a neural Signed Distance Field (SDF) through coarse-to-fine bidirectional 3D-to-3D supervision, enabling accurate geometry reconstruction and physically-based rendering (PBR). While recent 3D Gaussian Splatting (3DGS) works extend beyond novel-view synthesis (NVS) to mesh reconstruction and PBR, existing methods infer 3D properties indirectly from rendered 2D images, yielding coarse meshes and unreliable BRDF and lighting decomposition.</p>
+          <p>To address these limitations, our approach jointly optimizes SDF and 3DGS directly in 3D space. Depth-guided SDF Alignment uses Gaussian depth maps to anchor SDF rays and refine SDF normals via pixel-wise depth gradients. Normal-guided Gaussian Alignment projects Gaussians onto the SDF surface, supervises Gaussian normals with SDF normals, and applies normal-aware densification to capture fine-scale geometry. To prevent excessive Gaussian splitting during normal-aware densification, we introduce Dual-Density Control using both image and geometry gradient cues, improving memory.</p>
+          <p>The precisely aligned geometry supplies accurate normals to support differentiable PBR, enabling faithful BRDF–lighting decomposition. Experiments on standard benchmarks demonstrate superior performance in NVS, mesh reconstruction, and PBR. The code and project page will be publicly released.</p>
+        </div>
+      </section>
+
+      <section class="section card abstract-card" id="overview">
+        <h2>Overview of the COREA framework.</h2>
+
+        <figure class="abstract-figure">
+          <div class="thumb thumb--fit">
+            <img src="./assets/framework.png" alt="Overview of the COREA framework" />
+          </div>
+        </figure>
+
+        <div class="abstract-text">
+          <p>Our method jointly trains relightable 3D Gaussians and a SDF via coarse-to-fine bidirectional 3D-to-3D supervision.
+          The first stage, Bidirectional 3D-to-3D Supervision, consists of two complementary steps:
+          (i) DSA aligns the SDF to the 3DGS by leveraging depth rendered from Gaussians and matching SDF normals to pixel-wise depth gradients of 3DGS;
+          (ii) NGA aligns 3DGS to the SDF by matching Gaussian depth to the SDF depth and supervising Gaussian normals with SDF normals.
+          To prevent excessive Gaussian splitting during NGA, the DDC module suppresses unnecessary densification for efficient geometry refinement.
+          In the second stage, Inverse PBR is performed using the refined geometry to decompose BRDF and lighting and enable relighting under novel illumination conditions.</p>
+        </div>
+      </section>
+
+      <div id="quantitative" class="subcard">
+        <h3 style="margin:0 0 10px;font-size:18px;">Quantitative comparison</h3>
+        <div class="thumb thumb--fit no-zoom">
+          <img src="./assets/Quantitative_comparison.png" alt="Quantitative table" />
+        </div>
+        <div class="embed-actions">
+          <p class="blurb">
+            We evaluate novel-view synthesis (NVS), mesh reconstruction, and physically-based rendering (PBR) using the DTU and Tanks&Temples datasets.
+            N/S denotes methods that do not support the corresponding task, and OOM indicates evaluation failures caused by memory limitations.
+            The best, second-best, and third-best results are highlighted in red, yellow, and purple, respectively.
+          </p>
         </div>
       </div>
-    </section>
 
-    <section id="bibtex" class="section card">
-      <h2>BibTeX</h2>
-      <pre><code>@inproceedings{corea2025arXiv,
+      <div id="qualitative" class="subcard">
+        <h3 style="margin:0 0 10px;font-size:18px;">Qualitative comparison</h3>
+
+        <div class="media-stack">
+          <div class="media">
+            <div class="thumb thumb--fit">
+              <img src="./assets/Qualitative_NVS.png" alt="Qualitative results (NVS)" />
+            </div>
+            <p class="blurb">
+              We compare COREA with recent Gaussian-based methods on three tasks: NVS, PBR, and Mesh Reconstruction. All results are rendered on a white background for consistent visual comparison.
+              Artifacts such as black background patches or dark speckles observed in some baselines stem from excessive Gaussian opacity; by contrast, COREA produces clean, artifact-free renderings on white backgrounds.
+              Our method also provides results for all three tasks, whereas others show N/S (Not Supported) or OOM (Out of Memory) in several cases.
+              Overall, COREA yields sharper novel views, more faithful BRDF and lighting decomposition, and finer geometric details through coarse-to-fine bidirectional 3D-to-3D supervision.
+            </p>
+          </div>
+
+          <div class="media">
+            <div class="thumb thumb--fit">
+              <img src="./assets/Qualitative_PBR.png" alt="Qualitative results (PBR)" />
+            </div>
+            <p class="blurb">
+              We compare COREA with recent relightable Gaussian-based methods under varying illumination conditions.
+              The first row shows PBR renderings under the original lighting setup, while the remaining rows illustrate relighting results under directional lights and various HDR environment maps.
+              Compared to previous methods that exhibit black background artifacts or unstable reflectance under varying illumination,
+              COREA maintains consistent shading, clean appearance, and accurate reflectance reconstruction across all lighting conditions, demonstrating robust BRDF and geometry alignment.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <section class="section card" id="additional">
+        <h2>Additional Results</h2>
+        <p class="figure-cap">
+          Demos for Novel-view Synthesis, Mesh Reconstruction, and Physically-based Rendering.
+          (Click a thumbnail to switch)
+        </p>
+
+        <div class="video-switcher" data-video-switcher>
+          <div class="video-switcher-head">
+            <div class="current-pill" aria-live="polite">
+              <span data-current-label>Novel-view Synthesis Comparison</span>
+            </div>
+          </div>
+
+          <div class="thumb" style="aspect-ratio:16/9;">
+            <video id="additionalPlayer" autoplay muted loop playsinline controls preload="metadata">
+              <source id="additionalSource" src="./assets/videos/NVS.mp4#t=1" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <div class="video-thumbs" aria-label="Additional results selector">
+            <button class="video-thumb is-active" type="button"
+                    aria-label="Play Novel-view Synthesis Comparison"
+                    data-video-src="./assets/videos/NVS.mp4#t=1"
+                    data-video-label="Novel-view Synthesis Comparison">
+              <div class="video-thumb-media" aria-hidden="true">
+                <video class="video-thumb-preview" muted playsinline preload="auto">
+                  <source src="./assets/videos/NVS.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="video-thumb-badge">NVS</div>
+            </button>
+
+            <button class="video-thumb" type="button"
+                    aria-label="Play Mesh Reconstruction Comparison"
+                    data-video-src="./assets/videos/Mesh.mp4#t=1"
+                    data-video-label="Mesh Reconstruction Comparison">
+              <div class="video-thumb-media" aria-hidden="true">
+                <video class="video-thumb-preview" muted playsinline preload="auto">
+                  <source src="./assets/videos/Mesh.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="video-thumb-badge">Mesh</div>
+            </button>
+
+            <button class="video-thumb" type="button"
+                    aria-label="Play Physically-based Rendering Comparison"
+                    data-video-src="./assets/videos/PBR.mp4#t=1"
+                    data-video-label="Physically-based Rendering Comparison">
+              <div class="video-thumb-media" aria-hidden="true">
+                <video class="video-thumb-preview" muted playsinline preload="auto">
+                  <source src="./assets/videos/PBR.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="video-thumb-badge">PBR</div>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="bibtex" class="section card">
+        <h2>BibTeX</h2>
+        <pre><code>@inproceedings{corea2025arXiv,
   title     = {COREA: Coarse-to-Fine 3D Representation Alignment Between Relightable 3D Gaussians and SDF via Bidirectional 3D-to-3D Supervision},
   author    = {Jaeyoon Lee and Hojoon Jung and Sungtae Hwang and Jihyong Oh and Jongwon Choi},
   booktitle = {arXiv},
   year      = {2025}
 }</code></pre>
-    </section>
+      </section>
 
-    <p class="footer">© 2025 Your Name(s). Hosted on GitHub Pages.</p>
+      <p class="footer">© 2025 Your Name(s). Hosted on GitHub Pages.</p>
+    </div>
   </div>
 
   <script>
