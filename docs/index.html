@@ -12,6 +12,7 @@
   <style>
     /* =========================
        NEON / DARK THEME (GLOBAL)
+       + FIXED BACKGROUND (NO SEAMS)
        ========================= */
     :root{
       --bg0:#05060a;
@@ -45,18 +46,30 @@
     *{ box-sizing:border-box }
     html, body{ height:100%; }
 
+    /* body에는 배경을 두지 않고, fixed 레이어로 깔아서 스크롤 seam 제거 */
     body{
       margin:0;
       color:var(--text);
       font:16px/1.65 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background: transparent;
+      text-shadow: var(--glow-soft);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
       background:
         radial-gradient(1000px 580px at 10% 10%, rgba(57,183,255,0.17), transparent 58%),
         radial-gradient(960px 560px at 90% 16%, rgba(255,79,216,0.14), transparent 60%),
         radial-gradient(860px 520px at 52% 92%, rgba(69,255,176,0.10), transparent 58%),
         linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 42%, var(--bg2) 100%);
-      text-shadow: var(--glow-soft);
-      -webkit-font-smoothing: antialiased;
-      text-rendering: geometricPrecision;
+      transform: translateZ(0);
     }
 
     a{ color:var(--accent); text-decoration:none; }
@@ -85,6 +98,7 @@
       align-items:center;
       justify-content:center;
     }
+
     .topbar-logos{
       display:flex;
       align-items:center;
@@ -158,14 +172,30 @@
     @media (max-width:560px){
       .title-icon{ width:36px; height:36px; }
     }
+
+    /* ✅ COREA gradient text */
     .title-main{
       display:block;
       font-size:clamp(26px,4.6vw,51px);
       font-weight:900;
-      color: var(--neon-blue);
-      text-shadow: var(--glow-blue), var(--glow-pink);
       letter-spacing:-0.02em;
+
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink), var(--neon-green));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+
+      text-shadow: var(--glow-blue), var(--glow-pink);
     }
+    @supports not ((-webkit-background-clip: text) or (background-clip: text)){
+      .title-main{
+        color: var(--neon-blue);
+        -webkit-text-fill-color: initial;
+        background: none;
+      }
+    }
+
     .title-sub{
       display:block;
       margin-top:6px;
@@ -411,6 +441,9 @@
       text-shadow: 0 0 16px rgba(57,183,255,0.08);
     }
 
+    /* Subcards */
+    .subcard{ background:#ffffff12; } /* keep subtle, still neon */
+
     /* Qualitative stack */
     .media-stack{ display:flex; flex-direction:column; gap:16px; }
     .media{ display:flex; flex-direction:column; gap:8px; }
@@ -521,7 +554,6 @@
       50%{ filter: brightness(1.06); }
     }
     .title-main{ animation: neonPulse 3.2s ease-in-out infinite; }
-
   </style>
 </head>
 
