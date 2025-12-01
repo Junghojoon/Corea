@@ -102,16 +102,18 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      width: 12px;
-      height: 12px;
-      vertical-align: -1px;
-      margin-left: 2px;
+      width: 16px;     /* ← 여기 */
+      height: 16px;    /* ← 여기 */
+      margin-left: 4px;
+      vertical-align: -2px;
     }
-  .aff-icon img{
-    width: 100%;
-    height: 100%;
-    display:block;
-  }
+    .aff-icon img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:contain;
+    }
+
   .sup-sep{ margin: 0 1px; }
 
     /* Project links */
