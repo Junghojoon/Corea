@@ -315,17 +315,13 @@
       position:relative;
       z-index:0;
     }
+
+    /* 🔥 이 부분을 통째로 없애거나 이렇게 바꿔주세요 */
     .after-tldr::before{
-      content:"";
-      position:absolute;
-      left:-22px; right:-22px;
-      top:-26px; bottom:-40px;
-      background:
-        radial-gradient(900px 520px at 18% -10%, rgba(0,212,255,.10), rgba(255,255,255,0) 62%),
-        radial-gradient(900px 520px at 88% 0%, rgba(43,116,255,.10), rgba(255,255,255,0) 60%);
-      pointer-events:none;
-      z-index:0;
+      content:none;          /* 그라디언트 박스 제거 */
+      /* 나머지 속성들은 지워도 됩니다 */
     }
+
     .after-tldr > *{ position:relative; z-index:1; }
 
     .after-tldr a{ color: var(--accent); }
@@ -336,6 +332,7 @@
       outline-offset:3px;
       border-radius:12px;
     }
+
 
     /* Cards */
     .card{
