@@ -145,12 +145,6 @@
       filter: drop-shadow(0 0 14px rgba(0,212,255,.18));
     }
 
-    .title-text{
-      display:flex;
-      flex-direction:column;
-      align-items:flex-start;
-    }
-
     @media (max-width:560px){
       .title-icon{ width:36px; height:36px; }
     }
@@ -186,6 +180,15 @@
       font-size:clamp(18px,2.9vw,29px);
       font-weight:800;
       letter-spacing:-0.015em;
+    }
+
+    /* ✅ Subtitle: only Co / Re / A in blue */
+    .sub-accent{
+      color: var(--brandBlue);
+      font-weight: 900;
+      text-shadow:
+        0 0 10px rgba(0,86,162,.22),
+        0 0 16px rgba(0,212,255,.14);
     }
 
     /* Authors */
@@ -503,8 +506,12 @@
             <img class="title-icon" src="./assets/icons/Taegeuk.png" alt="COREA icon" />
             <span class="title-main">COREA:</span>
           </span>
+
+          <!-- ✅ Only Co / Re / A in blue -->
           <span class="title-sub">
-            Coarse-to-Fine 3D Representation Alignment Between Relightable 3D Gaussians and SDF via Bidirectional 3D-to-3D Supervision
+            <span class="sub-accent">Co</span>arse-to-Fine 3D
+            <span class="sub-accent">Re</span>presentation
+            <span class="sub-accent">A</span>lignment Between Relightable 3D Gaussians and SDF via Bidirectional 3D-to-3D Supervision
           </span>
         </h1>
 
