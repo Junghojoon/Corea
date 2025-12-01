@@ -112,18 +112,43 @@
 
     .sup-sep{ margin: 0 1px; }
 
-    /* Project links */
+    /* ===== Project links (Paper/arXiv/Code) as blue pills ===== */
     .link-row{
       display:flex;
       flex-wrap:wrap;
-      gap:14px;
+      gap:12px;
       align-items:center;
-      margin-top:10px;
-      font-size:15px;
       justify-content:center;
+      margin-top:14px;
+      font-size:15px;
     }
-    .projlink{ color:var(--accent); font-weight:800; text-decoration:none; }
-    .projlink:hover{ text-decoration:underline; }
+
+    .projlink{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 16px;
+      border-radius:999px;
+      background:#0056A2;            /* Pantone 2945C */
+      color:#ffffff !important;
+      font-weight:900;
+      letter-spacing:-0.01em;
+      text-decoration:none;
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow:0 10px 22px rgba(0,86,162,0.22);
+      transition: transform 140ms ease, box-shadow 140ms ease, filter 140ms ease;
+    }
+    .projlink:hover{
+      text-decoration:none;
+      transform: translateY(-1px);
+      box-shadow:0 14px 28px rgba(0,86,162,0.30);
+      filter: brightness(1.04);
+    }
+    .projlink:active{ transform: translateY(0px) scale(0.99); }
+    .projlink:focus-visible{
+      outline: 3px solid rgba(0,86,162,0.30);
+      outline-offset: 3px;
+    }
 
     /* Cards */
     .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;padding:20px}
@@ -186,20 +211,21 @@
       backface-visibility: hidden;
     }
 
-    /* ===== 95% centered images (only for .thumb--fit images) ===== */
+    /* ===== 95% + centered (only for .thumb--fit images) ===== */
     .thumb.thumb--fit{
       display:flex;
       justify-content:center;
       align-items:center;
     }
-    
-    /* ✅ 95% + center (robust) */
     .thumb.thumb--fit img{
-      width:100%;
+      width:95%;
       height:auto;
       display:block;
-      margin:0 auto;   /* 핵심: 딱 가운데로 */
+      margin:0 auto;
     }
+
+    /* (선택) framework.png가 계속 왼쪽으로 치우쳐 보이면 아래를 켜세요. */
+    /* img[src$="framework.png"]{ transform: translateX(1.05%); } */
 
     /* Abstract-like blocks */
     .abstract-card{padding:22px}
@@ -346,7 +372,7 @@
             </sup>
           </a>
           <a class="author" href="https://sites.google.com/vilab.cau.ac.kr/hst/" target="_blank" rel="noopener">
-            Sungtae Hwang<sup><span class="sup-sep"></span>
+            Sungtae Hwang<sup>
               <span class="aff-icon" title="Chung-Ang University" aria-label="Chung-Ang University">
                 <img src="./assets/icons/puang.png" alt="" />
               </span>
@@ -379,18 +405,18 @@
 
         <div class="affils"><span><sup>*</sup>Equal Contribution, <sup>†</sup>Co-Corresponding Authors</span></div>
 
+        <!-- ✅ Blue pill buttons -->
         <div class="link-row" aria-label="Project links">
           <a class="projlink" href="./assets/paper.pdf" target="_blank" rel="noopener">Paper</a>
-          <span style="color:#c1c7d4;user-select:none;">•</span>
           <a class="projlink" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" rel="noopener">arXiv</a>
-          <span style="color:#c1c7d4;user-select:none;">•</span>
           <a class="projlink" href="https://github.com/YOUR/REPO" target="_blank" rel="noopener">Code</a>
         </div>
       </header>
 
       <section class="section card tldr-card" id="tldr">
         <p class="tldr-text">
-          <span class="tldr-label">TL;DR :</span> COREA is the first unified framework that jointly learns relightable 3D Gaussians and an SDF via coarse-to-fine 3D-to-3D supervision to improve geometry reconstruction and physically-based relighting.
+          <span class="tldr-label">TL;DR :</span>
+          COREA is the first unified framework that jointly learns relightable 3D Gaussians and an SDF via coarse-to-fine 3D-to-3D supervision to improve geometry reconstruction and physically-based relighting.
         </p>
       </section>
     </div>
@@ -415,7 +441,7 @@
 
       <div class="abstract-text">
         <p>We present the first unified framework that jointly learns relightable 3D Gaussians and a neural Signed Distance Field (SDF) through coarse-to-fine bidirectional 3D-to-3D supervision, enabling accurate geometry reconstruction and physically-based rendering (PBR). While recent 3D Gaussian Splatting (3DGS) works extend beyond novel-view synthesis (NVS) to mesh reconstruction and PBR, existing methods infer 3D properties indirectly from rendered 2D images, yielding coarse meshes and unreliable BRDF and lighting decomposition.</p>
-        <p>To address these limitations, our approach jointly optimizes SDF and 3DGS directly in 3D space. Depth-guided SDF Alignment uses Gaussian depth maps to anchor SDF rays and refine SDF normals via pixel-wise depth gradients. Normal-guided Gaussian Alignment projects Gaussians onto the SDF surface, supervises Gaussian normals with SDF normals, and applies normal-aware densification to capture fine-scale geometry. To prevent excessive Gaussian splitting during normal-aware densification, we introduce Dual-Density Control using both image and geometry gradient cues, improving memory efficiency.</p>
+        <p>To address these limitations, our approach jointly optimizes SDF and 3DGS directly in 3D space. Depth-guided SDF Alignment uses Gaussian depth maps to anchor SDF rays and refine SDF normals via pixel-wise depth gradients. Normal-guided Gaussian Alignment projects Gaussians onto the SDF surface, supervises Gaussian normals with SDF normals, and applies normal-aware densification to capture fine-scale geometry. To prevent excessive Gaussian splitting during normal-aware densification, we introduce Dual-Density Control using both image and geometry gradient cues, improving memory效率.</p>
         <p>The precisely aligned geometry supplies accurate normals to support differentiable PBR, enabling faithful BRDF–lighting decomposition. Experiments on standard benchmarks demonstrate superior performance in NVS, mesh reconstruction, and PBR. The code and project page will be publicly released.</p>
       </div>
     </section>
@@ -483,7 +509,7 @@
       </div>
     </div>
 
-    <!-- ✅ Additional Results: 1개 플레이어 + 썸네일은 "1초 프레임 정지" 프리뷰 -->
+    <!-- ✅ Additional Results -->
     <section class="section card" id="additional">
       <h2>Additional Results</h2>
       <p class="figure-cap">
@@ -508,7 +534,8 @@
         <div class="video-thumbs" aria-label="Additional results selector">
           <button class="video-thumb is-active" type="button"
                   aria-label="Play Novel-view Synthesis Comparison"
-                  data-video-src="./assets/videos/NVS.mp4#t=1" data-video-label="Novel-view Synthesis Comparison">
+                  data-video-src="./assets/videos/NVS.mp4#t=1"
+                  data-video-label="Novel-view Synthesis Comparison">
             <div class="video-thumb-media" aria-hidden="true">
               <video class="video-thumb-preview" muted playsinline preload="auto">
                 <source src="./assets/videos/NVS.mp4" type="video/mp4" />
@@ -519,7 +546,8 @@
 
           <button class="video-thumb" type="button"
                   aria-label="Play Mesh Reconstruction Comparison"
-                  data-video-src="./assets/videos/Mesh.mp4#t=1" data-video-label="Mesh Reconstruction Comparison">
+                  data-video-src="./assets/videos/Mesh.mp4#t=1"
+                  data-video-label="Mesh Reconstruction Comparison">
             <div class="video-thumb-media" aria-hidden="true">
               <video class="video-thumb-preview" muted playsinline preload="auto">
                 <source src="./assets/videos/Mesh.mp4" type="video/mp4" />
@@ -530,7 +558,8 @@
 
           <button class="video-thumb" type="button"
                   aria-label="Play Physically-based Rendering Comparison"
-                  data-video-src="./assets/videos/PBR.mp4#t=1" data-video-label="Physically-based Rendering Comparison">
+                  data-video-src="./assets/videos/PBR.mp4#t=1"
+                  data-video-label="Physically-Based Rendering Comparison">
             <div class="video-thumb-media" aria-hidden="true">
               <video class="video-thumb-preview" muted playsinline preload="auto">
                 <source src="./assets/videos/PBR.mp4" type="video/mp4" />
@@ -693,7 +722,6 @@
           try { v.pause(); } catch(e) {}
         });
 
-        // 혹시 자동재생 되는 환경 방지
         v.addEventListener('play', () => {
           try { v.pause(); } catch(e) {}
         });
