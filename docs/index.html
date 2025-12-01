@@ -186,6 +186,18 @@
       backface-visibility: hidden;
     }
 
+    /* ===== 95% centered images (only for .thumb--fit images) ===== */
+    .thumb.thumb--fit{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    
+    .thumb.thumb--fit img{
+      width:95%;
+      height:auto;
+    }
+
     /* Abstract-like blocks */
     .abstract-card{padding:22px}
     .abstract-figure{margin:0 0 14px}
