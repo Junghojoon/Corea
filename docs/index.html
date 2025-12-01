@@ -86,20 +86,23 @@
     /* Title with icon */
     .title{
       margin:0 0 10px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:14px;
       line-height:1.12;
       letter-spacing:-0.02em;
+      text-align:center;          /* 전체 제목 중앙정렬 */
+    }
+    
+    .title-row{
+      display:inline-flex;        /* 아이콘+COREA를 한 덩어리로 */
+      align-items:baseline;       /* 글자 베이스라인에 맞춤 */
+      gap:12px;
     }
     
     .title-icon{
-      width:56px;            /* 아이콘 크기 */
-      height:56px;
-      flex:0 0 auto;
-      display:block;
+      width:44px;
+      height:44px;
       object-fit:contain;
+      display:block;
+      transform: translateY(2px); /* (선택) 베이스라인 미세 보정 */
     }
     
     .title-text{
@@ -110,8 +113,7 @@
     
     /* 모바일에서 아이콘 조금 줄이기 */
     @media (max-width:560px){
-      .title{ gap:10px; }
-      .title-icon{ width:44px; height:44px; }
+      .title-icon{ width:36px; height:36px; }
     }
     .title-main{display:block; font-size:clamp(26px,4.6vw,51px); font-weight:900; color:#0056A2;}
     .title-sub{display:block; margin-top:6px; font-size:clamp(18px,2.9vw,29px); font-weight:800; letter-spacing:-0.015em;}
@@ -381,10 +383,12 @@
     <div class="prevideo">
       <header class="hero">
         <h1 class="title">
-          <img class="title-icon" src="./assets/icons/Taegeuk.png" alt="COREA icon" />
-          <span class="title-text">
+          <span class="title-row">
+            <img class="title-icon" src="./assets/icons/corea_icon.png" alt="COREA icon" />
             <span class="title-main">COREA:</span>
-            <span class="title-sub">Coarse-to-Fine 3D Representation Alignment Between Relightable 3D Gaussians and SDF via Bidirectional 3D-to-3D Supervision</span>
+          </span>
+          <span class="title-sub">
+            Coarse-to-Fine 3D Representation Alignment Between Relightable 3D Gaussians and SDF via Bidirectional 3D-to-3D Supervision
           </span>
         </h1>
 
