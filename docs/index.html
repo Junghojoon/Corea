@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>COREA: Coarse-to-Fine 3D Representation Alignment Between Relightable 3D Gaussians and SDF via Bidirectional 3D-to-3D Supervision</title>
   <meta name="description" content="Project page template for a computer vision paper." />
+
+  <!-- ✅ TAB ICON (favicon) using Taegeuk.png -->
+  <link rel="icon" type="image/png" href="./assets/icons/Taegeuk.png" />
+  <!-- Optional (nice for iOS home screen / pinned) -->
+  <link rel="apple-touch-icon" href="./assets/icons/Taegeuk.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -176,24 +182,11 @@
     }
 
     @keyframes coreaBidirectionalText {
-      0% {
-        background-position: 0% 50%;
-        filter: brightness(0.8);
-      }
-      40% {
-        filter: brightness(1.0);
-      }
-      50% {
-        background-position: 100% 50%;
-        filter: brightness(1.15);
-      }
-      60% {
-        filter: brightness(1.0);
-      }
-      100% {
-        background-position: 0% 50%;
-        filter: brightness(0.8);
-      }
+      0% { background-position: 0% 50%; filter: brightness(0.8); }
+      40% { filter: brightness(1.0); }
+      50% { background-position: 100% 50%; filter: brightness(1.15); }
+      60% { filter: brightness(1.0); }
+      100% { background-position: 0% 50%; filter: brightness(0.8); }
     }
 
     /* Underline Reverse Direction Flow */
@@ -225,12 +218,7 @@
     }
 
     @supports not (-webkit-background-clip:text){
-      .title-main{
-        color: var(--brandBlue);
-        background:none;
-        filter:none;
-        animation:none;
-      }
+      .title-main{ color: var(--brandBlue); background:none; filter:none; animation:none; }
       .title-main::before{ display:none; }
     }
 
@@ -248,14 +236,13 @@
       letter-spacing:-0.015em;
     }
 
-    /* ✅ PRE-TLDR: remove neon-ish shadow, keep blue emphasis */
     .sub-accent{
       color: var(--brandBlue);
       font-weight: 900;
       text-shadow: none;
     }
 
-    /* Authors — ✅ PRE-TLDR: no neon color/glow */
+    /* Authors */
     .authors{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:18px}
     .authors sup{font-size:12px;color:var(--muted)}
     .author{ color: var(--brandBlue); font-weight:700; text-decoration:none; }
@@ -281,7 +268,7 @@
 
     .sup-sep{ margin: 0 1px; }
 
-    /* Project links — ✅ PRE-TLDR: solid buttons, no glow */
+    /* Project links */
     .link-row{
       display:flex;
       flex-wrap:wrap;
@@ -328,7 +315,6 @@
       position:relative;
       z-index:0;
     }
-    /* neon aura background only for TLDR+ */
     .after-tldr::before{
       content:"";
       position:absolute;
@@ -342,12 +328,8 @@
     }
     .after-tldr > *{ position:relative; z-index:1; }
 
-    /* neon links only after TLDR */
     .after-tldr a{ color: var(--accent); }
-    .after-tldr a:hover{
-      text-decoration:none;
-      filter: drop-shadow(0 0 10px rgba(0,212,255,.28));
-    }
+    .after-tldr a:hover{ text-decoration:none; filter: drop-shadow(0 0 10px rgba(0,212,255,.28)); }
 
     .after-tldr :focus-visible{
       outline:3px solid rgba(0,212,255,.35);
@@ -355,7 +337,7 @@
       border-radius:12px;
     }
 
-    /* Cards (unchanged; these are used after TLDR) */
+    /* Cards */
     .card{
       background:var(--card);
       border:1px solid rgba(0,86,162,.16);
@@ -385,7 +367,6 @@
       /* ✅ BibTeX inner box: remove neon */
       box-shadow: none;
     }
-    /* ✅ also keep pre from glowing during parent hover */
     .card:hover pre{ box-shadow:none; }
 
     code{font-family:"Roboto Mono",ui-monospace,Menlo,Consolas,monospace}
@@ -517,17 +498,14 @@
 
     /* ✅ FIX: Additional Results pill = Pantone 2945C solid + no neon */
     #additional .current-pill{
-      background: var(--brandBlue);              /* solid #0056A2 */
+      background: var(--brandBlue);
       color:#ffffff;
-      border: 1px solid rgba(255,255,255,0.22); /* subtle edge on blue */
-      box-shadow: none;                         /* remove glow */
+      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow: none;
       text-shadow: none;
       filter:none;
     }
-    #additional .current-pill span{
-      text-shadow:none;
-      filter:none;
-    }
+    #additional .current-pill span{ text-shadow:none; filter:none; }
 
     .video-thumbs{
       display:flex;
@@ -689,7 +667,6 @@
       </header>
     </div>
 
-    <!-- ✅ TLDR and below: neon comes back -->
     <div class="after-tldr">
       <section class="section card tldr-card" id="tldr">
         <p class="tldr-text">
@@ -718,7 +695,7 @@
 
         <div class="abstract-text">
           <p>We present the first unified framework that jointly learns relightable 3D Gaussians and a neural Signed Distance Field (SDF) through coarse-to-fine bidirectional 3D-to-3D supervision, enabling accurate geometry reconstruction and physically-based rendering (PBR). While recent 3D Gaussian Splatting (3DGS) works extend beyond novel-view synthesis (NVS) to mesh reconstruction and PBR, existing methods infer 3D properties indirectly from rendered 2D images, yielding coarse meshes and unreliable BRDF and lighting decomposition.</p>
-          <p>To address these limitations, our approach jointly optimizes SDF and 3DGS directly in 3D space. Depth-guided SDF Alignment uses Gaussian depth maps to anchor SDF rays and refine SDF normals via pixel-wise depth gradients. Normal-guided Gaussian Alignment projects Gaussians onto the SDF surface, supervises Gaussian normals with SDF normals, and applies normal-aware densification to capture fine-scale geometry. To prevent excessive Gaussian splitting during normal-aware densification, we introduce Dual-Density Control using both image and geometry gradient cues, improving memory.</p>
+          <p>To address these limitations, our approach jointly optimizes SDF and 3DGS directly in 3D space. Depth-guided SDF Alignment (DSA) uses Gaussian depth maps to anchor SDF rays and refine SDF normals via pixel-wise depth gradients. Normal-guided Gaussian Alignment (NGA) projects Gaussians onto the SDF surface, supervises Gaussian normals with SDF normals, and applies normal-aware densification to capture fine-scale geometry. To prevent excessive Gaussian splitting during normal-aware densification, we introduce Dual-Density Control (DDC) using both image and geometry gradient cues, improving memory.</p>
           <p>The precisely aligned geometry supplies accurate normals to support differentiable PBR, enabling faithful BRDF–lighting decomposition. Experiments on standard benchmarks demonstrate superior performance in NVS, mesh reconstruction, and PBR. The code and project page will be publicly released.</p>
         </div>
       </section>
@@ -866,7 +843,6 @@
     /* ===== Image magnifier ===== */
     const ZOOM = 2.6;
     const LENS = 160;
-
     const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
 
     function enableMagnifier(img){
@@ -995,13 +971,8 @@
         if(v.readyState >= 1) seekAndFreeze();
         else v.addEventListener('loadedmetadata', seekAndFreeze, { once:true });
 
-        v.addEventListener('seeked', () => {
-          try { v.pause(); } catch(e) {}
-        });
-
-        v.addEventListener('play', () => {
-          try { v.pause(); } catch(e) {}
-        });
+        v.addEventListener('seeked', () => { try { v.pause(); } catch(e) {} });
+        v.addEventListener('play', () => { try { v.pause(); } catch(e) {} });
 
         v.setAttribute('playsinline', '');
         v.muted = true;
