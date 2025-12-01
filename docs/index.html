@@ -98,6 +98,22 @@
     .author:hover{ text-decoration:underline; }
     .affils{margin-top:8px;color:var(--muted)}
 
+    .aff-icon{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width: 12px;
+      height: 12px;
+      vertical-align: -1px;
+      margin-left: 2px;
+    }
+  .aff-icon img{
+    width: 100%;
+    height: 100%;
+    display:block;
+  }
+  .sup-sep{ margin: 0 1px; }
+
     /* Project links */
     .link-row{
       display:flex;
@@ -250,23 +266,51 @@
 
         <div class="authors">
           <a class="author" href="https://sites.google.com/vilab.cau.ac.kr/jaeyoonlee" target="_blank" rel="noopener">
-            Jaeyoon Lee<sup>*,1</sup>
+            Jaeyoon Lee<sup>*<span class="sup-sep">,</span>
+              <span class="aff-icon" title="Chung-Ang University" aria-label="Chung-Ang University">
+                <img src="./assets/icons/paung.png" alt="" />
+              </span>
+            </sup>
           </a>
           <a class="author" href="https://sites.google.com/view/hjjung-homepage/홈" target="_blank" rel="noopener">
-            Hojoon Jung<sup>*,1</sup>
+            Hojoon Jung<sup>*<span class="sup-sep">,</span>
+              <span class="aff-icon" title="Chung-Ang University" aria-label="Chung-Ang University">
+                <img src="./assets/icons/paung.png" alt="" />
+              </span>
+            </sup>
           </a>
           <a class="author" href="https://sites.google.com/vilab.cau.ac.kr/hst/" target="_blank" rel="noopener">
-            Sungtae Hwang<sup>1</sup>
+            Sungtae Hwang<sup><span class="sup-sep">,</span>
+              <span class="aff-icon" title="Chung-Ang University" aria-label="Chung-Ang University">
+                <img src="./assets/icons/paung.png" alt="" />
+              </span>
+            </sup>
           </a>
           <a class="author" href="https://sites.google.com/site/jwchoivision/home" target="_blank" rel="noopener">
-            Jongwon Choi<sup>†,1</sup>
+            Jongwon Choi<sup>†<span class="sup-sep">,</span>
+              <span class="aff-icon" title="Chung-Ang University" aria-label="Chung-Ang University">
+                <img src="./assets/icons/paung.png" alt="" />
+              </span>
+            </sup>
           </a>
           <a class="author" href="https://sites.google.com/view/ozbro/" target="_blank" rel="noopener">
-            Jihyong Oh<sup>†,1</sup>
+            Jihyong Oh<sup>†<span class="sup-sep">,</span>
+              <span class="aff-icon" title="Chung-Ang University" aria-label="Chung-Ang University">
+                <img src="./assets/icons/paung.png" alt="" />
+              </span>
+            </sup>
           </a>
         </div>
 
-        <div class="affils"><span><sup>1</sup>Chung-Ang University</span></div>
+        <div class="affils">
+          <span>
+            <span class="aff-icon" aria-hidden="true">
+              <img src="./assets/icons/univ.png" alt="" />
+            </span>
+            Chung-Ang University
+          </span>
+        </div>
+        
         <div class="affils"><span><sup>*</sup>Equal Contribution, <sup>†</sup>Co-Corresponding Authors</span></div>
 
         <div class="link-row" aria-label="Project links">
