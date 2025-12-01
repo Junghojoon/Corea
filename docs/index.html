@@ -40,51 +40,49 @@
       justify-content:center;
     }
 
+    /* ✅ 로고를 "각각" 라운드 사각형 배경으로 감싸기 */
     .topbar-logos{
       display:flex;
       align-items:center;
       justify-content:center;
       gap: 14px;
     }
-
-    /* ✅ 로고를 "동그란 흰색 배경" 안에 넣기 */
+    
+    /* 동그라미(원) -> 라운드형 사각형(슬롯) */
     .topbar-logos a{
-      width: 44px;                /* 원형 크기 */
+      width: 128px;                 /* ✅ 각 로고 슬롯 가로폭 동일 */
       height: 44px;
       display:flex;
       align-items:center;
       justify-content:center;
-      border-radius: 999px;       /* 동그라미 */
+      padding: 8px 12px;
+      border-radius: 14px;          /* ✅ 라운드 사각형 */
       background: rgba(255,255,255,0.98);
       border: 1px solid rgba(255,255,255,0.55);
       box-shadow: 0 6px 16px rgba(0,0,0,0.16);
       transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
     }
+    
     .topbar-logos a:hover{
-      background: #ffffff;
+      background:#ffffff;
       text-decoration:none;
       transform: translateY(-1px);
       box-shadow: 0 10px 22px rgba(0,0,0,0.20);
     }
-    .topbar-logos a:active{
-      transform: translateY(0px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.16);
-    }
-
-    /* 원 안에서 로고는 원본 색 유지 */
+    
+    /* 로고는 슬롯 안에서 비율 유지 */
     .topbar-logos img{
-      height: 22px;
+      height: 24px;
+      max-width: 100%;
       width: auto;
       display:block;
-      filter: none;              /* ✅ invert 제거 */
-      opacity: 1;
+      filter: none;                /* ✅ 원본 색 유지 */
     }
-
+    
+    /* 모바일 */
     @media (max-width: 560px){
-      .wrap{ padding:24px 16px; }
-      .topbar-inner{ padding: 9px 16px; }
       .topbar-logos{ gap: 10px; }
-      .topbar-logos a{ width: 40px; height: 40px; }
+      .topbar-logos a{ width: 98px; height: 40px; border-radius: 12px; padding: 7px 10px; }
       .topbar-logos img{ height: 20px; }
     }
 
