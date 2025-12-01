@@ -146,14 +146,35 @@
       .title-icon{ width:36px; height:36px; }
     }
 
-    /* ✅ COREA only: red → blue gradient (keep) + ✅ PRE-TLDR: remove glow */
+    /* ✅ Animated flowing bright gradient for "COREA:" */
+    @keyframes coreaGradientFlow {
+      0%   { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
     .title-main{
       display:block;
       font-size:clamp(26px,4.6vw,51px);
       font-weight:900;
       letter-spacing:-0.02em;
 
-      background: linear-gradient(90deg, #ff2d55 0%, #0056A2 55%, #2B74FF 100%);
+      /* brighter vivid gradient (no dark tones) */
+      background: linear-gradient(
+        90deg,
+        #ff3d6e 0%,
+        #ffb86b 22%,
+        #00d4ff 55%,
+        #5aa7ff 78%,
+        #ff3d6e 100%
+      );
+
+      /* room to flow */
+      background-size: 200% 100%;
+      background-position: 0% 50%;
+
+      /* animate */
+      animation: coreaGradientFlow 3.2s linear infinite;
+
       -webkit-background-clip:text;
       background-clip:text;
       color: transparent;
@@ -165,8 +186,14 @@
       .title-main{
         color: var(--brandBlue);
         background:none;
+        animation:none;
         text-shadow: none;
       }
+    }
+
+    /* motion accessibility */
+    @media (prefers-reduced-motion: reduce){
+      .title-main{ animation:none; }
     }
 
     .title-sub{
