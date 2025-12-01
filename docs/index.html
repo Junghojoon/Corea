@@ -24,24 +24,22 @@
     header.hero .link-row{ justify-content:center; }
 
     /* Top bar (Pantone 2945C) */
-    /* Pantone 2945 C is commonly represented as hex #0056A2. */
     .topbar{
       position: sticky;
       top: 0;
       z-index: 100;
-      background: #0056A2;                /* Pantone 2945C */
+      background: #0056A2; /* Pantone 2945C */
       border-bottom: 1px solid rgba(255,255,255,0.22);
     }
     .topbar-inner{
       max-width:980px;
       margin:0 auto;
       padding: 10px 22px;
-      display:flex;                       /* ✅ 중앙정렬 easiest */
+      display:flex;
       align-items:center;
-      justify-content:center;             /* ✅ 로고 그룹 중앙 */
+      justify-content:center;
     }
 
-    /* ✅ 로고 그룹: 가운데 정렬 + 동일한 "슬롯" 폭 */
     .topbar-logos{
       display:flex;
       align-items:center;
@@ -49,35 +47,44 @@
       gap: 14px;
     }
 
-    /* 각 로고 클릭 영역을 동일 폭으로: 로고들이 "균등 가로폭" 느낌 */
+    /* ✅ 로고를 "동그란 흰색 배경" 안에 넣기 */
     .topbar-logos a{
-      width: 120px;                       /* ✅ 동일한 가로 폭 */
-      height: 40px;
+      width: 44px;                /* 원형 크기 */
+      height: 44px;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding: 6px 10px;
-      border-radius:12px;
+      border-radius: 999px;       /* 동그라미 */
+      background: rgba(255,255,255,0.98);
+      border: 1px solid rgba(255,255,255,0.55);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.16);
+      transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
     }
     .topbar-logos a:hover{
-      background: rgba(255,255,255,0.10);
+      background: #ffffff;
       text-decoration:none;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.20);
+    }
+    .topbar-logos a:active{
+      transform: translateY(0px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.16);
     }
 
-    /* 로고 자체는 슬롯 안에서 비율 유지 */
+    /* 원 안에서 로고는 원본 색 유지 */
     .topbar-logos img{
-      height: 24px;                       /* 상단바용 */
-      width:auto;
+      height: 22px;
+      width: auto;
       display:block;
-      filter: brightness(0) invert(1);     /* ✅ 파란 바 위에서 흰색 톤으로 통일 */
-      opacity: 0.95;
+      filter: none;              /* ✅ invert 제거 */
+      opacity: 1;
     }
 
     @media (max-width: 560px){
       .wrap{ padding:24px 16px; }
       .topbar-inner{ padding: 9px 16px; }
       .topbar-logos{ gap: 10px; }
-      .topbar-logos a{ width: 92px; height: 36px; }
+      .topbar-logos a{ width: 40px; height: 40px; }
       .topbar-logos img{ height: 20px; }
     }
 
@@ -219,8 +226,6 @@
 </head>
 
 <body>
-
-  <!-- Top bar: 로고 중앙정렬 + 동일 폭 슬롯 -->
   <div class="topbar">
     <div class="topbar-inner">
       <div class="topbar-logos" aria-label="Affiliation logos">
