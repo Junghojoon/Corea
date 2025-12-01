@@ -304,7 +304,7 @@
     <!-- Quantitative -->
     <div id="quantitative" class="subcard">
       <h3 style="margin:0 0 10px;font-size:18px;">Quantitative comparison</h3>
-      <div class="thumb thumb--fit">
+      <div class="thumb thumb--fit no-zoom">
         <img src="./assets/Quantitative_comparison.png" alt="Quantitative table" />
       </div>
       <div class="embed-actions">
@@ -412,6 +412,9 @@
 
     // video thumb는 제외
     if(thumb.querySelector('video')) return;
+
+    // quantitative 등 특정 섹션은 제외
+    if(thumb.classList.contains('no-zoom')) return;
 
     thumb.classList.add('thumb--zoom');
 
