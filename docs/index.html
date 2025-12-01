@@ -146,59 +146,103 @@
       .title-icon{ width:36px; height:36px; }
     }
 
-    /* ✅ Animated flowing bright gradient for "COREA:" */
-    @keyframes coreaGradientFlow {
-      0%   { background-position: 0% 50%; }
-      100% { background-position: 200% 50%; }
-    }
-
+    /* =========================
+       ✅ COREA ONLY: Replace with your provided animation
+       ========================= */
     .title-main{
+      position: relative;
       display:block;
-      font-size:clamp(26px,4.6vw,51px);
-      font-weight:900;
-      letter-spacing:-0.02em;
 
-      /* brighter vivid gradient (no dark tones) */
+      /* keep responsive sizing for your page */
+      font-size: clamp(38px, 6.3vw, 80px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.0;
+
       background: linear-gradient(
         90deg,
-        #ff3d6e 0%,
-        #ffb86b 22%,
-        #00d4ff 55%,
-        #5aa7ff 78%,
-        #ff3d6e 100%
+        #FF2D55 0%,
+        #FF2D55 35%,
+        #0056A2 65%,
+        #0056A2 100%
       );
-
-      /* room to flow */
       background-size: 200% 100%;
-      background-position: 0% 50%;
-
-      /* animate */
-      animation: coreaGradientFlow 3.2s linear infinite;
-
-      -webkit-background-clip:text;
-      background-clip:text;
+      -webkit-background-clip: text;
+      background-clip: text;
       color: transparent;
 
       text-shadow: none;
+      animation: coreaBidirectionalText 3.6s ease-in-out infinite;
+    }
+
+    @keyframes coreaBidirectionalText {
+      0% {
+        background-position: 0% 50%;
+        filter: brightness(0.8);
+      }
+      40% {
+        filter: brightness(1.0);
+      }
+      50% {
+        background-position: 100% 50%;
+        filter: brightness(1.15);
+      }
+      60% {
+        filter: brightness(1.0);
+      }
+      100% {
+        background-position: 0% 50%;
+        filter: brightness(0.8);
+      }
+    }
+
+    /* Underline Reverse Direction Flow */
+    .title-main::before{
+      content:"";
+      position:absolute;
+      left:-6%;
+      right:-6%;
+      bottom:-8px;
+      height:4px;
+      border-radius:999px;
+      background: linear-gradient(
+        90deg,
+        #0056A2 0%,
+        #0056A2 35%,
+        #FF2D55 65%,
+        #FF2D55 100%
+      );
+      background-size: 200% 100%;
+      opacity: 0.9;
+      z-index:-1;
+      animation: coreaBidirectionalBar 3.6s ease-in-out infinite;
+    }
+
+    @keyframes coreaBidirectionalBar {
+      0% { background-position: 100% 50%; opacity:0.6; }
+      50% { background-position: 0% 50%; opacity:1.0; }
+      100% { background-position: 100% 50%; opacity:0.6; }
     }
 
     @supports not (-webkit-background-clip:text){
       .title-main{
         color: var(--brandBlue);
         background:none;
+        filter:none;
         animation:none;
-        text-shadow: none;
       }
+      .title-main::before{ display:none; }
     }
 
     /* motion accessibility */
     @media (prefers-reduced-motion: reduce){
-      .title-main{ animation:none; }
+      .title-main{ animation:none; filter:none; }
+      .title-main::before{ animation:none; }
     }
 
     .title-sub{
       display:block;
-      margin-top:6px;
+      margin-top:10px;
       font-size:clamp(18px,2.9vw,29px);
       font-weight:800;
       letter-spacing:-0.015em;
@@ -573,6 +617,7 @@
         <h1 class="title">
           <span class="title-row">
             <img class="title-icon" src="./assets/icons/Taegeuk.png" alt="COREA icon" />
+            <!-- ✅ COREA animation replaced -->
             <span class="title-main">COREA:</span>
           </span>
 
