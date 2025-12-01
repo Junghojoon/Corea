@@ -34,6 +34,10 @@
       --accent: var(--neon-blue);
       --brand: var(--neon-pink);
 
+      /* ✅ Blue-only gradient stops */
+      --blue-a:#6fe3ff;
+      --blue-b:#2b7bff;
+
       --ring: rgba(57,183,255,0.32);
       --shadow: rgba(0,0,0,0.62);
 
@@ -98,7 +102,6 @@
       align-items:center;
       justify-content:center;
     }
-
     .topbar-logos{
       display:flex;
       align-items:center;
@@ -167,26 +170,26 @@
       object-fit:contain;
       display:block;
       transform: translateY(2px);
-      filter: drop-shadow(0 0 10px rgba(57,183,255,0.25)) drop-shadow(0 0 16px rgba(255,79,216,0.16));
+      filter: drop-shadow(0 0 10px rgba(57,183,255,0.25)) drop-shadow(0 0 16px rgba(57,183,255,0.16));
     }
     @media (max-width:560px){
       .title-icon{ width:36px; height:36px; }
     }
 
-    /* ✅ COREA gradient text */
+    /* ✅ COREA: blue-only gradient */
     .title-main{
       display:block;
       font-size:clamp(26px,4.6vw,51px);
       font-weight:900;
       letter-spacing:-0.02em;
 
-      background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink), var(--neon-green));
+      background: linear-gradient(90deg, var(--blue-a), var(--blue-b));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       -webkit-text-fill-color: transparent;
 
-      text-shadow: var(--glow-blue), var(--glow-pink);
+      text-shadow: var(--glow-blue);
     }
     @supports not ((-webkit-background-clip: text) or (background-clip: text)){
       .title-main{
@@ -203,7 +206,7 @@
       font-weight:800;
       letter-spacing:-0.015em;
       color: rgba(245,250,255,0.88);
-      text-shadow: var(--glow-mix);
+      text-shadow: var(--glow-blue);
     }
 
     /* ===== Authors (neon) ===== */
@@ -236,7 +239,7 @@
     .aff-icon img{ width:100%; height:100%; display:block; object-fit:contain; }
     .sup-sep{ margin: 0 1px; }
 
-    /* ===== Project links (neon pills) ===== */
+    /* ===== Project links (blue-only gradient) ===== */
     .link-row{
       display:flex;
       flex-wrap:wrap;
@@ -252,16 +255,21 @@
       justify-content:center;
       padding:10px 16px;
       border-radius:999px;
-      background: linear-gradient(90deg, rgba(57,183,255,0.92), rgba(255,79,216,0.86));
+
+      /* ✅ blue-only gradient */
+      background: linear-gradient(90deg, rgba(111,227,255,0.95), rgba(43,123,255,0.92));
+
       color:#081018 !important;
       font-weight:900;
       letter-spacing:-0.01em;
       text-decoration:none;
       border:1px solid rgba(255,255,255,0.16);
+
+      /* ✅ blue-only glow */
       box-shadow:
         0 18px 44px rgba(0,0,0,0.55),
-        0 0 30px rgba(57,183,255,0.18),
-        0 0 22px rgba(255,79,216,0.12);
+        0 0 34px rgba(57,183,255,0.22);
+
       transition: transform 140ms ease, box-shadow 140ms ease, filter 140ms ease;
     }
     .projlink:hover{
@@ -269,8 +277,7 @@
       filter: brightness(1.06);
       box-shadow:
         0 22px 54px rgba(0,0,0,0.62),
-        0 0 42px rgba(57,183,255,0.22),
-        0 0 30px rgba(255,79,216,0.16);
+        0 0 44px rgba(57,183,255,0.26);
     }
     .projlink:active{ transform: translateY(0px) scale(0.99); }
     .projlink:focus-visible{
@@ -298,11 +305,12 @@
       margin-top: 16px;
       box-shadow:
         0 18px 50px rgba(0,0,0,0.58),
-        0 0 0 1px rgba(255,79,216,0.04) inset;
+        0 0 0 1px rgba(57,183,255,0.04) inset;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
 
+    /* ✅ remove the underline bar under h2 (Abstract line) */
     h2{
       margin:0 0 14px;
       font-size:22px;
@@ -310,16 +318,7 @@
       text-shadow: var(--glow-blue);
       position: relative;
     }
-    h2::after{
-      content:"";
-      display:block;
-      height:2px;
-      width: 90px;
-      margin-top:10px;
-      border-radius:999px;
-      background: linear-gradient(90deg, rgba(57,183,255,0.95), rgba(255,79,216,0.86), rgba(69,255,176,0.72));
-      box-shadow: 0 0 18px rgba(57,183,255,0.28);
-    }
+    h2::after{ content:none; }
 
     .section{ margin-top:28px; }
     .footer{
@@ -349,7 +348,7 @@
       margin:0 0 6px;
       font-size:14px;
       color: rgba(245,250,255,0.94);
-      text-shadow: var(--glow-pink);
+      text-shadow: var(--glow-blue);
     }
     .tldr-text{ margin:0; font-size:15.5px; color: rgba(245,250,255,0.90); }
 
@@ -441,9 +440,6 @@
       text-shadow: 0 0 16px rgba(57,183,255,0.08);
     }
 
-    /* Subcards */
-    .subcard{ background:#ffffff12; } /* keep subtle, still neon */
-
     /* Qualitative stack */
     .media-stack{ display:flex; flex-direction:column; gap:16px; }
     .media{ display:flex; flex-direction:column; gap:8px; }
@@ -459,13 +455,14 @@
       flex-wrap:wrap;
     }
 
+    /* Keep current-pill blue-only for consistency */
     .current-pill{
       display:inline-flex;
       align-items:center;
       gap:8px;
       padding:7px 12px;
       border-radius:999px;
-      background: linear-gradient(90deg, rgba(57,183,255,0.92), rgba(255,79,216,0.85));
+      background: linear-gradient(90deg, rgba(111,227,255,0.95), rgba(43,123,255,0.92));
       color: #081018;
       font-size:13px;
       font-weight:900;
@@ -507,8 +504,7 @@
       border-color: rgba(57,183,255,0.78);
       box-shadow:
         0 20px 52px rgba(0,0,0,0.72),
-        0 0 34px rgba(57,183,255,0.22),
-        0 0 22px rgba(255,79,216,0.12);
+        0 0 34px rgba(57,183,255,0.22);
     }
 
     .video-thumb-media{ position:absolute; inset:0; }
@@ -540,7 +536,7 @@
     .video-thumb.is-active .video-thumb-badge{
       background: rgba(0,0,0,0.35);
       border-color: rgba(57,183,255,0.34);
-      box-shadow: 0 0 22px rgba(57,183,255,0.16), 0 0 18px rgba(255,79,216,0.10);
+      box-shadow: 0 0 22px rgba(57,183,255,0.16);
     }
 
     @media (max-width:560px){
@@ -548,7 +544,7 @@
       .video-thumb-badge{ left:8px; bottom:8px; font-size:11.5px; }
     }
 
-    /* Optional subtle title pulse (kept gentle) */
+    /* Subtle pulse (kept gentle) */
     @keyframes neonPulse{
       0%,100%{ filter: brightness(1); }
       50%{ filter: brightness(1.06); }
@@ -710,7 +706,7 @@
     </div>
 
     <div id="qualitative" class="subcard">
-      <h3 style="margin:0 0 10px;font-size:18px; color: rgba(245,250,255,0.94); text-shadow: 0 0 18px rgba(255,79,216,0.18), 0 0 18px rgba(57,183,255,0.12);">Qualitative comparison</h3>
+      <h3 style="margin:0 0 10px;font-size:18px; color: rgba(245,250,255,0.94); text-shadow: 0 0 18px rgba(57,183,255,0.18);">Qualitative comparison</h3>
 
       <div class="media-stack">
         <div class="media">
