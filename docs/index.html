@@ -47,7 +47,7 @@
       justify-content:center;
       gap: 14px;
     }
-    
+
     /* 동그라미(원) -> 라운드형 사각형(슬롯) */
     .topbar-logos a{
       width: 128px;                 /* ✅ 각 로고 슬롯 가로폭 동일 */
@@ -62,14 +62,14 @@
       box-shadow: 0 6px 16px rgba(0,0,0,0.16);
       transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
     }
-    
+
     .topbar-logos a:hover{
       background:#ffffff;
       text-decoration:none;
       transform: translateY(-1px);
       box-shadow: 0 10px 22px rgba(0,0,0,0.20);
     }
-    
+
     /* 로고는 슬롯 안에서 비율 유지 */
     .topbar-logos img{
       height: 24px;
@@ -78,7 +78,7 @@
       display:block;
       filter: none;                /* ✅ 원본 색 유지 */
     }
-    
+
     /* 모바일 */
     @media (max-width: 560px){
       .topbar-logos{ gap: 10px; }
@@ -102,8 +102,8 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      width: 20px;     /* ← 여기 */
-      height: 20px;    /* ← 여기 */
+      width: 20px;
+      height: 20px;
       margin-left: 4px;
       vertical-align: -2px;
     }
@@ -114,7 +114,7 @@
       object-fit:contain;
     }
 
-  .sup-sep{ margin: 0 1px; }
+    .sup-sep{ margin: 0 1px; }
 
     /* Project links */
     .link-row{
@@ -223,21 +223,73 @@
     .embed-actions{display:flex;gap:12px;align-items:center;margin-top:8px;flex-wrap:wrap}
     .embed-actions a{font-size:14px}
 
-    /* Additional results */
-    .demo-stack{display:flex;flex-direction:column;gap:18px;margin-top:12px;}
-    .demo-card{
-      background:#ffffff;
-      border:1px solid #e5e7eb;
-      border-radius:14px;
-      padding:18px;
+    /* ===== Additional results (single video switcher) ===== */
+    .video-switcher{ display:flex; flex-direction:column; gap:12px; }
+
+    .video-switcher-head{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
     }
-    .demo-title{
-      margin:0 0 10px;
-      font-size:18px;
+
+    .current-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:#0056A2; /* Pantone 2945C */
+      color:#ffffff;
+      font-size:13px;
+      font-weight:900;
+      box-shadow:0 10px 22px rgba(0,86,162,0.22);
+    }
+
+    .video-thumbs{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:4px;
+    }
+
+    .video-thumb{
+      width:96px;
+      height:64px;
+      border-radius:14px;
+      border:2px solid #e5e7eb;
+      background:#ffffff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      padding:8px;
+      transition:transform 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+    }
+
+    .video-thumb:hover{
+      transform: translateY(-1px);
+      box-shadow:0 10px 22px rgba(0,0,0,0.10);
+    }
+
+    .video-thumb.is-active{
+      border-color:#0056A2; /* Pantone 2945C */
+      box-shadow:0 12px 26px rgba(0,86,162,0.22);
+    }
+
+    .video-thumb span{
+      font-size:12.5px;
       font-weight:900;
       color:#1a1f29;
+      line-height:1.1;
+      text-align:center;
     }
-    .demo-card .thumb{aspect-ratio:16/9;}
+
+    @media (max-width:560px){
+      .video-thumb{ width:88px; height:60px; border-radius:12px; }
+    }
   </style>
 </head>
 
@@ -312,7 +364,7 @@
             Chung-Ang University
           </span>
         </div>
-        
+
         <div class="affils"><span><sup>*</sup>Equal Contribution, <sup>†</sup>Co-Corresponding Authors</span></div>
 
         <div class="link-row" aria-label="Project links">
@@ -420,39 +472,43 @@
       </div>
     </div>
 
+    <!-- ✅ 변경된 Additional Results: 영상 1개만 + 썸네일 클릭으로 교체 -->
     <section class="section card" id="additional">
       <h2>Additional Results</h2>
-      <p class="figure-cap">Demos for Novel-View Synthesis, Mesh reconstruction, and Physically-Based Rendering. (Click to play)</p>
+      <p class="figure-cap">
+        Demos for Novel-View Synthesis, Mesh reconstruction, and Physically-Based Rendering.
+        (Click a thumbnail to switch)
+      </p>
 
-      <div class="demo-stack">
-        <div class="demo-card">
-          <p class="demo-title">Novel-View Synthesis comparison</p>
-          <div class="thumb">
-            <video controls playsinline preload="metadata">
-              <source src="./assets/videos/NVS.mp4#t=1" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+      <div class="video-switcher" data-video-switcher>
+        <div class="video-switcher-head">
+          <div class="current-pill" aria-live="polite">
+            Now playing: <span data-current-label>NVS</span>
           </div>
         </div>
 
-        <div class="demo-card">
-          <p class="demo-title">Mesh reconstruction comparison</p>
-          <div class="thumb">
-            <video controls playsinline preload="metadata">
-              <source src="./assets/videos/Mesh.mp4#t=1" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
+        <div class="thumb" style="aspect-ratio:16/9;">
+          <video id="additionalPlayer" autoplay muted loop playsinline controls preload="metadata">
+            <source id="additionalSource" src="./assets/videos/NVS.mp4#t=1" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
 
-        <div class="demo-card">
-          <p class="demo-title">Physically-Based Rendering comparison</p>
-          <div class="thumb">
-            <video controls playsinline preload="metadata">
-              <source src="./assets/videos/PBR.mp4#t=1" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
+        <div class="video-thumbs" aria-label="Additional results selector">
+          <button class="video-thumb is-active" type="button"
+                  data-video-src="./assets/videos/NVS.mp4#t=1" data-video-label="NVS">
+            <span>NVS</span>
+          </button>
+
+          <button class="video-thumb" type="button"
+                  data-video-src="./assets/videos/Mesh.mp4#t=1" data-video-label="Mesh">
+            <span>Mesh</span>
+          </button>
+
+          <button class="video-thumb" type="button"
+                  data-video-src="./assets/videos/PBR.mp4#t=1" data-video-label="PBR">
+            <span>PBR</span>
+          </button>
         </div>
       </div>
     </section>
@@ -470,81 +526,127 @@
     <p class="footer">© 2025 Your Name(s). Hosted on GitHub Pages.</p>
   </div>
 
-<script>
-(() => {
-  const ZOOM = 2.6;
-  const LENS = 160;
+  <script>
+  (() => {
+    /* ===== Image magnifier ===== */
+    const ZOOM = 2.6;
+    const LENS = 160;
 
-  const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
+    const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
 
-  function enableMagnifier(img){
-    const thumb = img.closest('.thumb');
-    if(!thumb) return;
-    if(thumb.querySelector('video')) return;
-    if(thumb.classList.contains('no-zoom')) return;
+    function enableMagnifier(img){
+      const thumb = img.closest('.thumb');
+      if(!thumb) return;
+      if(thumb.querySelector('video')) return;
+      if(thumb.classList.contains('no-zoom')) return;
 
-    thumb.classList.add('thumb--zoom');
+      thumb.classList.add('thumb--zoom');
 
-    let lens = null;
+      let lens = null;
 
-    function ensureLens(){
-      if(lens) return lens;
-      lens = document.createElement('div');
-      lens.className = 'magnifier-lens';
-      lens.style.width = lens.style.height = `${LENS}px`;
-      lens.style.backgroundImage = `url("${img.currentSrc || img.src}")`;
-      thumb.appendChild(lens);
-      return lens;
-    }
-
-    function update(e){
-      const rect = thumb.getBoundingClientRect();
-      const lx = LENS / 2;
-
-      let x = e.clientX - rect.left;
-      let y = e.clientY - rect.top;
-
-      x = clamp(x, lx, rect.width - lx);
-      y = clamp(y, lx, rect.height - lx);
-
-      const l = ensureLens();
-      l.style.left = `${x}px`;
-      l.style.top  = `${y}px`;
-
-      const bgW = rect.width * ZOOM;
-      const bgH = rect.height * ZOOM;
-      l.style.backgroundSize = `${bgW}px ${bgH}px`;
-
-      const bgX = -(x * ZOOM - lx);
-      const bgY = -(y * ZOOM - lx);
-      l.style.backgroundPosition = `${bgX}px ${bgY}px`;
-    }
-
-    function enter(){
-      ensureLens();
-      thumb.addEventListener('mousemove', update);
-    }
-    function leave(){
-      thumb.removeEventListener('mousemove', update);
-      if(lens){
-        lens.remove();
-        lens = null;
+      function ensureLens(){
+        if(lens) return lens;
+        lens = document.createElement('div');
+        lens.className = 'magnifier-lens';
+        lens.style.width = lens.style.height = `${LENS}px`;
+        lens.style.backgroundImage = `url("${img.currentSrc || img.src}")`;
+        thumb.appendChild(lens);
+        return lens;
       }
+
+      function update(e){
+        const rect = thumb.getBoundingClientRect();
+        const lx = LENS / 2;
+
+        let x = e.clientX - rect.left;
+        let y = e.clientY - rect.top;
+
+        x = clamp(x, lx, rect.width - lx);
+        y = clamp(y, lx, rect.height - lx);
+
+        const l = ensureLens();
+        l.style.left = `${x}px`;
+        l.style.top  = `${y}px`;
+
+        const bgW = rect.width * ZOOM;
+        const bgH = rect.height * ZOOM;
+        l.style.backgroundSize = `${bgW}px ${bgH}px`;
+
+        const bgX = -(x * ZOOM - lx);
+        const bgY = -(y * ZOOM - lx);
+        l.style.backgroundPosition = `${bgX}px ${bgY}px`;
+      }
+
+      function enter(){
+        ensureLens();
+        thumb.addEventListener('mousemove', update);
+      }
+      function leave(){
+        thumb.removeEventListener('mousemove', update);
+        if(lens){
+          lens.remove();
+          lens = null;
+        }
+      }
+
+      thumb.addEventListener('mouseenter', enter);
+      thumb.addEventListener('mouseleave', leave);
+
+      img.addEventListener('load', () => {
+        if(lens) lens.style.backgroundImage = `url("${img.currentSrc || img.src}")`;
+      });
     }
 
-    thumb.addEventListener('mouseenter', enter);
-    thumb.addEventListener('mouseleave', leave);
+    /* ===== Additional Results video switcher ===== */
+    function initAdditionalSwitch(){
+      const player = document.getElementById('additionalPlayer');
+      const source = document.getElementById('additionalSource');
+      const labelEl = document.querySelector('[data-current-label]');
+      const thumbs = Array.from(document.querySelectorAll('.video-thumb[data-video-src]'));
+      if(!player || !source || thumbs.length === 0) return;
 
-    img.addEventListener('load', () => {
-      if(lens) lens.style.backgroundImage = `url("${img.currentSrc || img.src}")`;
+      const safePlay = () => {
+        const p = player.play();
+        if(p && typeof p.catch === "function") p.catch(() => {});
+      };
+
+      function setActive(btn){
+        thumbs.forEach(b => b.classList.toggle('is-active', b === btn));
+
+        const src = btn.getAttribute('data-video-src');
+        const label = btn.getAttribute('data-video-label') || btn.textContent.trim();
+        if(labelEl) labelEl.textContent = label;
+
+        if(source.getAttribute('src') === src){
+          player.currentTime = 0;
+          safePlay();
+          return;
+        }
+
+        player.pause();
+        source.setAttribute('src', src);
+        player.load();
+        safePlay();
+      }
+
+      thumbs.forEach(btn => {
+        btn.addEventListener('click', () => setActive(btn));
+        btn.addEventListener('keydown', (e) => {
+          if(e.key === 'Enter' || e.key === ' '){
+            e.preventDefault();
+            setActive(btn);
+          }
+        });
+      });
+
+      setActive(document.querySelector('.video-thumb.is-active') || thumbs[0]);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.thumb img').forEach(enableMagnifier);
+      initAdditionalSwitch();
     });
-  }
-
-  window.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.thumb img').forEach(enableMagnifier);
-  });
-})();
-</script>
-
+  })();
+  </script>
 </body>
 </html>
