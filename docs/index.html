@@ -108,6 +108,7 @@
       justify-content:center;
       gap: 14px;
     }
+    /* ===== Topbar logos: blue-only gradient boxes ===== */
     .topbar-logos a{
       width: 128px;
       height: 44px;
@@ -116,27 +117,37 @@
       justify-content:center;
       padding: 8px 12px;
       border-radius: 14px;
-      background: rgba(0,0,0,0.32);
-      border: 1px solid rgba(255,255,255,0.14);
+    
+      /* 🔵 blue-only gradient */
+      background: linear-gradient(90deg, rgba(111,227,255,0.95), rgba(43,123,255,0.92));
+    
+      border: 1px solid rgba(255,255,255,0.16);
+    
+      /* 🔵 blue-only glow */
       box-shadow:
-        0 10px 22px rgba(0,0,0,0.45),
-        0 0 26px rgba(57,183,255,0.10);
+        0 18px 44px rgba(0,0,0,0.55),
+        0 0 34px rgba(57,183,255,0.22);
+    
       transition: transform 140ms ease, box-shadow 140ms ease, filter 140ms ease;
     }
+    
     .topbar-logos a:hover{
       transform: translateY(-1px);
-      filter: brightness(1.05);
+      filter: brightness(1.06);
       box-shadow:
-        0 14px 30px rgba(0,0,0,0.55),
-        0 0 34px rgba(57,183,255,0.16);
+        0 22px 54px rgba(0,0,0,0.62),
+        0 0 44px rgba(57,183,255,0.26);
     }
+    
+    /* 로고 PNG가 어두워 보이면 대비 살짝 올리기(원하면 제거 가능) */
     .topbar-logos img{
       height: 24px;
       max-width: 100%;
       width: auto;
       display:block;
-      filter: none;
+      filter: contrast(1.05) saturate(1.05);
     }
+
     @media (max-width: 560px){
       .topbar-logos{ gap: 10px; }
       .topbar-logos a{ width: 98px; height: 40px; border-radius: 12px; padding: 7px 10px; }
