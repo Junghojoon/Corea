@@ -16,61 +16,69 @@
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
 
-    /* ↓ 전체 폭/스케일 다시 컴팩트하게 */
     .wrap{max-width:980px;margin:0 auto;padding:28px 22px}
 
     header.hero{padding:64px 0 24px;border-bottom:1px solid #e5e7eb}
-
-    /* Center align only the HERO (stop from TL;DR) */
     header.hero{ text-align:center; }
     header.hero .authors,
-    header.hero .link-row{
-      justify-content:center;
-    }
+    header.hero .link-row{ justify-content:center; }
 
-    /* Top bar */
+    /* Top bar (Pantone 2945C) */
+    /* Pantone 2945 C is commonly represented as hex #0056A2. */
     .topbar{
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.86);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid #e5e7eb;
+      background: #0056A2;                /* Pantone 2945C */
+      border-bottom: 1px solid rgba(255,255,255,0.22);
     }
     .topbar-inner{
-      max-width:980px;          /* 1100 -> 980 */
+      max-width:980px;
       margin:0 auto;
       padding: 10px 22px;
-      display:grid;
-      grid-template-columns: 1fr auto 1fr; /* left / center / right */
+      display:flex;                       /* ✅ 중앙정렬 easiest */
       align-items:center;
-      gap: 14px;
+      justify-content:center;             /* ✅ 로고 그룹 중앙 */
     }
+
+    /* ✅ 로고 그룹: 가운데 정렬 + 동일한 "슬롯" 폭 */
     .topbar-logos{
-      justify-self:start;
       display:flex;
       align-items:center;
-      gap: 12px;
+      justify-content:center;
+      gap: 14px;
     }
+
+    /* 각 로고 클릭 영역을 동일 폭으로: 로고들이 "균등 가로폭" 느낌 */
     .topbar-logos a{
-      display:inline-flex;
+      width: 120px;                       /* ✅ 동일한 가로 폭 */
+      height: 40px;
+      display:flex;
       align-items:center;
       justify-content:center;
-      padding: 6px 8px;
+      padding: 6px 10px;
       border-radius:12px;
     }
-    .topbar-logos a:hover{ background:#f4f6fb; text-decoration:none; }
+    .topbar-logos a:hover{
+      background: rgba(255,255,255,0.10);
+      text-decoration:none;
+    }
+
+    /* 로고 자체는 슬롯 안에서 비율 유지 */
     .topbar-logos img{
-      height: 26px;
+      height: 24px;                       /* 상단바용 */
       width:auto;
       display:block;
+      filter: brightness(0) invert(1);     /* ✅ 파란 바 위에서 흰색 톤으로 통일 */
+      opacity: 0.95;
     }
-    .topbar-right{ justify-self:end; } /* 자리 유지용 */
 
     @media (max-width: 560px){
-      .topbar-inner{ grid-template-columns: auto 1fr auto; }
-      .topbar-logos img{ height: 22px; }
+      .wrap{ padding:24px 16px; }
+      .topbar-inner{ padding: 9px 16px; }
+      .topbar-logos{ gap: 10px; }
+      .topbar-logos a{ width: 92px; height: 36px; }
+      .topbar-logos img{ height: 20px; }
     }
 
     /* Title */
@@ -85,14 +93,14 @@
     .author:hover{ text-decoration:underline; }
     .affils{margin-top:8px;color:var(--muted)}
 
-    /* Project links row (text-only) */
+    /* Project links */
     .link-row{
       display:flex;
       flex-wrap:wrap;
       gap:14px;
       align-items:center;
       margin-top:10px;
-      font-size:15px;           /* ↓ 18 -> 15 */
+      font-size:15px;
       justify-content:center;
     }
     .projlink{ color:var(--accent); font-weight:800; text-decoration:none; }
@@ -100,7 +108,7 @@
     .sep{ color:#c1c7d4; user-select:none; }
 
     /* Cards */
-    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;padding:20px} /* 22 -> 20 */
+    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;padding:20px}
     h2{margin:0 0 14px;font-size:22px}
     .section{margin-top:28px}
     .footer{margin-top:36px;color:var(--muted);font-size:14px;text-align:center}
@@ -171,7 +179,7 @@
     }
 
     /* Abstract-like blocks */
-    .abstract-card{padding:22px} /* 26 -> 22 */
+    .abstract-card{padding:22px}
     .abstract-figure{margin:0 0 14px}
     .figure-cap{margin-top:8px;color:var(--muted);font-size:14px}
     .blurb{
@@ -212,7 +220,7 @@
 
 <body>
 
-  <!-- Top bar: 로고만 (Abstract/Results/Contributors 제거) -->
+  <!-- Top bar: 로고 중앙정렬 + 동일 폭 슬롯 -->
   <div class="topbar">
     <div class="topbar-inner">
       <div class="topbar-logos" aria-label="Affiliation logos">
@@ -226,9 +234,6 @@
           <img src="./assets/logo/CMlab.png" alt="CMlab logo" />
         </a>
       </div>
-
-      <div></div>
-      <div class="topbar-right"></div>
     </div>
   </div>
 
@@ -261,7 +266,6 @@
         <div class="affils"><span><sup>1</sup>Chung-Ang University</span></div>
         <div class="affils"><span><sup>*</sup>Equal Contribution, <sup>†</sup>Co-Corresponding Authors</span></div>
 
-        <!-- Equal contribution 아래에 Paper/arXiv/Code 중앙 정렬 -->
         <div class="link-row" aria-label="Project links">
           <a class="projlink" href="./assets/paper.pdf" target="_blank" rel="noopener">Paper</a>
           <span class="sep">•</span>
@@ -278,7 +282,6 @@
       </section>
     </div>
 
-    <!-- Video -->
     <section id="video" class="section card">
       <div class="thumb">
         <video autoplay muted loop playsinline controls preload="metadata">
@@ -288,7 +291,6 @@
       </div>
     </section>
 
-    <!-- Abstract -->
     <section class="section card abstract-card" id="abstract">
       <h2>Abstract</h2>
 
@@ -305,7 +307,6 @@
       </div>
     </section>
 
-    <!-- Overview -->
     <section class="section card abstract-card" id="overview">
       <h2>Overview of the COREA framework.</h2>
 
@@ -326,7 +327,6 @@
       </div>
     </section>
 
-    <!-- Quantitative -->
     <div id="quantitative" class="subcard">
       <h3 style="margin:0 0 10px;font-size:18px;">Quantitative comparison</h3>
       <div class="thumb thumb--fit no-zoom">
@@ -341,7 +341,6 @@
       </div>
     </div>
 
-    <!-- Qualitative -->
     <div id="qualitative" class="subcard">
       <h3 style="margin:0 0 10px;font-size:18px;">Qualitative comparison</h3>
 
@@ -372,7 +371,6 @@
       </div>
     </div>
 
-    <!-- Additional results -->
     <section class="section card" id="additional">
       <h2>Additional Results</h2>
       <p class="figure-cap">Demos for Novel-View Synthesis, Mesh reconstruction, and Physically-Based Rendering. (Click to play)</p>
@@ -410,7 +408,6 @@
       </div>
     </section>
 
-    <!-- BibTeX -->
     <section id="bibtex" class="section card">
       <h2>BibTeX</h2>
       <pre><code>@inproceedings{corea2025arXiv,
