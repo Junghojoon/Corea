@@ -26,6 +26,73 @@
     header.hero .link-row{
       justify-content:center;
     }
+    
+    /* Top bar */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.86);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .topbar-inner{
+      max-width:1100px;
+      margin:0 auto;
+      padding: 10px 22px;
+      display:grid;
+      grid-template-columns: 1fr auto 1fr; /* left / center / right */
+      align-items:center;
+      gap: 14px;
+    }
+    
+    .topbar-logos{
+      justify-self:start;
+      display:flex;
+      align-items:center;
+      gap: 12px;
+    }
+    .topbar-logos a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 6px 8px;
+      border-radius:12px;
+    }
+    .topbar-logos a:hover{ background:#f4f6fb; text-decoration:none; }
+    .topbar-logos img{
+      height: 26px; /* 상단바용 로고 크기 */
+      width:auto;
+      display:block;
+    }
+    
+    .topbar-nav{
+      justify-self:center;
+      display:flex;
+      align-items:center;
+      gap: 18px;
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:-0.01em;
+    }
+    .topbar-nav a{
+      color:#111213;
+      opacity:0.88;
+      text-decoration:none;
+    }
+    .topbar-nav a:hover{ opacity:1; text-decoration:none; }
+    
+    .topbar-right{
+      justify-self:end; /* 비워두는 자리 (센터 정렬 고정용) */
+    }
+    
+    /* 모바일에서 바 간격 조정 */
+    @media (max-width: 560px){
+      .topbar-inner{ grid-template-columns: auto 1fr auto; }
+      .topbar-nav{ justify-content:center; gap:12px; }
+      .topbar-logos img{ height: 22px; }
+    }
 
     /* Title (split into 2 lines) — reduce ~5pt */
     .title{ margin:0 0 10px; line-height:1.12; letter-spacing:-0.02em; }
@@ -195,6 +262,32 @@
 </head>
 
 <body>
+
+  <!-- Top bar (logos moved here) -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-logos" aria-label="Affiliation logos">
+        <a href="https://www.cau.ac.kr/index.do" target="_blank" rel="noopener">
+          <img src="./assets/logo/chung_ang_univ.png" alt="ChungAng University logo" />
+        </a>
+        <a href="https://www.vilab.cau.ac.kr/home" target="_blank" rel="noopener">
+          <img src="./assets/logo/VIlab.png" alt="VIlab logo" />
+        </a>
+        <a href="https://cmlab.cau.ac.kr" target="_blank" rel="noopener">
+          <img src="./assets/logo/CMlab.png" alt="CMlab logo" />
+        </a>
+      </div>
+
+      <nav class="topbar-nav" aria-label="Sections">
+        <a href="#abstract">Abstract</a>
+        <a href="#quantitative">Results</a>
+        <a href="#bibtex">Contributors</a>
+      </nav>
+
+      <div class="topbar-right"></div>
+    </div>
+  </div>
+  
   <div class="wrap">
     <!-- PRE-VIDEO BLOCK (center aligned) -->
     <div class="prevideo">
@@ -225,7 +318,7 @@
         <div class="affils"><span><sup>1</sup>Chung-Ang University</span></div>
         <div class="affils"><span><sup>*</sup>Equal Contribution, <sup>†</sup>Co-Corresponding Authors</span></div>
 
-        <div class="logo-row" aria-label="Affiliation logos">
+        <!-- <div class ="logo-row" aria-label="Affiliation logos">
           <a class="logo-link" href="https://www.cau.ac.kr/index.do" target="_blank" rel="noopener">
             <img src="./assets/logo/chung_ang_univ.png" alt="ChungAng University logo" />
           </a>
@@ -234,7 +327,7 @@
           </a>
           <a class="logo-link" href="https://cmlab.cau.ac.kr" target="_blank" rel="noopener">
             <img src="./assets/logo/CMlab.png" alt="CMlab logo" />
-          </a>
+          </a> -->
         </div>
 
         <div class="link-row" aria-label="Project links">
