@@ -40,7 +40,6 @@
       justify-content:center;
     }
 
-    /* ✅ 로고를 "각각" 라운드 사각형 배경으로 감싸기 */
     .topbar-logos{
       display:flex;
       align-items:center;
@@ -48,15 +47,14 @@
       gap: 14px;
     }
 
-    /* 동그라미(원) -> 라운드형 사각형(슬롯) */
     .topbar-logos a{
-      width: 128px;                 /* ✅ 각 로고 슬롯 가로폭 동일 */
+      width: 128px;
       height: 44px;
       display:flex;
       align-items:center;
       justify-content:center;
       padding: 8px 12px;
-      border-radius: 14px;          /* ✅ 라운드 사각형 */
+      border-radius: 14px;
       background: rgba(255,255,255,0.98);
       border: 1px solid rgba(255,255,255,0.55);
       box-shadow: 0 6px 16px rgba(0,0,0,0.16);
@@ -70,16 +68,14 @@
       box-shadow: 0 10px 22px rgba(0,0,0,0.20);
     }
 
-    /* 로고는 슬롯 안에서 비율 유지 */
     .topbar-logos img{
       height: 24px;
       max-width: 100%;
       width: auto;
       display:block;
-      filter: none;                /* ✅ 원본 색 유지 */
+      filter: none;
     }
 
-    /* 모바일 */
     @media (max-width: 560px){
       .topbar-logos{ gap: 10px; }
       .topbar-logos a{ width: 98px; height: 40px; border-radius: 12px; padding: 7px 10px; }
@@ -88,7 +84,7 @@
 
     /* Title */
     .title{ margin:0 0 10px; line-height:1.12; letter-spacing:-0.02em; }
-    .title-main{display:block; font-size:clamp(26px,4.6vw,51px); font-weight:900; color:#0056A2; /* Pantone 2945C */}
+    .title-main{display:block; font-size:clamp(26px,4.6vw,51px); font-weight:900; color:#0056A2;}
     .title-sub{display:block; margin-top:6px; font-size:clamp(18px,2.9vw,29px); font-weight:800; letter-spacing:-0.015em;}
 
     /* Authors */
@@ -128,7 +124,6 @@
     }
     .projlink{ color:var(--accent); font-weight:800; text-decoration:none; }
     .projlink:hover{ text-decoration:underline; }
-    .sep{ color:#c1c7d4; user-select:none; }
 
     /* Cards */
     .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;padding:20px}
@@ -140,18 +135,8 @@
 
     /* TL;DR */
     .tldr-card{ padding:18px 20px; }
-    .tldr-label{
-      font-weight:900;
-      letter-spacing:-0.01em;
-      margin:0 0 6px;
-      font-size:14px;
-      color:#1a1f29;
-    }
-    .tldr-text{
-      margin:0;
-      font-size:15.5px;
-      color:#1a1f29;
-    }
+    .tldr-label{ font-weight:900; letter-spacing:-0.01em; margin:0 0 6px; font-size:14px; color:#1a1f29; }
+    .tldr-text{ margin:0; font-size:15.5px; color:#1a1f29; }
 
     /* Media container */
     .thumb{
@@ -205,12 +190,7 @@
     .abstract-card{padding:22px}
     .abstract-figure{margin:0 0 14px}
     .figure-cap{margin-top:8px;color:var(--muted);font-size:14px}
-    .blurb{
-      margin:8px 0 0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.55;
-    }
+    .blurb{ margin:8px 0 0; color:var(--muted); font-size:14px; line-height:1.55; }
     .abstract-text{font-size:15.5px}
 
     /* Subcards */
@@ -220,10 +200,7 @@
     .media-stack{display:flex;flex-direction:column;gap:16px}
     .media{display:flex;flex-direction:column;gap:8px}
 
-    .embed-actions{display:flex;gap:12px;align-items:center;margin-top:8px;flex-wrap:wrap}
-    .embed-actions a{font-size:14px}
-
-    /* ===== Additional results (single video switcher) ===== */
+    /* ===== Additional results (single video + still previews) ===== */
     .video-switcher{ display:flex; flex-direction:column; gap:12px; }
 
     .video-switcher-head{
@@ -256,16 +233,15 @@
     }
 
     .video-thumb{
-      width:96px;
-      height:64px;
+      width:140px;
+      height:86px;
       border-radius:14px;
       border:2px solid #e5e7eb;
       background:#ffffff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
       cursor:pointer;
-      padding:8px;
+      padding:0;
+      position:relative;
+      overflow:hidden;
       transition:transform 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
     }
 
@@ -279,16 +255,37 @@
       box-shadow:0 12px 26px rgba(0,86,162,0.22);
     }
 
-    .video-thumb span{
-      font-size:12.5px;
+    .video-thumb-media{ position:absolute; inset:0; }
+
+    .video-thumb-preview{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      background:#000;
+    }
+
+    .video-thumb-badge{
+      position:absolute;
+      left:10px;
+      bottom:10px;
+      padding:5px 9px;
+      border-radius:999px;
+      background: rgba(0,0,0,0.55);
+      color:#fff;
+      font-size:12px;
       font-weight:900;
-      color:#1a1f29;
-      line-height:1.1;
-      text-align:center;
+      letter-spacing:-0.01em;
+      backdrop-filter: blur(6px);
+    }
+
+    .video-thumb.is-active .video-thumb-badge{
+      background:#0056A2; /* Pantone 2945C */
     }
 
     @media (max-width:560px){
-      .video-thumb{ width:88px; height:60px; border-radius:12px; }
+      .video-thumb{ width:122px; height:78px; border-radius:12px; }
+      .video-thumb-badge{ left:8px; bottom:8px; font-size:11.5px; }
     }
   </style>
 </head>
@@ -369,9 +366,9 @@
 
         <div class="link-row" aria-label="Project links">
           <a class="projlink" href="./assets/paper.pdf" target="_blank" rel="noopener">Paper</a>
-          <span class="sep">•</span>
+          <span style="color:#c1c7d4;user-select:none;">•</span>
           <a class="projlink" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" rel="noopener">arXiv</a>
-          <span class="sep">•</span>
+          <span style="color:#c1c7d4;user-select:none;">•</span>
           <a class="projlink" href="https://github.com/YOUR/REPO" target="_blank" rel="noopener">Code</a>
         </div>
       </header>
@@ -423,8 +420,7 @@
         (i) DSA aligns the SDF to the 3DGS by leveraging depth rendered from Gaussians and matching SDF normals to pixel-wise depth gradients of 3DGS;
         (ii) NGA aligns 3DGS to the SDF by matching Gaussian depth to the SDF depth and supervising Gaussian normals with SDF normals.
         To prevent excessive Gaussian splitting during NGA, the DDC module suppresses unnecessary densification for efficient geometry refinement.
-        In the second stage, Inverse PBR is performed using the refined geometry to decompose BRDF and lighting and enable relighting under novel illumination conditions.
-        </p>
+        In the second stage, Inverse PBR is performed using the refined geometry to decompose BRDF and lighting and enable relighting under novel illumination conditions.</p>
       </div>
     </section>
 
@@ -472,7 +468,7 @@
       </div>
     </div>
 
-    <!-- ✅ 변경된 Additional Results: 영상 1개만 + 썸네일 클릭으로 교체 -->
+    <!-- ✅ Additional Results: 1개 플레이어 + 썸네일은 "1초 프레임 정지" 프리뷰 -->
     <section class="section card" id="additional">
       <h2>Additional Results</h2>
       <p class="figure-cap">
@@ -496,18 +492,36 @@
 
         <div class="video-thumbs" aria-label="Additional results selector">
           <button class="video-thumb is-active" type="button"
+                  aria-label="Play NVS"
                   data-video-src="./assets/videos/NVS.mp4#t=1" data-video-label="NVS">
-            <span>NVS</span>
+            <div class="video-thumb-media" aria-hidden="true">
+              <video class="video-thumb-preview" muted playsinline preload="auto">
+                <source src="./assets/videos/NVS.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="video-thumb-badge">NVS</div>
           </button>
 
           <button class="video-thumb" type="button"
+                  aria-label="Play Mesh"
                   data-video-src="./assets/videos/Mesh.mp4#t=1" data-video-label="Mesh">
-            <span>Mesh</span>
+            <div class="video-thumb-media" aria-hidden="true">
+              <video class="video-thumb-preview" muted playsinline preload="auto">
+                <source src="./assets/videos/Mesh.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="video-thumb-badge">Mesh</div>
           </button>
 
           <button class="video-thumb" type="button"
+                  aria-label="Play PBR"
                   data-video-src="./assets/videos/PBR.mp4#t=1" data-video-label="PBR">
-            <span>PBR</span>
+            <div class="video-thumb-media" aria-hidden="true">
+              <video class="video-thumb-preview" muted playsinline preload="auto">
+                <source src="./assets/videos/PBR.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="video-thumb-badge">PBR</div>
           </button>
         </div>
       </div>
@@ -642,9 +656,42 @@
       setActive(document.querySelector('.video-thumb.is-active') || thumbs[0]);
     }
 
+    /* ===== Thumbnail previews: freeze at 1s ===== */
+    function initThumbnailStillPreviews(){
+      const TARGET_T = 1.0;
+
+      document.querySelectorAll('video.video-thumb-preview').forEach(v => {
+        v.removeAttribute('controls');
+        v.autoplay = false;
+        v.loop = false;
+
+        const seekAndFreeze = () => {
+          const dur = Number.isFinite(v.duration) ? v.duration : 0;
+          const t = dur > 0 ? Math.min(Math.max(TARGET_T, 0), Math.max(dur - 0.05, 0)) : TARGET_T;
+          try { v.currentTime = t; } catch(e) {}
+        };
+
+        if(v.readyState >= 1) seekAndFreeze();
+        else v.addEventListener('loadedmetadata', seekAndFreeze, { once:true });
+
+        v.addEventListener('seeked', () => {
+          try { v.pause(); } catch(e) {}
+        });
+
+        // 혹시 자동재생 되는 환경 방지
+        v.addEventListener('play', () => {
+          try { v.pause(); } catch(e) {}
+        });
+
+        v.setAttribute('playsinline', '');
+        v.muted = true;
+      });
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.thumb img').forEach(enableMagnifier);
       initAdditionalSwitch();
+      initThumbnailStillPreviews();
     });
   })();
   </script>
