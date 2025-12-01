@@ -153,8 +153,8 @@
       position: relative;
       display:block;
 
-      /* keep responsive sizing for your page */
-      font-size: clamp(38px, 6.3vw, 80px);
+      /* ✅ COREA size slightly reduced */
+      font-size: clamp(34px, 5.8vw, 72px);
       font-weight: 900;
       letter-spacing: -0.02em;
       line-height: 1.0;
@@ -381,8 +381,13 @@
       border-radius:12px;
       overflow:auto;
       color:#1a1f29;
-      box-shadow: var(--glow-sm);
+
+      /* ✅ BibTeX inner box: remove neon */
+      box-shadow: none;
     }
+    /* ✅ also keep pre from glowing during parent hover */
+    .card:hover pre{ box-shadow:none; }
+
     code{font-family:"Roboto Mono",ui-monospace,Menlo,Consolas,monospace}
 
     /* TL;DR */
@@ -617,11 +622,9 @@
         <h1 class="title">
           <span class="title-row">
             <img class="title-icon" src="./assets/icons/Taegeuk.png" alt="COREA icon" />
-            <!-- ✅ COREA animation replaced -->
             <span class="title-main">COREA:</span>
           </span>
 
-          <!-- ✅ Only Co / Re / A in blue -->
           <span class="title-sub">
             <span class="sub-accent">Co</span>arse-to-Fine 3D
             <span class="sub-accent">Re</span>presentation
