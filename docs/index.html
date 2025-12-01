@@ -15,18 +15,19 @@
     body{ margin:0;background:#ffffff;color:var(--text); font:16px/1.6 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial }
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:1100px;margin:0 auto;padding:28px 22px}
+
+    /* ↓ 전체 폭/스케일 다시 컴팩트하게 */
+    .wrap{max-width:980px;margin:0 auto;padding:28px 22px}
 
     header.hero{padding:64px 0 24px;border-bottom:1px solid #e5e7eb}
 
     /* Center align only the HERO (stop from TL;DR) */
     header.hero{ text-align:center; }
     header.hero .authors,
-    header.hero .logo-row,
     header.hero .link-row{
       justify-content:center;
     }
-    
+
     /* Top bar */
     .topbar{
       position: sticky;
@@ -38,7 +39,7 @@
       border-bottom: 1px solid #e5e7eb;
     }
     .topbar-inner{
-      max-width:1100px;
+      max-width:980px;          /* 1100 -> 980 */
       margin:0 auto;
       padding: 10px 22px;
       display:grid;
@@ -46,7 +47,6 @@
       align-items:center;
       gap: 14px;
     }
-    
     .topbar-logos{
       justify-self:start;
       display:flex;
@@ -62,76 +62,28 @@
     }
     .topbar-logos a:hover{ background:#f4f6fb; text-decoration:none; }
     .topbar-logos img{
-      height: 26px; /* 상단바용 로고 크기 */
+      height: 26px;
       width:auto;
       display:block;
     }
-    
-    .topbar-nav{
-      justify-self:center;
-      display:flex;
-      align-items:center;
-      gap: 18px;
-      font-size:14px;
-      font-weight:700;
-      letter-spacing:-0.01em;
-    }
-    .topbar-nav a{
-      color:#111213;
-      opacity:0.88;
-      text-decoration:none;
-    }
-    .topbar-nav a:hover{ opacity:1; text-decoration:none; }
-    
-    .topbar-right{
-      justify-self:end; /* 비워두는 자리 (센터 정렬 고정용) */
-    }
-    
-    /* 모바일에서 바 간격 조정 */
+    .topbar-right{ justify-self:end; } /* 자리 유지용 */
+
     @media (max-width: 560px){
       .topbar-inner{ grid-template-columns: auto 1fr auto; }
-      .topbar-nav{ justify-content:center; gap:12px; }
       .topbar-logos img{ height: 22px; }
     }
 
-    /* Title (split into 2 lines) — reduce ~5pt */
+    /* Title */
     .title{ margin:0 0 10px; line-height:1.12; letter-spacing:-0.02em; }
-    .title-main{display:block; font-size:clamp(26px,4.6vw,51px); font-weight:900;} /* was ~56 max */
-    .title-sub{display:block; margin-top:6px; font-size:clamp(18px,2.9vw,29px); font-weight:800; letter-spacing:-0.015em;} /* was ~34 max */
+    .title-main{display:block; font-size:clamp(26px,4.6vw,51px); font-weight:900;}
+    .title-sub{display:block; margin-top:6px; font-size:clamp(18px,2.9vw,29px); font-weight:800; letter-spacing:-0.015em;}
 
-    /* Authors as links */
+    /* Authors */
     .authors{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:18px}
     .authors sup{font-size:12px;color:var(--muted)}
-    .author{
-      color:var(--accent);
-      font-weight:600;
-      text-decoration:none;
-    }
+    .author{ color:var(--accent); font-weight:600; text-decoration:none; }
     .author:hover{ text-decoration:underline; }
-
     .affils{margin-top:8px;color:var(--muted)}
-
-    /* Logos */
-    .logo-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:18px;
-      align-items:center;
-      margin-top:14px;
-    }
-    .logo-link{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:6px 10px;
-      border-radius:12px;
-    }
-    .logo-link:hover{ background:#f4f6fb; text-decoration:none; }
-    .logo-link img{
-      height:40px;
-      width:auto;
-      display:block;
-    }
 
     /* Project links row (text-only) */
     .link-row{
@@ -139,18 +91,16 @@
       flex-wrap:wrap;
       gap:14px;
       align-items:center;
-      margin-top:14px;
-      font-size:18px;
+      margin-top:10px;
+      font-size:15px;           /* ↓ 18 -> 15 */
+      justify-content:center;
     }
-    .projlink{
-      color:var(--accent);
-      font-weight:600;
-      text-decoration:none;
-    }
+    .projlink{ color:var(--accent); font-weight:800; text-decoration:none; }
     .projlink:hover{ text-decoration:underline; }
     .sep{ color:#c1c7d4; user-select:none; }
 
-    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;padding:22px}
+    /* Cards */
+    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;padding:20px} /* 22 -> 20 */
     h2{margin:0 0 14px;font-size:22px}
     .section{margin-top:28px}
     .footer{margin-top:36px;color:var(--muted);font-size:14px;text-align:center}
@@ -158,7 +108,7 @@
     code{font-family:"Roboto Mono",ui-monospace,Menlo,Consolas,monospace}
 
     /* TL;DR */
-    .tldr-card{ padding:18px 22px; }
+    .tldr-card{ padding:18px 20px; }
     .tldr-label{
       font-weight:900;
       letter-spacing:-0.01em;
@@ -171,15 +121,14 @@
       font-size:15.5px;
       color:#1a1f29;
     }
-    
-    /* Media container (hairline seam fix) */
+
+    /* Media container */
     .thumb{
       aspect-ratio:16/9;
       border-radius:14px;
       overflow:hidden;
       border:1px solid #e5e7eb;
       background:#ffffff;
-
       transform: translateZ(0);
       backface-visibility: hidden;
       -webkit-mask-image: -webkit-radial-gradient(white, black);
@@ -192,7 +141,7 @@
       transform: translateZ(0);
       backface-visibility: hidden;
     }
-    
+
     /* Hover magnifier (images only) */
     .thumb.thumb--zoom{ position:relative; cursor:zoom-in; }
     .thumb.thumb--zoom .magnifier-lens{
@@ -222,7 +171,7 @@
     }
 
     /* Abstract-like blocks */
-    .abstract-card{padding:26px}
+    .abstract-card{padding:22px} /* 26 -> 22 */
     .abstract-figure{margin:0 0 14px}
     .figure-cap{margin-top:8px;color:var(--muted);font-size:14px}
     .blurb{
@@ -263,7 +212,7 @@
 
 <body>
 
-  <!-- Top bar (logos moved here) -->
+  <!-- Top bar: 로고만 (Abstract/Results/Contributors 제거) -->
   <div class="topbar">
     <div class="topbar-inner">
       <div class="topbar-logos" aria-label="Affiliation logos">
@@ -278,18 +227,12 @@
         </a>
       </div>
 
-      <nav class="topbar-nav" aria-label="Sections">
-        <a href="#abstract">Abstract</a>
-        <a href="#quantitative">Results</a>
-        <a href="#bibtex">Contributors</a>
-      </nav>
-
+      <div></div>
       <div class="topbar-right"></div>
     </div>
   </div>
-  
+
   <div class="wrap">
-    <!-- PRE-VIDEO BLOCK (center aligned) -->
     <div class="prevideo">
       <header class="hero">
         <h1 class="title">
@@ -318,18 +261,7 @@
         <div class="affils"><span><sup>1</sup>Chung-Ang University</span></div>
         <div class="affils"><span><sup>*</sup>Equal Contribution, <sup>†</sup>Co-Corresponding Authors</span></div>
 
-        <!-- <div class ="logo-row" aria-label="Affiliation logos">
-          <a class="logo-link" href="https://www.cau.ac.kr/index.do" target="_blank" rel="noopener">
-            <img src="./assets/logo/chung_ang_univ.png" alt="ChungAng University logo" />
-          </a>
-          <a class="logo-link" href="https://www.vilab.cau.ac.kr/home" target="_blank" rel="noopener">
-            <img src="./assets/logo/VIlab.png" alt="VIlab logo" />
-          </a>
-          <a class="logo-link" href="https://cmlab.cau.ac.kr" target="_blank" rel="noopener">
-            <img src="./assets/logo/CMlab.png" alt="CMlab logo" />
-          </a> -->
-        </div>
-
+        <!-- Equal contribution 아래에 Paper/arXiv/Code 중앙 정렬 -->
         <div class="link-row" aria-label="Project links">
           <a class="projlink" href="./assets/paper.pdf" target="_blank" rel="noopener">Paper</a>
           <span class="sep">•</span>
@@ -346,7 +278,7 @@
       </section>
     </div>
 
-    <!-- Video (from here: original alignment) -->
+    <!-- Video -->
     <section id="video" class="section card">
       <div class="thumb">
         <video autoplay muted loop playsinline controls preload="metadata">
@@ -385,9 +317,9 @@
 
       <div class="abstract-text">
         <p>Our method jointly trains relightable 3D Gaussians and a SDF via coarse-to-fine bidirectional 3D-to-3D supervision.
-        The first stage, Bidirectional 3D-to-3D Supervision, consists of two complementary steps: 
-        (i) DSA aligns the SDF to the 3DGS by leveraging depth rendered from Gaussians and matching SDF normals to pixel-wise depth gradients of 3DGS;    
-        (ii) NGA aligns 3DGS to the SDF by matching Gaussian depth to the SDF depth and supervising Gaussian normals with SDF normals. 
+        The first stage, Bidirectional 3D-to-3D Supervision, consists of two complementary steps:
+        (i) DSA aligns the SDF to the 3DGS by leveraging depth rendered from Gaussians and matching SDF normals to pixel-wise depth gradients of 3DGS;
+        (ii) NGA aligns 3DGS to the SDF by matching Gaussian depth to the SDF depth and supervising Gaussian normals with SDF normals.
         To prevent excessive Gaussian splitting during NGA, the DDC module suppresses unnecessary densification for efficient geometry refinement.
         In the second stage, Inverse PBR is performed using the refined geometry to decompose BRDF and lighting and enable relighting under novel illumination conditions.
         </p>
@@ -419,9 +351,9 @@
             <img src="./assets/Qualitative_NVS.png" alt="Qualitative results (NVS)" />
           </div>
           <p class="blurb">
-            We compare COREA with recent Gaussian-based methods on three tasks: NVS, PBR, and Mesh Reconstruction. All results are rendered on a white background for consistent visual comparison. 
-            Artifacts such as black background patches or dark speckles observed in some baselines stem from excessive Gaussian opacity; by contrast, COREA produces clean, artifact-free renderings on white backgrounds. 
-            Our method also provides results for all three tasks, whereas others show N/S (Not Supported) or OOM (Out of Memory) in several cases. 
+            We compare COREA with recent Gaussian-based methods on three tasks: NVS, PBR, and Mesh Reconstruction. All results are rendered on a white background for consistent visual comparison.
+            Artifacts such as black background patches or dark speckles observed in some baselines stem from excessive Gaussian opacity; by contrast, COREA produces clean, artifact-free renderings on white backgrounds.
+            Our method also provides results for all three tasks, whereas others show N/S (Not Supported) or OOM (Out of Memory) in several cases.
             Overall, COREA yields sharper novel views, more faithful BRDF and lighting decomposition, and finer geometric details through coarse-to-fine bidirectional 3D-to-3D supervision.
           </p>
         </div>
@@ -431,9 +363,9 @@
             <img src="./assets/Qualitative_PBR.png" alt="Qualitative results (PBR)" />
           </div>
           <p class="blurb">
-            We compare COREA with recent relightable Gaussian-based methods under varying illumination conditions. 
-            The first row shows PBR renderings under the original lighting setup, while the remaining rows illustrate relighting results under directional lights and various HDR environment maps. 
-            Compared to previous methods that exhibit black background artifacts or unstable reflectance under varying illumination, 
+            We compare COREA with recent relightable Gaussian-based methods under varying illumination conditions.
+            The first row shows PBR renderings under the original lighting setup, while the remaining rows illustrate relighting results under directional lights and various HDR environment maps.
+            Compared to previous methods that exhibit black background artifacts or unstable reflectance under varying illumination,
             COREA maintains consistent shading, clean appearance, and accurate reflectance reconstruction across all lighting conditions, demonstrating robust BRDF and geometry alignment.
           </p>
         </div>
@@ -494,19 +426,15 @@
 
 <script>
 (() => {
-  const ZOOM = 2.6;          // 확대 배율
-  const LENS = 160;          // 렌즈 지름(px)
+  const ZOOM = 2.6;
+  const LENS = 160;
 
   const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
 
   function enableMagnifier(img){
     const thumb = img.closest('.thumb');
     if(!thumb) return;
-
-    // video thumb는 제외
     if(thumb.querySelector('video')) return;
-
-    // quantitative 등 특정 섹션은 제외
     if(thumb.classList.contains('no-zoom')) return;
 
     thumb.classList.add('thumb--zoom');
@@ -527,11 +455,9 @@
       const rect = thumb.getBoundingClientRect();
       const lx = LENS / 2;
 
-      // 마우스 위치(thumb 내부 좌표)
       let x = e.clientX - rect.left;
       let y = e.clientY - rect.top;
 
-      // 렌즈가 thumb 밖으로 나가지 않게 clamp
       x = clamp(x, lx, rect.width - lx);
       y = clamp(y, lx, rect.height - lx);
 
@@ -539,12 +465,10 @@
       l.style.left = `${x}px`;
       l.style.top  = `${y}px`;
 
-      // 배경을 확대해서 보여주기
       const bgW = rect.width * ZOOM;
       const bgH = rect.height * ZOOM;
       l.style.backgroundSize = `${bgW}px ${bgH}px`;
 
-      // 렌즈 중심이 가리키는 위치가 확대되어 보이도록 background-position 계산
       const bgX = -(x * ZOOM - lx);
       const bgY = -(y * ZOOM - lx);
       l.style.backgroundPosition = `${bgX}px ${bgY}px`;
@@ -565,7 +489,6 @@
     thumb.addEventListener('mouseenter', enter);
     thumb.addEventListener('mouseleave', leave);
 
-    // 이미지 src가 바뀌는 경우(레이지로드/리사이즈) 렌즈 배경도 갱신
     img.addEventListener('load', () => {
       if(lens) lens.style.backgroundImage = `url("${img.currentSrc || img.src}")`;
     });
@@ -576,6 +499,6 @@
   });
 })();
 </script>
-  
+
 </body>
 </html>
