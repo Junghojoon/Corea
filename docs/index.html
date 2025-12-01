@@ -416,7 +416,7 @@
     .media{display:flex;flex-direction:column;gap:8px}
 
     /* ===== Additional results (single video + still previews) ===== */
-    .video-switcher{ display:flex; flex-direction:column; gap:12px; }
+    .video-switcher{ display:flex; flex-direction:column; gap:12px;text-align: center; }
 
     .video-switcher-head{
       display:flex;
@@ -424,6 +424,17 @@
       justify-content:center;
       gap:12px;
       flex-wrap:wrap;
+    }
+
+    /* ✅ requested: remove neon from the "Novel-view..." pill */
+    #additional .current-pill{
+      background:#ffffff;
+      color:#1a1f29;
+      border:1px solid rgba(0,86,162,.18);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+    }
+    #additional .current-pill span{
+      text-shadow:none;
     }
 
     .current-pill{
