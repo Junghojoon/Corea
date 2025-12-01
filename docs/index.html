@@ -193,9 +193,12 @@
       align-items:center;
     }
     
+    /* ✅ 95% + center (robust) */
     .thumb.thumb--fit img{
-      width:95%;
+      width:100%;
       height:auto;
+      display:block;
+      margin:0 auto;   /* 핵심: 딱 가운데로 */
     }
 
     /* Abstract-like blocks */
