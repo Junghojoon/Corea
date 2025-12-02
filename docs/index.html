@@ -245,8 +245,19 @@
     }
 
     .sub-accent{
-      color: var(--brandBlue);
       font-weight: 900;
+    
+      /* COREA랑 같은 그라데이션 */
+      background: linear-gradient(
+        90deg,
+        #FF2D55 0%,
+        #FF2D55 35%,
+        #0056A2 65%,
+        #0056A2 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       text-shadow: none;
     }
 
