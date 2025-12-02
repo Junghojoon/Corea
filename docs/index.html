@@ -133,7 +133,10 @@
       margin:0 0 10px;
       line-height:1.12;
       letter-spacing:-0.02em;
-      text-align:center;
+      /* text-align:center;  ← 이 줄은 지워도 되고 둬도 상관 없음 */
+      display:flex;
+      flex-direction:column;   /* 위: COREA, 아래: 부제 */
+      align-items:center;      /* ✅ COREA 기준으로 수평 중앙 정렬 */
     }
 
     .title-row{
