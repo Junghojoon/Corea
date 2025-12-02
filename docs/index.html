@@ -28,6 +28,15 @@
       --neonBlue1:#00D4FF;
       --neonBlue2:#2B74FF;
 
+      /* COREA gradient (for CoReA letters) */
+      --corea-grad: linear-gradient(
+        90deg,
+        #FF2D55 0%,
+        #FF2D55 35%,
+        #0056A2 65%,
+        #0056A2 100%
+      );
+
       /* Glow shadows */
       --glow-sm: 0 0 14px rgba(0,212,255,.22);
       --glow-md: 0 0 26px rgba(0,212,255,.24);
@@ -133,7 +142,6 @@
       margin:0 0 10px;
       line-height:1.12;
       letter-spacing:-0.02em;
-      /* text-align:center;  ← 이 줄은 지워도 되고 둬도 상관 없음 */
       display:flex;
       flex-direction:column;   /* 위: COREA, 아래: 부제 */
       align-items:center;      /* ✅ COREA 기준으로 수평 중앙 정렬 */
@@ -160,7 +168,7 @@
     }
 
     /* =========================
-       ✅ COREA ONLY: Replace with your provided animation
+       ✅ COREA ONLY: main animated title
        ========================= */
     .title-main{
       position: relative;
@@ -244,36 +252,35 @@
       text-align:center;             /* ✅ 두 줄 모두 가운데 정렬 */
     }
 
-    /* COREA 서브타이틀용 단일 그라데이션 분할 */
+    /* CoReA 하나의 gradation 느낌 */
     .corea-accent{
       font-weight: 900;
-      background-image: linear-gradient(
-        90deg,
-        #FF2D55 0%,
-        #FF2D55 35%,
-        #0056A2 65%,
-        #0056A2 100%
-      );
-      background-size: 300% 100%;   /* 전체를 3등분해서 쓴다는 느낌 */
+      background-image: var(--corea-grad);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       text-shadow: none;
     }
-    
-    /* Co: 그라데이션의 왼쪽(빨간 쪽) */
+    /* Co: 왼쪽 영역 */
     .corea-accent--co{
+      background-size: 300% 100%;
       background-position: 0% 50%;
     }
-    
-    /* Re: 가운데 (빨강→파랑 중간 톤) */
+    /* Re: 가운데 영역 */
     .corea-accent--re{
+      background-size: 300% 100%;
       background-position: 50% 50%;
     }
-    
-    /* A: 오른쪽 (파란 쪽) */
+    /* A: 오른쪽 영역 */
     .corea-accent--a{
+      background-size: 300% 100%;
       background-position: 100% 50%;
+    }
+
+    .sub-accent{
+      color: var(--brandBlue);
+      font-weight: 900;
+      text-shadow: none;
     }
 
     /* Authors */
@@ -350,10 +357,8 @@
       z-index:0;
     }
 
-    /* 🔥 이 부분을 통째로 없애거나 이렇게 바꿔주세요 */
     .after-tldr::before{
-      content:none;          /* 그라디언트 박스 제거 */
-      /* 나머지 속성들은 지워도 됩니다 */
+      content:none;
     }
 
     .after-tldr > *{ position:relative; z-index:1; }
@@ -366,7 +371,6 @@
       outline-offset:3px;
       border-radius:12px;
     }
-
 
     /* Cards */
     .card{
@@ -394,8 +398,6 @@
       border-radius:12px;
       overflow:auto;
       color:#1a1f29;
-
-      /* ✅ BibTeX inner box: remove neon */
       box-shadow: none;
     }
     .card:hover pre{ box-shadow:none; }
@@ -634,12 +636,14 @@
             <span class="title-main">COREA:</span>
           </span>
 
+          <!-- ✅ CoReA 하나의 gradation + Between 윗줄 -->
           <span class="title-sub">
             <span class="corea-accent corea-accent--co">Co</span>arse-to-Fine 3D
             <span class="corea-accent corea-accent--re">Re</span>presentation
-            <span class="corea-accent corea-accent--a">A</span>lignment<br>
+            <span class="corea-accent corea-accent--a">A</span>lignment
+            Between<br>
             <span class="nowrap">
-              Between Relightable 3D Gaussians and SDF via Bidirectional 3D-to-3D Supervision
+              Relightable 3D Gaussians and SDF via Bidirectional 3D-to-3D Supervision
             </span>
           </span>
         </h1>
