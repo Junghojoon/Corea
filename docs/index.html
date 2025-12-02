@@ -244,21 +244,36 @@
       text-align:center;             /* ✅ 두 줄 모두 가운데 정렬 */
     }
 
-    .sub-accent{
+    /* COREA 서브타이틀용 단일 그라데이션 분할 */
+    .corea-accent{
       font-weight: 900;
-    
-      /* COREA랑 같은 그라데이션 */
-      background: linear-gradient(
+      background-image: linear-gradient(
         90deg,
         #FF2D55 0%,
         #FF2D55 35%,
         #0056A2 65%,
         #0056A2 100%
       );
+      background-size: 300% 100%;   /* 전체를 3등분해서 쓴다는 느낌 */
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       text-shadow: none;
+    }
+    
+    /* Co: 그라데이션의 왼쪽(빨간 쪽) */
+    .corea-accent--co{
+      background-position: 0% 50%;
+    }
+    
+    /* Re: 가운데 (빨강→파랑 중간 톤) */
+    .corea-accent--re{
+      background-position: 50% 50%;
+    }
+    
+    /* A: 오른쪽 (파란 쪽) */
+    .corea-accent--a{
+      background-position: 100% 50%;
     }
 
     /* Authors */
@@ -620,9 +635,9 @@
           </span>
 
           <span class="title-sub">
-            <span class="sub-accent">Co</span>arse-to-Fine 3D
-            <span class="sub-accent">Re</span>presentation
-            <span class="sub-accent">A</span>lignment<br>
+            <span class="corea-accent corea-accent--co">Co</span>arse-to-Fine 3D
+            <span class="corea-accent corea-accent--re">Re</span>presentation
+            <span class="corea-accent corea-accent--a">A</span>lignment<br>
             <span class="nowrap">
               Between Relightable 3D Gaussians and SDF via Bidirectional 3D-to-3D Supervision
             </span>
